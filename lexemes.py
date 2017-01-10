@@ -11,15 +11,19 @@ tokens = (
       'IMAGE',
       'WORD',
       'NUMBER',
-      'SEPARATION_LINE'
+      'SEPARATION_LINE',
+      'PARAGRAPHE',
+      'UL1',
+      'UL2',
+      'UL3',
 )
 
 def t_BOLD(t):
-	r'\*\*.*\*\*'
+	r'\*{2}\w+\*{2}'
 	return t
 
 def t_ITALIC(t):
-	r'\*.*\*'
+	r'\*{1}\w+\*{1}'
 	return t
  
 def t_FLUO(t):
@@ -51,6 +55,23 @@ def t_WORD(t):
     r'\w+[\s,.?:;&\-!?]?'
     return t
     
+    
+def t_UL1(t):
+    r'\*{1}\s{1}.*'
+    return t
+
+def t_UL2(t):
+    r'\*{2}\s{1}.*'
+    return t
+
+def t_UL3(t):
+    r'\*{3}\s{1}.*'
+    return t
+
+def t_PARAGRAPHE(t):
+    r'(\n){2}'
+    return t
+ 
 def t_newline(t):
 	r'\n+'
 	t.lexer.lineno += len(t.value)
