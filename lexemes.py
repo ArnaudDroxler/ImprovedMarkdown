@@ -4,7 +4,6 @@ import ply.lex as lex
 
 tokens = (
 	'BOLD',
-	'ITALIC',
 	'FLUO',
       'LINK',
       'REFERENCE',
@@ -16,16 +15,61 @@ tokens = (
       'UL1',
       'UL2',
       'UL3',
+      'ITALIC',
+      'OL1',
+      'OL2',
+      'OL3',
+      'TITLE1',
+      'TITLE2',
+      'TITLE3',
 )
 
 def t_BOLD(t):
-	r'\*{2}\w+\*{2}'
+	r'\*{2}.+\*{2}'
 	return t
 
 def t_ITALIC(t):
-	r'\*{1}\w+\*{1}'
+	r'\*{1}[^\*\n]+\*{1}'
 	return t
- 
+
+def t_UL1(t):
+    r'\*{1}\s{1}[^\r\n\*]*'
+    return t
+
+def t_UL2(t):
+    r'\*{2}\s{1}[^\r\n\*]*'
+    return t
+
+def t_UL3(t):
+    r'\*{3}\s{1}[^\r\n\*]*'
+    return t
+
+def t_OL1(t):
+    r'[0-9]+\.{1}\s{1}.+'
+    return t
+
+def t_OL2(t):
+    r'[0-9]+\.{1}[0-9]+\s{1}.+'
+    return t
+
+def t_OL3(t):
+    r'[0-9]+\.{1}[0-9]+\.{1}[0-9]+\s{1}.+'
+    return t
+
+def t_TITLE1(t):
+    # La regex prend toute la ligne, ce qui signifie qu'il n'y aura pas de mise
+    # en forme autre que le titre
+	r'\#{1}\s{1}.+'
+	return t
+
+def t_TITLE2(t):
+	r'\#{2}\s{1}.+'
+	return t
+
+def t_TITLE3(t):
+	r'\#{3}\s{1}.+'
+	return t
+
 def t_FLUO(t):
 	r'!.*!'
 	return t
@@ -33,7 +77,7 @@ def t_FLUO(t):
 def t_LINK(t):
     r'\[.*\]\({1}.*\){1}'
     return t
-    
+
 def t_IMAGE(t):
     r'!{1}\[{1}.*\]{1}\({1}.*\){1}'
     return t
@@ -41,7 +85,7 @@ def t_IMAGE(t):
 def t_REFERENCE(t):
     r'\w*\{{1}.*\}{1}'
     return t
-    
+
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)
@@ -50,28 +94,15 @@ def t_NUMBER(t):
 def t_SEPARATION_LINE(t):
     r'__{2,}\s{0,}'
     return t
-    
+
 def t_WORD(t):
     r'\w+[\s,.?:;&\-!?]?'
-    return t
-    
-    
-def t_UL1(t):
-    r'\*{1}\s{1}.*'
-    return t
-
-def t_UL2(t):
-    r'\*{2}\s{1}.*'
-    return t
-
-def t_UL3(t):
-    r'\*{3}\s{1}.*'
     return t
 
 def t_PARAGRAPHE(t):
     r'(\n){2}'
     return t
- 
+
 def t_newline(t):
 	r'\n+'
 	t.lexer.lineno += len(t.value)
