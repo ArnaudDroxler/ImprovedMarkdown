@@ -43,12 +43,12 @@ def t_NUMBER(t):
     t.value = int(t.value)
     return t
 
-def t_WORD(t):
-    r'\w+[,.?:;&\-!?]?'
-    return t
-
 def t_SEPARATION_LINE(t):
-    r'__{2,}\s{0,}\n'
+    r'__{2,}\s{0,}'
+    return t
+    
+def t_WORD(t):
+    r'\w+[\s,.?:;&\-!?]?'
     return t
     
 def t_newline(t):

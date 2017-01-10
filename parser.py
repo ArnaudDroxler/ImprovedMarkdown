@@ -2,7 +2,7 @@
 
 import ply.yacc as yacc
 
-from lexeme import tokens
+from lexemes import tokens
 
 operations = {
 	'+' : lambda x,y: x+y,
