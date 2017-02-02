@@ -22,6 +22,8 @@ tokens = (
       'TITLE1',
       'TITLE2',
       'TITLE3',
+      'VARIABLE',
+      'ASSIGNATION',
 )
 
 def t_BOLD(t):
@@ -97,6 +99,14 @@ def t_SEPARATION_LINE(t):
 
 def t_WORD(t):
     r'\w+[,.?:;&\-!?]?'
+    return t
+
+def t_VARIABLE(t):
+    r'\${1}[\w_]+'
+    return t
+
+def t_ASSIGNATION(t):
+    r'={1}'
     return t
 
 def t_PARAGRAPHE(t):
