@@ -91,8 +91,6 @@ class Node:
                 graph.add_edge(edge)
             return graph    
         
-class ProgramNode(Node):
-    type = 'Program'
         
 class TokenNode(Node):
     type = 'token'
@@ -114,6 +112,9 @@ class OpNode(Node):
         
     def __repr__(self):
         return "%s (%s)" % (self.op, self.nbargs)
+
+class DocumentNode(Node):
+    type = 'Document'
     
 class AssignNode(Node):
     type = '='
@@ -121,13 +122,10 @@ class AssignNode(Node):
 class PrintNode(Node):
     type = 'print'
     
-class WhileNode(Node):
-    type = 'while'
+class ParagraphNode(Node):
+    type = 'Paragraph'
     
-class EntryNode(Node):
-    type = 'ENTRY'
-    def __init__(self):
-        Node.__init__(self, None)
+
     
 def addToClass(cls):
     ''' Décorateur permettant d'ajouter la fonction décorée en tant que méthode
