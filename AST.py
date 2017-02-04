@@ -121,11 +121,18 @@ class AssignNode(Node):
     
 class PrintNode(Node):
     type = 'print'
-    
+      
+class TagNode(Node):
+    type = 'Tag'
+
 class ParagraphNode(Node):
     type = 'Paragraph'
-    
 
+class SentenceNode(Node):
+    type = 'Sentence'
+    
+    
+    
     
 def addToClass(cls):
     ''' Décorateur permettant d'ajouter la fonction décorée en tant que méthode
