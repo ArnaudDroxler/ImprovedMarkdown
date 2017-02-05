@@ -8,19 +8,11 @@ from lexemes import tokens
 
 def p_document(p):
     ''' document : sentence
-                   | document sentence
     '''
-    try:
-        print("DOCUMENT PLUSIEURS LIGNES")
-        print("P1 - ", p[1])
-        print("P2 - ", p[2])
-        p[0] = AST.DocumentNode([p[1]], p[2])
-        print("========")
-    except:
-        print("DOCUMENT UNE SEULE LIGNE")
-        print(p[1])
-        p[0] = AST.DocumentNode([p[1]])
-        print("erreur")
+    print("DOCUMENT")
+    print(p[1])
+    p[0] = AST.DocumentNode("DOCUMENT",p[1])
+
 def p_sentence(p):
     ''' sentence : WORD
         | tag
@@ -28,21 +20,14 @@ def p_sentence(p):
         | tag sentence'''
     try:
         sequence = p[2]
-        print("LE P2==============================")
+        print("LE P2============================== DEBUT")
         print(p[2])
         p[0] = AST.SentenceNode(p[1], p[2])
-        print("LE P2==============================")
+        print("LE P2============================== FIN")
     except:
         print("UN SEUL TERME")
         print(p[1])
         p[0] = AST.SentenceNode(p[1])
-    try:
-        print("SENTENCE")
-        print(p[1])
-        print(p[2])
-        print("========")
-    except:
-        print("erreur")
 
 def p_tag(p):
     ''' tag : BOLD
@@ -65,7 +50,6 @@ def p_tag(p):
     '''
     print("TAGNODE")
     p[0] = AST.TagNode(p[1])
-    print(p[1])
     print("----------------------")
 
 

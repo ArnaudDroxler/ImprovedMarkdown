@@ -124,7 +124,7 @@ class DocumentNode(Node):
             self.nbargs = 1
 
     def __repr__(self):
-        return "%s (%s) hello hello" % (self.op, self.children)
+        return "%s (%s)" % (self.op, self.children)
 
 class AssignNode(Node):
     type = '='
@@ -141,6 +141,9 @@ class TagNode(Node):
             self.nbargs = len(children)
         except TypeError:
             self.nbargs = 1
+
+    def __str__(self):
+        return Node.__str__(self)
 
     def __repr__(self):
         return "%s (%s)" % (self.op, self.nbargs)
