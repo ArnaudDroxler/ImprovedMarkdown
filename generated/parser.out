@@ -2,103 +2,146 @@ Created by PLY version 3.8 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    NUMBER
     VARIABLE
     ASSIGNATION
+    NUMBER
 
 Grammar
 
 Rule 0     S' -> document
-Rule 1     document -> paragraph sentence
-Rule 2     sentence -> WORD sentence
-Rule 3     sentence -> tag sentence
-Rule 4     sentence -> WORD sentence tag sentence
-Rule 5     sentence -> WORD
-Rule 6     sentence -> tag
-Rule 7     paragraph -> PARAGRAPHE
-Rule 8     tag -> BOLD
-Rule 9     tag -> FLUO
-Rule 10    tag -> LINK
-Rule 11    tag -> REFERENCE
-Rule 12    tag -> IMAGE
-Rule 13    tag -> SEPARATION_LINE
-Rule 14    tag -> UL1
-Rule 15    tag -> UL2
-Rule 16    tag -> UL3
-Rule 17    tag -> ITALIC
-Rule 18    tag -> OL1
-Rule 19    tag -> OL2
-Rule 20    tag -> OL3
-Rule 21    tag -> TITLE1
-Rule 22    tag -> TITLE2
-Rule 23    tag -> TITLE3
+Rule 1     document -> sentence
+Rule 2     document -> paragraph
+Rule 3     sentence -> WORD sentence
+Rule 4     sentence -> tag sentence
+Rule 5     sentence -> WORD sentence tag sentence
+Rule 6     sentence -> WORD
+Rule 7     sentence -> tag
+Rule 8     paragraph -> PARAGRAPHE
+Rule 9     tag -> BOLD
+Rule 10    tag -> FLUO
+Rule 11    tag -> LINK
+Rule 12    tag -> REFERENCE
+Rule 13    tag -> IMAGE
+Rule 14    tag -> SEPARATION_LINE
+Rule 15    tag -> UL1
+Rule 16    tag -> UL2
+Rule 17    tag -> UL3
+Rule 18    tag -> ITALIC
+Rule 19    tag -> OL1
+Rule 20    tag -> OL2
+Rule 21    tag -> OL3
+Rule 22    tag -> TITLE1
+Rule 23    tag -> TITLE2
+Rule 24    tag -> TITLE3
 
 Terminals, with rules where they appear
 
 ASSIGNATION          : 
-BOLD                 : 8
-FLUO                 : 9
-IMAGE                : 12
-ITALIC               : 17
-LINK                 : 10
+BOLD                 : 9
+FLUO                 : 10
+IMAGE                : 13
+ITALIC               : 18
+LINK                 : 11
 NUMBER               : 
-OL1                  : 18
-OL2                  : 19
-OL3                  : 20
-PARAGRAPHE           : 7
-REFERENCE            : 11
-SEPARATION_LINE      : 13
-TITLE1               : 21
-TITLE2               : 22
-TITLE3               : 23
-UL1                  : 14
-UL2                  : 15
-UL3                  : 16
+OL1                  : 19
+OL2                  : 20
+OL3                  : 21
+PARAGRAPHE           : 8
+REFERENCE            : 12
+SEPARATION_LINE      : 14
+TITLE1               : 22
+TITLE2               : 23
+TITLE3               : 24
+UL1                  : 15
+UL2                  : 16
+UL3                  : 17
 VARIABLE             : 
-WORD                 : 2 4 5
+WORD                 : 3 5 6
 error                : 
 
 Nonterminals, with rules where they appear
 
 document             : 0
-paragraph            : 1
-sentence             : 1 2 3 4 4
-tag                  : 3 4 6
+paragraph            : 2
+sentence             : 1 3 4 5 5
+tag                  : 4 5 7
 
 Parsing method: LALR
 
 state 0
 
     (0) S' -> . document
-    (1) document -> . paragraph sentence
-    (7) paragraph -> . PARAGRAPHE
+    (1) document -> . sentence
+    (2) document -> . paragraph
+    (3) sentence -> . WORD sentence
+    (4) sentence -> . tag sentence
+    (5) sentence -> . WORD sentence tag sentence
+    (6) sentence -> . WORD
+    (7) sentence -> . tag
+    (8) paragraph -> . PARAGRAPHE
+    (9) tag -> . BOLD
+    (10) tag -> . FLUO
+    (11) tag -> . LINK
+    (12) tag -> . REFERENCE
+    (13) tag -> . IMAGE
+    (14) tag -> . SEPARATION_LINE
+    (15) tag -> . UL1
+    (16) tag -> . UL2
+    (17) tag -> . UL3
+    (18) tag -> . ITALIC
+    (19) tag -> . OL1
+    (20) tag -> . OL2
+    (21) tag -> . OL3
+    (22) tag -> . TITLE1
+    (23) tag -> . TITLE2
+    (24) tag -> . TITLE3
 
-    PARAGRAPHE      shift and go to state 1
+    WORD            shift and go to state 12
+    PARAGRAPHE      shift and go to state 18
+    BOLD            shift and go to state 11
+    FLUO            shift and go to state 14
+    LINK            shift and go to state 5
+    REFERENCE       shift and go to state 6
+    IMAGE           shift and go to state 20
+    SEPARATION_LINE shift and go to state 19
+    UL1             shift and go to state 8
+    UL2             shift and go to state 4
+    UL3             shift and go to state 7
+    ITALIC          shift and go to state 15
+    OL1             shift and go to state 3
+    OL2             shift and go to state 10
+    OL3             shift and go to state 1
+    TITLE1          shift and go to state 9
+    TITLE2          shift and go to state 22
+    TITLE3          shift and go to state 16
 
     document                       shift and go to state 2
-    paragraph                      shift and go to state 3
+    tag                            shift and go to state 21
+    paragraph                      shift and go to state 13
+    sentence                       shift and go to state 17
 
 state 1
 
-    (7) paragraph -> PARAGRAPHE .
+    (21) tag -> OL3 .
 
-    WORD            reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    BOLD            reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    FLUO            reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    LINK            reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    REFERENCE       reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    IMAGE           reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    SEPARATION_LINE reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    UL1             reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    UL2             reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    UL3             reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    ITALIC          reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    OL1             reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    OL2             reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    OL3             reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    TITLE1          reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    TITLE2          reduce using rule 7 (paragraph -> PARAGRAPHE .)
-    TITLE3          reduce using rule 7 (paragraph -> PARAGRAPHE .)
+    WORD            reduce using rule 21 (tag -> OL3 .)
+    BOLD            reduce using rule 21 (tag -> OL3 .)
+    FLUO            reduce using rule 21 (tag -> OL3 .)
+    LINK            reduce using rule 21 (tag -> OL3 .)
+    REFERENCE       reduce using rule 21 (tag -> OL3 .)
+    IMAGE           reduce using rule 21 (tag -> OL3 .)
+    SEPARATION_LINE reduce using rule 21 (tag -> OL3 .)
+    UL1             reduce using rule 21 (tag -> OL3 .)
+    UL2             reduce using rule 21 (tag -> OL3 .)
+    UL3             reduce using rule 21 (tag -> OL3 .)
+    ITALIC          reduce using rule 21 (tag -> OL3 .)
+    OL1             reduce using rule 21 (tag -> OL3 .)
+    OL2             reduce using rule 21 (tag -> OL3 .)
+    OL3             reduce using rule 21 (tag -> OL3 .)
+    TITLE1          reduce using rule 21 (tag -> OL3 .)
+    TITLE2          reduce using rule 21 (tag -> OL3 .)
+    TITLE3          reduce using rule 21 (tag -> OL3 .)
+    $end            reduce using rule 21 (tag -> OL3 .)
 
 
 state 2
@@ -109,500 +152,468 @@ state 2
 
 state 3
 
-    (1) document -> paragraph . sentence
-    (2) sentence -> . WORD sentence
-    (3) sentence -> . tag sentence
-    (4) sentence -> . WORD sentence tag sentence
-    (5) sentence -> . WORD
-    (6) sentence -> . tag
-    (8) tag -> . BOLD
-    (9) tag -> . FLUO
-    (10) tag -> . LINK
-    (11) tag -> . REFERENCE
-    (12) tag -> . IMAGE
-    (13) tag -> . SEPARATION_LINE
-    (14) tag -> . UL1
-    (15) tag -> . UL2
-    (16) tag -> . UL3
-    (17) tag -> . ITALIC
-    (18) tag -> . OL1
-    (19) tag -> . OL2
-    (20) tag -> . OL3
-    (21) tag -> . TITLE1
-    (22) tag -> . TITLE2
-    (23) tag -> . TITLE3
+    (19) tag -> OL1 .
 
-    WORD            shift and go to state 20
-    BOLD            shift and go to state 17
-    FLUO            shift and go to state 21
-    LINK            shift and go to state 18
-    REFERENCE       shift and go to state 11
-    IMAGE           shift and go to state 12
-    SEPARATION_LINE shift and go to state 22
-    UL1             shift and go to state 7
-    UL2             shift and go to state 10
-    UL3             shift and go to state 13
-    ITALIC          shift and go to state 4
-    OL1             shift and go to state 15
-    OL2             shift and go to state 16
-    OL3             shift and go to state 9
-    TITLE1          shift and go to state 19
-    TITLE2          shift and go to state 8
-    TITLE3          shift and go to state 14
+    WORD            reduce using rule 19 (tag -> OL1 .)
+    BOLD            reduce using rule 19 (tag -> OL1 .)
+    FLUO            reduce using rule 19 (tag -> OL1 .)
+    LINK            reduce using rule 19 (tag -> OL1 .)
+    REFERENCE       reduce using rule 19 (tag -> OL1 .)
+    IMAGE           reduce using rule 19 (tag -> OL1 .)
+    SEPARATION_LINE reduce using rule 19 (tag -> OL1 .)
+    UL1             reduce using rule 19 (tag -> OL1 .)
+    UL2             reduce using rule 19 (tag -> OL1 .)
+    UL3             reduce using rule 19 (tag -> OL1 .)
+    ITALIC          reduce using rule 19 (tag -> OL1 .)
+    OL1             reduce using rule 19 (tag -> OL1 .)
+    OL2             reduce using rule 19 (tag -> OL1 .)
+    OL3             reduce using rule 19 (tag -> OL1 .)
+    TITLE1          reduce using rule 19 (tag -> OL1 .)
+    TITLE2          reduce using rule 19 (tag -> OL1 .)
+    TITLE3          reduce using rule 19 (tag -> OL1 .)
+    $end            reduce using rule 19 (tag -> OL1 .)
 
-    sentence                       shift and go to state 5
-    tag                            shift and go to state 6
 
 state 4
 
-    (17) tag -> ITALIC .
+    (16) tag -> UL2 .
 
-    WORD            reduce using rule 17 (tag -> ITALIC .)
-    BOLD            reduce using rule 17 (tag -> ITALIC .)
-    FLUO            reduce using rule 17 (tag -> ITALIC .)
-    LINK            reduce using rule 17 (tag -> ITALIC .)
-    REFERENCE       reduce using rule 17 (tag -> ITALIC .)
-    IMAGE           reduce using rule 17 (tag -> ITALIC .)
-    SEPARATION_LINE reduce using rule 17 (tag -> ITALIC .)
-    UL1             reduce using rule 17 (tag -> ITALIC .)
-    UL2             reduce using rule 17 (tag -> ITALIC .)
-    UL3             reduce using rule 17 (tag -> ITALIC .)
-    ITALIC          reduce using rule 17 (tag -> ITALIC .)
-    OL1             reduce using rule 17 (tag -> ITALIC .)
-    OL2             reduce using rule 17 (tag -> ITALIC .)
-    OL3             reduce using rule 17 (tag -> ITALIC .)
-    TITLE1          reduce using rule 17 (tag -> ITALIC .)
-    TITLE2          reduce using rule 17 (tag -> ITALIC .)
-    TITLE3          reduce using rule 17 (tag -> ITALIC .)
-    $end            reduce using rule 17 (tag -> ITALIC .)
+    WORD            reduce using rule 16 (tag -> UL2 .)
+    BOLD            reduce using rule 16 (tag -> UL2 .)
+    FLUO            reduce using rule 16 (tag -> UL2 .)
+    LINK            reduce using rule 16 (tag -> UL2 .)
+    REFERENCE       reduce using rule 16 (tag -> UL2 .)
+    IMAGE           reduce using rule 16 (tag -> UL2 .)
+    SEPARATION_LINE reduce using rule 16 (tag -> UL2 .)
+    UL1             reduce using rule 16 (tag -> UL2 .)
+    UL2             reduce using rule 16 (tag -> UL2 .)
+    UL3             reduce using rule 16 (tag -> UL2 .)
+    ITALIC          reduce using rule 16 (tag -> UL2 .)
+    OL1             reduce using rule 16 (tag -> UL2 .)
+    OL2             reduce using rule 16 (tag -> UL2 .)
+    OL3             reduce using rule 16 (tag -> UL2 .)
+    TITLE1          reduce using rule 16 (tag -> UL2 .)
+    TITLE2          reduce using rule 16 (tag -> UL2 .)
+    TITLE3          reduce using rule 16 (tag -> UL2 .)
+    $end            reduce using rule 16 (tag -> UL2 .)
 
 
 state 5
 
-    (1) document -> paragraph sentence .
+    (11) tag -> LINK .
 
-    $end            reduce using rule 1 (document -> paragraph sentence .)
+    WORD            reduce using rule 11 (tag -> LINK .)
+    BOLD            reduce using rule 11 (tag -> LINK .)
+    FLUO            reduce using rule 11 (tag -> LINK .)
+    LINK            reduce using rule 11 (tag -> LINK .)
+    REFERENCE       reduce using rule 11 (tag -> LINK .)
+    IMAGE           reduce using rule 11 (tag -> LINK .)
+    SEPARATION_LINE reduce using rule 11 (tag -> LINK .)
+    UL1             reduce using rule 11 (tag -> LINK .)
+    UL2             reduce using rule 11 (tag -> LINK .)
+    UL3             reduce using rule 11 (tag -> LINK .)
+    ITALIC          reduce using rule 11 (tag -> LINK .)
+    OL1             reduce using rule 11 (tag -> LINK .)
+    OL2             reduce using rule 11 (tag -> LINK .)
+    OL3             reduce using rule 11 (tag -> LINK .)
+    TITLE1          reduce using rule 11 (tag -> LINK .)
+    TITLE2          reduce using rule 11 (tag -> LINK .)
+    TITLE3          reduce using rule 11 (tag -> LINK .)
+    $end            reduce using rule 11 (tag -> LINK .)
 
 
 state 6
 
-    (3) sentence -> tag . sentence
-    (6) sentence -> tag .
-    (2) sentence -> . WORD sentence
-    (3) sentence -> . tag sentence
-    (4) sentence -> . WORD sentence tag sentence
-    (5) sentence -> . WORD
-    (6) sentence -> . tag
-    (8) tag -> . BOLD
-    (9) tag -> . FLUO
-    (10) tag -> . LINK
-    (11) tag -> . REFERENCE
-    (12) tag -> . IMAGE
-    (13) tag -> . SEPARATION_LINE
-    (14) tag -> . UL1
-    (15) tag -> . UL2
-    (16) tag -> . UL3
-    (17) tag -> . ITALIC
-    (18) tag -> . OL1
-    (19) tag -> . OL2
-    (20) tag -> . OL3
-    (21) tag -> . TITLE1
-    (22) tag -> . TITLE2
-    (23) tag -> . TITLE3
+    (12) tag -> REFERENCE .
 
-  ! shift/reduce conflict for BOLD resolved as shift
-  ! shift/reduce conflict for FLUO resolved as shift
-  ! shift/reduce conflict for LINK resolved as shift
-  ! shift/reduce conflict for REFERENCE resolved as shift
-  ! shift/reduce conflict for IMAGE resolved as shift
-  ! shift/reduce conflict for SEPARATION_LINE resolved as shift
-  ! shift/reduce conflict for UL1 resolved as shift
-  ! shift/reduce conflict for UL2 resolved as shift
-  ! shift/reduce conflict for UL3 resolved as shift
-  ! shift/reduce conflict for ITALIC resolved as shift
-  ! shift/reduce conflict for OL1 resolved as shift
-  ! shift/reduce conflict for OL2 resolved as shift
-  ! shift/reduce conflict for OL3 resolved as shift
-  ! shift/reduce conflict for TITLE1 resolved as shift
-  ! shift/reduce conflict for TITLE2 resolved as shift
-  ! shift/reduce conflict for TITLE3 resolved as shift
-    $end            reduce using rule 6 (sentence -> tag .)
-    WORD            shift and go to state 20
-    BOLD            shift and go to state 17
-    FLUO            shift and go to state 21
-    LINK            shift and go to state 18
-    REFERENCE       shift and go to state 11
-    IMAGE           shift and go to state 12
-    SEPARATION_LINE shift and go to state 22
-    UL1             shift and go to state 7
-    UL2             shift and go to state 10
-    UL3             shift and go to state 13
-    ITALIC          shift and go to state 4
-    OL1             shift and go to state 15
-    OL2             shift and go to state 16
-    OL3             shift and go to state 9
-    TITLE1          shift and go to state 19
-    TITLE2          shift and go to state 8
-    TITLE3          shift and go to state 14
+    WORD            reduce using rule 12 (tag -> REFERENCE .)
+    BOLD            reduce using rule 12 (tag -> REFERENCE .)
+    FLUO            reduce using rule 12 (tag -> REFERENCE .)
+    LINK            reduce using rule 12 (tag -> REFERENCE .)
+    REFERENCE       reduce using rule 12 (tag -> REFERENCE .)
+    IMAGE           reduce using rule 12 (tag -> REFERENCE .)
+    SEPARATION_LINE reduce using rule 12 (tag -> REFERENCE .)
+    UL1             reduce using rule 12 (tag -> REFERENCE .)
+    UL2             reduce using rule 12 (tag -> REFERENCE .)
+    UL3             reduce using rule 12 (tag -> REFERENCE .)
+    ITALIC          reduce using rule 12 (tag -> REFERENCE .)
+    OL1             reduce using rule 12 (tag -> REFERENCE .)
+    OL2             reduce using rule 12 (tag -> REFERENCE .)
+    OL3             reduce using rule 12 (tag -> REFERENCE .)
+    TITLE1          reduce using rule 12 (tag -> REFERENCE .)
+    TITLE2          reduce using rule 12 (tag -> REFERENCE .)
+    TITLE3          reduce using rule 12 (tag -> REFERENCE .)
+    $end            reduce using rule 12 (tag -> REFERENCE .)
 
-  ! BOLD            [ reduce using rule 6 (sentence -> tag .) ]
-  ! FLUO            [ reduce using rule 6 (sentence -> tag .) ]
-  ! LINK            [ reduce using rule 6 (sentence -> tag .) ]
-  ! REFERENCE       [ reduce using rule 6 (sentence -> tag .) ]
-  ! IMAGE           [ reduce using rule 6 (sentence -> tag .) ]
-  ! SEPARATION_LINE [ reduce using rule 6 (sentence -> tag .) ]
-  ! UL1             [ reduce using rule 6 (sentence -> tag .) ]
-  ! UL2             [ reduce using rule 6 (sentence -> tag .) ]
-  ! UL3             [ reduce using rule 6 (sentence -> tag .) ]
-  ! ITALIC          [ reduce using rule 6 (sentence -> tag .) ]
-  ! OL1             [ reduce using rule 6 (sentence -> tag .) ]
-  ! OL2             [ reduce using rule 6 (sentence -> tag .) ]
-  ! OL3             [ reduce using rule 6 (sentence -> tag .) ]
-  ! TITLE1          [ reduce using rule 6 (sentence -> tag .) ]
-  ! TITLE2          [ reduce using rule 6 (sentence -> tag .) ]
-  ! TITLE3          [ reduce using rule 6 (sentence -> tag .) ]
-
-    sentence                       shift and go to state 23
-    tag                            shift and go to state 6
 
 state 7
 
-    (14) tag -> UL1 .
+    (17) tag -> UL3 .
 
-    WORD            reduce using rule 14 (tag -> UL1 .)
-    BOLD            reduce using rule 14 (tag -> UL1 .)
-    FLUO            reduce using rule 14 (tag -> UL1 .)
-    LINK            reduce using rule 14 (tag -> UL1 .)
-    REFERENCE       reduce using rule 14 (tag -> UL1 .)
-    IMAGE           reduce using rule 14 (tag -> UL1 .)
-    SEPARATION_LINE reduce using rule 14 (tag -> UL1 .)
-    UL1             reduce using rule 14 (tag -> UL1 .)
-    UL2             reduce using rule 14 (tag -> UL1 .)
-    UL3             reduce using rule 14 (tag -> UL1 .)
-    ITALIC          reduce using rule 14 (tag -> UL1 .)
-    OL1             reduce using rule 14 (tag -> UL1 .)
-    OL2             reduce using rule 14 (tag -> UL1 .)
-    OL3             reduce using rule 14 (tag -> UL1 .)
-    TITLE1          reduce using rule 14 (tag -> UL1 .)
-    TITLE2          reduce using rule 14 (tag -> UL1 .)
-    TITLE3          reduce using rule 14 (tag -> UL1 .)
-    $end            reduce using rule 14 (tag -> UL1 .)
+    WORD            reduce using rule 17 (tag -> UL3 .)
+    BOLD            reduce using rule 17 (tag -> UL3 .)
+    FLUO            reduce using rule 17 (tag -> UL3 .)
+    LINK            reduce using rule 17 (tag -> UL3 .)
+    REFERENCE       reduce using rule 17 (tag -> UL3 .)
+    IMAGE           reduce using rule 17 (tag -> UL3 .)
+    SEPARATION_LINE reduce using rule 17 (tag -> UL3 .)
+    UL1             reduce using rule 17 (tag -> UL3 .)
+    UL2             reduce using rule 17 (tag -> UL3 .)
+    UL3             reduce using rule 17 (tag -> UL3 .)
+    ITALIC          reduce using rule 17 (tag -> UL3 .)
+    OL1             reduce using rule 17 (tag -> UL3 .)
+    OL2             reduce using rule 17 (tag -> UL3 .)
+    OL3             reduce using rule 17 (tag -> UL3 .)
+    TITLE1          reduce using rule 17 (tag -> UL3 .)
+    TITLE2          reduce using rule 17 (tag -> UL3 .)
+    TITLE3          reduce using rule 17 (tag -> UL3 .)
+    $end            reduce using rule 17 (tag -> UL3 .)
 
 
 state 8
 
-    (22) tag -> TITLE2 .
+    (15) tag -> UL1 .
 
-    WORD            reduce using rule 22 (tag -> TITLE2 .)
-    BOLD            reduce using rule 22 (tag -> TITLE2 .)
-    FLUO            reduce using rule 22 (tag -> TITLE2 .)
-    LINK            reduce using rule 22 (tag -> TITLE2 .)
-    REFERENCE       reduce using rule 22 (tag -> TITLE2 .)
-    IMAGE           reduce using rule 22 (tag -> TITLE2 .)
-    SEPARATION_LINE reduce using rule 22 (tag -> TITLE2 .)
-    UL1             reduce using rule 22 (tag -> TITLE2 .)
-    UL2             reduce using rule 22 (tag -> TITLE2 .)
-    UL3             reduce using rule 22 (tag -> TITLE2 .)
-    ITALIC          reduce using rule 22 (tag -> TITLE2 .)
-    OL1             reduce using rule 22 (tag -> TITLE2 .)
-    OL2             reduce using rule 22 (tag -> TITLE2 .)
-    OL3             reduce using rule 22 (tag -> TITLE2 .)
-    TITLE1          reduce using rule 22 (tag -> TITLE2 .)
-    TITLE2          reduce using rule 22 (tag -> TITLE2 .)
-    TITLE3          reduce using rule 22 (tag -> TITLE2 .)
-    $end            reduce using rule 22 (tag -> TITLE2 .)
+    WORD            reduce using rule 15 (tag -> UL1 .)
+    BOLD            reduce using rule 15 (tag -> UL1 .)
+    FLUO            reduce using rule 15 (tag -> UL1 .)
+    LINK            reduce using rule 15 (tag -> UL1 .)
+    REFERENCE       reduce using rule 15 (tag -> UL1 .)
+    IMAGE           reduce using rule 15 (tag -> UL1 .)
+    SEPARATION_LINE reduce using rule 15 (tag -> UL1 .)
+    UL1             reduce using rule 15 (tag -> UL1 .)
+    UL2             reduce using rule 15 (tag -> UL1 .)
+    UL3             reduce using rule 15 (tag -> UL1 .)
+    ITALIC          reduce using rule 15 (tag -> UL1 .)
+    OL1             reduce using rule 15 (tag -> UL1 .)
+    OL2             reduce using rule 15 (tag -> UL1 .)
+    OL3             reduce using rule 15 (tag -> UL1 .)
+    TITLE1          reduce using rule 15 (tag -> UL1 .)
+    TITLE2          reduce using rule 15 (tag -> UL1 .)
+    TITLE3          reduce using rule 15 (tag -> UL1 .)
+    $end            reduce using rule 15 (tag -> UL1 .)
 
 
 state 9
 
-    (20) tag -> OL3 .
+    (22) tag -> TITLE1 .
 
-    WORD            reduce using rule 20 (tag -> OL3 .)
-    BOLD            reduce using rule 20 (tag -> OL3 .)
-    FLUO            reduce using rule 20 (tag -> OL3 .)
-    LINK            reduce using rule 20 (tag -> OL3 .)
-    REFERENCE       reduce using rule 20 (tag -> OL3 .)
-    IMAGE           reduce using rule 20 (tag -> OL3 .)
-    SEPARATION_LINE reduce using rule 20 (tag -> OL3 .)
-    UL1             reduce using rule 20 (tag -> OL3 .)
-    UL2             reduce using rule 20 (tag -> OL3 .)
-    UL3             reduce using rule 20 (tag -> OL3 .)
-    ITALIC          reduce using rule 20 (tag -> OL3 .)
-    OL1             reduce using rule 20 (tag -> OL3 .)
-    OL2             reduce using rule 20 (tag -> OL3 .)
-    OL3             reduce using rule 20 (tag -> OL3 .)
-    TITLE1          reduce using rule 20 (tag -> OL3 .)
-    TITLE2          reduce using rule 20 (tag -> OL3 .)
-    TITLE3          reduce using rule 20 (tag -> OL3 .)
-    $end            reduce using rule 20 (tag -> OL3 .)
+    WORD            reduce using rule 22 (tag -> TITLE1 .)
+    BOLD            reduce using rule 22 (tag -> TITLE1 .)
+    FLUO            reduce using rule 22 (tag -> TITLE1 .)
+    LINK            reduce using rule 22 (tag -> TITLE1 .)
+    REFERENCE       reduce using rule 22 (tag -> TITLE1 .)
+    IMAGE           reduce using rule 22 (tag -> TITLE1 .)
+    SEPARATION_LINE reduce using rule 22 (tag -> TITLE1 .)
+    UL1             reduce using rule 22 (tag -> TITLE1 .)
+    UL2             reduce using rule 22 (tag -> TITLE1 .)
+    UL3             reduce using rule 22 (tag -> TITLE1 .)
+    ITALIC          reduce using rule 22 (tag -> TITLE1 .)
+    OL1             reduce using rule 22 (tag -> TITLE1 .)
+    OL2             reduce using rule 22 (tag -> TITLE1 .)
+    OL3             reduce using rule 22 (tag -> TITLE1 .)
+    TITLE1          reduce using rule 22 (tag -> TITLE1 .)
+    TITLE2          reduce using rule 22 (tag -> TITLE1 .)
+    TITLE3          reduce using rule 22 (tag -> TITLE1 .)
+    $end            reduce using rule 22 (tag -> TITLE1 .)
 
 
 state 10
 
-    (15) tag -> UL2 .
+    (20) tag -> OL2 .
 
-    WORD            reduce using rule 15 (tag -> UL2 .)
-    BOLD            reduce using rule 15 (tag -> UL2 .)
-    FLUO            reduce using rule 15 (tag -> UL2 .)
-    LINK            reduce using rule 15 (tag -> UL2 .)
-    REFERENCE       reduce using rule 15 (tag -> UL2 .)
-    IMAGE           reduce using rule 15 (tag -> UL2 .)
-    SEPARATION_LINE reduce using rule 15 (tag -> UL2 .)
-    UL1             reduce using rule 15 (tag -> UL2 .)
-    UL2             reduce using rule 15 (tag -> UL2 .)
-    UL3             reduce using rule 15 (tag -> UL2 .)
-    ITALIC          reduce using rule 15 (tag -> UL2 .)
-    OL1             reduce using rule 15 (tag -> UL2 .)
-    OL2             reduce using rule 15 (tag -> UL2 .)
-    OL3             reduce using rule 15 (tag -> UL2 .)
-    TITLE1          reduce using rule 15 (tag -> UL2 .)
-    TITLE2          reduce using rule 15 (tag -> UL2 .)
-    TITLE3          reduce using rule 15 (tag -> UL2 .)
-    $end            reduce using rule 15 (tag -> UL2 .)
+    WORD            reduce using rule 20 (tag -> OL2 .)
+    BOLD            reduce using rule 20 (tag -> OL2 .)
+    FLUO            reduce using rule 20 (tag -> OL2 .)
+    LINK            reduce using rule 20 (tag -> OL2 .)
+    REFERENCE       reduce using rule 20 (tag -> OL2 .)
+    IMAGE           reduce using rule 20 (tag -> OL2 .)
+    SEPARATION_LINE reduce using rule 20 (tag -> OL2 .)
+    UL1             reduce using rule 20 (tag -> OL2 .)
+    UL2             reduce using rule 20 (tag -> OL2 .)
+    UL3             reduce using rule 20 (tag -> OL2 .)
+    ITALIC          reduce using rule 20 (tag -> OL2 .)
+    OL1             reduce using rule 20 (tag -> OL2 .)
+    OL2             reduce using rule 20 (tag -> OL2 .)
+    OL3             reduce using rule 20 (tag -> OL2 .)
+    TITLE1          reduce using rule 20 (tag -> OL2 .)
+    TITLE2          reduce using rule 20 (tag -> OL2 .)
+    TITLE3          reduce using rule 20 (tag -> OL2 .)
+    $end            reduce using rule 20 (tag -> OL2 .)
 
 
 state 11
 
-    (11) tag -> REFERENCE .
+    (9) tag -> BOLD .
 
-    WORD            reduce using rule 11 (tag -> REFERENCE .)
-    BOLD            reduce using rule 11 (tag -> REFERENCE .)
-    FLUO            reduce using rule 11 (tag -> REFERENCE .)
-    LINK            reduce using rule 11 (tag -> REFERENCE .)
-    REFERENCE       reduce using rule 11 (tag -> REFERENCE .)
-    IMAGE           reduce using rule 11 (tag -> REFERENCE .)
-    SEPARATION_LINE reduce using rule 11 (tag -> REFERENCE .)
-    UL1             reduce using rule 11 (tag -> REFERENCE .)
-    UL2             reduce using rule 11 (tag -> REFERENCE .)
-    UL3             reduce using rule 11 (tag -> REFERENCE .)
-    ITALIC          reduce using rule 11 (tag -> REFERENCE .)
-    OL1             reduce using rule 11 (tag -> REFERENCE .)
-    OL2             reduce using rule 11 (tag -> REFERENCE .)
-    OL3             reduce using rule 11 (tag -> REFERENCE .)
-    TITLE1          reduce using rule 11 (tag -> REFERENCE .)
-    TITLE2          reduce using rule 11 (tag -> REFERENCE .)
-    TITLE3          reduce using rule 11 (tag -> REFERENCE .)
-    $end            reduce using rule 11 (tag -> REFERENCE .)
+    WORD            reduce using rule 9 (tag -> BOLD .)
+    BOLD            reduce using rule 9 (tag -> BOLD .)
+    FLUO            reduce using rule 9 (tag -> BOLD .)
+    LINK            reduce using rule 9 (tag -> BOLD .)
+    REFERENCE       reduce using rule 9 (tag -> BOLD .)
+    IMAGE           reduce using rule 9 (tag -> BOLD .)
+    SEPARATION_LINE reduce using rule 9 (tag -> BOLD .)
+    UL1             reduce using rule 9 (tag -> BOLD .)
+    UL2             reduce using rule 9 (tag -> BOLD .)
+    UL3             reduce using rule 9 (tag -> BOLD .)
+    ITALIC          reduce using rule 9 (tag -> BOLD .)
+    OL1             reduce using rule 9 (tag -> BOLD .)
+    OL2             reduce using rule 9 (tag -> BOLD .)
+    OL3             reduce using rule 9 (tag -> BOLD .)
+    TITLE1          reduce using rule 9 (tag -> BOLD .)
+    TITLE2          reduce using rule 9 (tag -> BOLD .)
+    TITLE3          reduce using rule 9 (tag -> BOLD .)
+    $end            reduce using rule 9 (tag -> BOLD .)
 
 
 state 12
 
-    (12) tag -> IMAGE .
+    (3) sentence -> WORD . sentence
+    (5) sentence -> WORD . sentence tag sentence
+    (6) sentence -> WORD .
+    (3) sentence -> . WORD sentence
+    (4) sentence -> . tag sentence
+    (5) sentence -> . WORD sentence tag sentence
+    (6) sentence -> . WORD
+    (7) sentence -> . tag
+    (9) tag -> . BOLD
+    (10) tag -> . FLUO
+    (11) tag -> . LINK
+    (12) tag -> . REFERENCE
+    (13) tag -> . IMAGE
+    (14) tag -> . SEPARATION_LINE
+    (15) tag -> . UL1
+    (16) tag -> . UL2
+    (17) tag -> . UL3
+    (18) tag -> . ITALIC
+    (19) tag -> . OL1
+    (20) tag -> . OL2
+    (21) tag -> . OL3
+    (22) tag -> . TITLE1
+    (23) tag -> . TITLE2
+    (24) tag -> . TITLE3
 
-    WORD            reduce using rule 12 (tag -> IMAGE .)
-    BOLD            reduce using rule 12 (tag -> IMAGE .)
-    FLUO            reduce using rule 12 (tag -> IMAGE .)
-    LINK            reduce using rule 12 (tag -> IMAGE .)
-    REFERENCE       reduce using rule 12 (tag -> IMAGE .)
-    IMAGE           reduce using rule 12 (tag -> IMAGE .)
-    SEPARATION_LINE reduce using rule 12 (tag -> IMAGE .)
-    UL1             reduce using rule 12 (tag -> IMAGE .)
-    UL2             reduce using rule 12 (tag -> IMAGE .)
-    UL3             reduce using rule 12 (tag -> IMAGE .)
-    ITALIC          reduce using rule 12 (tag -> IMAGE .)
-    OL1             reduce using rule 12 (tag -> IMAGE .)
-    OL2             reduce using rule 12 (tag -> IMAGE .)
-    OL3             reduce using rule 12 (tag -> IMAGE .)
-    TITLE1          reduce using rule 12 (tag -> IMAGE .)
-    TITLE2          reduce using rule 12 (tag -> IMAGE .)
-    TITLE3          reduce using rule 12 (tag -> IMAGE .)
-    $end            reduce using rule 12 (tag -> IMAGE .)
+  ! shift/reduce conflict for BOLD resolved as shift
+  ! shift/reduce conflict for FLUO resolved as shift
+  ! shift/reduce conflict for LINK resolved as shift
+  ! shift/reduce conflict for REFERENCE resolved as shift
+  ! shift/reduce conflict for IMAGE resolved as shift
+  ! shift/reduce conflict for SEPARATION_LINE resolved as shift
+  ! shift/reduce conflict for UL1 resolved as shift
+  ! shift/reduce conflict for UL2 resolved as shift
+  ! shift/reduce conflict for UL3 resolved as shift
+  ! shift/reduce conflict for ITALIC resolved as shift
+  ! shift/reduce conflict for OL1 resolved as shift
+  ! shift/reduce conflict for OL2 resolved as shift
+  ! shift/reduce conflict for OL3 resolved as shift
+  ! shift/reduce conflict for TITLE1 resolved as shift
+  ! shift/reduce conflict for TITLE2 resolved as shift
+  ! shift/reduce conflict for TITLE3 resolved as shift
+    $end            reduce using rule 6 (sentence -> WORD .)
+    WORD            shift and go to state 12
+    BOLD            shift and go to state 11
+    FLUO            shift and go to state 14
+    LINK            shift and go to state 5
+    REFERENCE       shift and go to state 6
+    IMAGE           shift and go to state 20
+    SEPARATION_LINE shift and go to state 19
+    UL1             shift and go to state 8
+    UL2             shift and go to state 4
+    UL3             shift and go to state 7
+    ITALIC          shift and go to state 15
+    OL1             shift and go to state 3
+    OL2             shift and go to state 10
+    OL3             shift and go to state 1
+    TITLE1          shift and go to state 9
+    TITLE2          shift and go to state 22
+    TITLE3          shift and go to state 16
 
+  ! BOLD            [ reduce using rule 6 (sentence -> WORD .) ]
+  ! FLUO            [ reduce using rule 6 (sentence -> WORD .) ]
+  ! LINK            [ reduce using rule 6 (sentence -> WORD .) ]
+  ! REFERENCE       [ reduce using rule 6 (sentence -> WORD .) ]
+  ! IMAGE           [ reduce using rule 6 (sentence -> WORD .) ]
+  ! SEPARATION_LINE [ reduce using rule 6 (sentence -> WORD .) ]
+  ! UL1             [ reduce using rule 6 (sentence -> WORD .) ]
+  ! UL2             [ reduce using rule 6 (sentence -> WORD .) ]
+  ! UL3             [ reduce using rule 6 (sentence -> WORD .) ]
+  ! ITALIC          [ reduce using rule 6 (sentence -> WORD .) ]
+  ! OL1             [ reduce using rule 6 (sentence -> WORD .) ]
+  ! OL2             [ reduce using rule 6 (sentence -> WORD .) ]
+  ! OL3             [ reduce using rule 6 (sentence -> WORD .) ]
+  ! TITLE1          [ reduce using rule 6 (sentence -> WORD .) ]
+  ! TITLE2          [ reduce using rule 6 (sentence -> WORD .) ]
+  ! TITLE3          [ reduce using rule 6 (sentence -> WORD .) ]
+
+    tag                            shift and go to state 21
+    sentence                       shift and go to state 23
 
 state 13
 
-    (16) tag -> UL3 .
+    (2) document -> paragraph .
 
-    WORD            reduce using rule 16 (tag -> UL3 .)
-    BOLD            reduce using rule 16 (tag -> UL3 .)
-    FLUO            reduce using rule 16 (tag -> UL3 .)
-    LINK            reduce using rule 16 (tag -> UL3 .)
-    REFERENCE       reduce using rule 16 (tag -> UL3 .)
-    IMAGE           reduce using rule 16 (tag -> UL3 .)
-    SEPARATION_LINE reduce using rule 16 (tag -> UL3 .)
-    UL1             reduce using rule 16 (tag -> UL3 .)
-    UL2             reduce using rule 16 (tag -> UL3 .)
-    UL3             reduce using rule 16 (tag -> UL3 .)
-    ITALIC          reduce using rule 16 (tag -> UL3 .)
-    OL1             reduce using rule 16 (tag -> UL3 .)
-    OL2             reduce using rule 16 (tag -> UL3 .)
-    OL3             reduce using rule 16 (tag -> UL3 .)
-    TITLE1          reduce using rule 16 (tag -> UL3 .)
-    TITLE2          reduce using rule 16 (tag -> UL3 .)
-    TITLE3          reduce using rule 16 (tag -> UL3 .)
-    $end            reduce using rule 16 (tag -> UL3 .)
+    $end            reduce using rule 2 (document -> paragraph .)
 
 
 state 14
 
-    (23) tag -> TITLE3 .
+    (10) tag -> FLUO .
 
-    WORD            reduce using rule 23 (tag -> TITLE3 .)
-    BOLD            reduce using rule 23 (tag -> TITLE3 .)
-    FLUO            reduce using rule 23 (tag -> TITLE3 .)
-    LINK            reduce using rule 23 (tag -> TITLE3 .)
-    REFERENCE       reduce using rule 23 (tag -> TITLE3 .)
-    IMAGE           reduce using rule 23 (tag -> TITLE3 .)
-    SEPARATION_LINE reduce using rule 23 (tag -> TITLE3 .)
-    UL1             reduce using rule 23 (tag -> TITLE3 .)
-    UL2             reduce using rule 23 (tag -> TITLE3 .)
-    UL3             reduce using rule 23 (tag -> TITLE3 .)
-    ITALIC          reduce using rule 23 (tag -> TITLE3 .)
-    OL1             reduce using rule 23 (tag -> TITLE3 .)
-    OL2             reduce using rule 23 (tag -> TITLE3 .)
-    OL3             reduce using rule 23 (tag -> TITLE3 .)
-    TITLE1          reduce using rule 23 (tag -> TITLE3 .)
-    TITLE2          reduce using rule 23 (tag -> TITLE3 .)
-    TITLE3          reduce using rule 23 (tag -> TITLE3 .)
-    $end            reduce using rule 23 (tag -> TITLE3 .)
+    WORD            reduce using rule 10 (tag -> FLUO .)
+    BOLD            reduce using rule 10 (tag -> FLUO .)
+    FLUO            reduce using rule 10 (tag -> FLUO .)
+    LINK            reduce using rule 10 (tag -> FLUO .)
+    REFERENCE       reduce using rule 10 (tag -> FLUO .)
+    IMAGE           reduce using rule 10 (tag -> FLUO .)
+    SEPARATION_LINE reduce using rule 10 (tag -> FLUO .)
+    UL1             reduce using rule 10 (tag -> FLUO .)
+    UL2             reduce using rule 10 (tag -> FLUO .)
+    UL3             reduce using rule 10 (tag -> FLUO .)
+    ITALIC          reduce using rule 10 (tag -> FLUO .)
+    OL1             reduce using rule 10 (tag -> FLUO .)
+    OL2             reduce using rule 10 (tag -> FLUO .)
+    OL3             reduce using rule 10 (tag -> FLUO .)
+    TITLE1          reduce using rule 10 (tag -> FLUO .)
+    TITLE2          reduce using rule 10 (tag -> FLUO .)
+    TITLE3          reduce using rule 10 (tag -> FLUO .)
+    $end            reduce using rule 10 (tag -> FLUO .)
 
 
 state 15
 
-    (18) tag -> OL1 .
+    (18) tag -> ITALIC .
 
-    WORD            reduce using rule 18 (tag -> OL1 .)
-    BOLD            reduce using rule 18 (tag -> OL1 .)
-    FLUO            reduce using rule 18 (tag -> OL1 .)
-    LINK            reduce using rule 18 (tag -> OL1 .)
-    REFERENCE       reduce using rule 18 (tag -> OL1 .)
-    IMAGE           reduce using rule 18 (tag -> OL1 .)
-    SEPARATION_LINE reduce using rule 18 (tag -> OL1 .)
-    UL1             reduce using rule 18 (tag -> OL1 .)
-    UL2             reduce using rule 18 (tag -> OL1 .)
-    UL3             reduce using rule 18 (tag -> OL1 .)
-    ITALIC          reduce using rule 18 (tag -> OL1 .)
-    OL1             reduce using rule 18 (tag -> OL1 .)
-    OL2             reduce using rule 18 (tag -> OL1 .)
-    OL3             reduce using rule 18 (tag -> OL1 .)
-    TITLE1          reduce using rule 18 (tag -> OL1 .)
-    TITLE2          reduce using rule 18 (tag -> OL1 .)
-    TITLE3          reduce using rule 18 (tag -> OL1 .)
-    $end            reduce using rule 18 (tag -> OL1 .)
+    WORD            reduce using rule 18 (tag -> ITALIC .)
+    BOLD            reduce using rule 18 (tag -> ITALIC .)
+    FLUO            reduce using rule 18 (tag -> ITALIC .)
+    LINK            reduce using rule 18 (tag -> ITALIC .)
+    REFERENCE       reduce using rule 18 (tag -> ITALIC .)
+    IMAGE           reduce using rule 18 (tag -> ITALIC .)
+    SEPARATION_LINE reduce using rule 18 (tag -> ITALIC .)
+    UL1             reduce using rule 18 (tag -> ITALIC .)
+    UL2             reduce using rule 18 (tag -> ITALIC .)
+    UL3             reduce using rule 18 (tag -> ITALIC .)
+    ITALIC          reduce using rule 18 (tag -> ITALIC .)
+    OL1             reduce using rule 18 (tag -> ITALIC .)
+    OL2             reduce using rule 18 (tag -> ITALIC .)
+    OL3             reduce using rule 18 (tag -> ITALIC .)
+    TITLE1          reduce using rule 18 (tag -> ITALIC .)
+    TITLE2          reduce using rule 18 (tag -> ITALIC .)
+    TITLE3          reduce using rule 18 (tag -> ITALIC .)
+    $end            reduce using rule 18 (tag -> ITALIC .)
 
 
 state 16
 
-    (19) tag -> OL2 .
+    (24) tag -> TITLE3 .
 
-    WORD            reduce using rule 19 (tag -> OL2 .)
-    BOLD            reduce using rule 19 (tag -> OL2 .)
-    FLUO            reduce using rule 19 (tag -> OL2 .)
-    LINK            reduce using rule 19 (tag -> OL2 .)
-    REFERENCE       reduce using rule 19 (tag -> OL2 .)
-    IMAGE           reduce using rule 19 (tag -> OL2 .)
-    SEPARATION_LINE reduce using rule 19 (tag -> OL2 .)
-    UL1             reduce using rule 19 (tag -> OL2 .)
-    UL2             reduce using rule 19 (tag -> OL2 .)
-    UL3             reduce using rule 19 (tag -> OL2 .)
-    ITALIC          reduce using rule 19 (tag -> OL2 .)
-    OL1             reduce using rule 19 (tag -> OL2 .)
-    OL2             reduce using rule 19 (tag -> OL2 .)
-    OL3             reduce using rule 19 (tag -> OL2 .)
-    TITLE1          reduce using rule 19 (tag -> OL2 .)
-    TITLE2          reduce using rule 19 (tag -> OL2 .)
-    TITLE3          reduce using rule 19 (tag -> OL2 .)
-    $end            reduce using rule 19 (tag -> OL2 .)
+    WORD            reduce using rule 24 (tag -> TITLE3 .)
+    BOLD            reduce using rule 24 (tag -> TITLE3 .)
+    FLUO            reduce using rule 24 (tag -> TITLE3 .)
+    LINK            reduce using rule 24 (tag -> TITLE3 .)
+    REFERENCE       reduce using rule 24 (tag -> TITLE3 .)
+    IMAGE           reduce using rule 24 (tag -> TITLE3 .)
+    SEPARATION_LINE reduce using rule 24 (tag -> TITLE3 .)
+    UL1             reduce using rule 24 (tag -> TITLE3 .)
+    UL2             reduce using rule 24 (tag -> TITLE3 .)
+    UL3             reduce using rule 24 (tag -> TITLE3 .)
+    ITALIC          reduce using rule 24 (tag -> TITLE3 .)
+    OL1             reduce using rule 24 (tag -> TITLE3 .)
+    OL2             reduce using rule 24 (tag -> TITLE3 .)
+    OL3             reduce using rule 24 (tag -> TITLE3 .)
+    TITLE1          reduce using rule 24 (tag -> TITLE3 .)
+    TITLE2          reduce using rule 24 (tag -> TITLE3 .)
+    TITLE3          reduce using rule 24 (tag -> TITLE3 .)
+    $end            reduce using rule 24 (tag -> TITLE3 .)
 
 
 state 17
 
-    (8) tag -> BOLD .
+    (1) document -> sentence .
 
-    WORD            reduce using rule 8 (tag -> BOLD .)
-    BOLD            reduce using rule 8 (tag -> BOLD .)
-    FLUO            reduce using rule 8 (tag -> BOLD .)
-    LINK            reduce using rule 8 (tag -> BOLD .)
-    REFERENCE       reduce using rule 8 (tag -> BOLD .)
-    IMAGE           reduce using rule 8 (tag -> BOLD .)
-    SEPARATION_LINE reduce using rule 8 (tag -> BOLD .)
-    UL1             reduce using rule 8 (tag -> BOLD .)
-    UL2             reduce using rule 8 (tag -> BOLD .)
-    UL3             reduce using rule 8 (tag -> BOLD .)
-    ITALIC          reduce using rule 8 (tag -> BOLD .)
-    OL1             reduce using rule 8 (tag -> BOLD .)
-    OL2             reduce using rule 8 (tag -> BOLD .)
-    OL3             reduce using rule 8 (tag -> BOLD .)
-    TITLE1          reduce using rule 8 (tag -> BOLD .)
-    TITLE2          reduce using rule 8 (tag -> BOLD .)
-    TITLE3          reduce using rule 8 (tag -> BOLD .)
-    $end            reduce using rule 8 (tag -> BOLD .)
+    $end            reduce using rule 1 (document -> sentence .)
 
 
 state 18
 
-    (10) tag -> LINK .
+    (8) paragraph -> PARAGRAPHE .
 
-    WORD            reduce using rule 10 (tag -> LINK .)
-    BOLD            reduce using rule 10 (tag -> LINK .)
-    FLUO            reduce using rule 10 (tag -> LINK .)
-    LINK            reduce using rule 10 (tag -> LINK .)
-    REFERENCE       reduce using rule 10 (tag -> LINK .)
-    IMAGE           reduce using rule 10 (tag -> LINK .)
-    SEPARATION_LINE reduce using rule 10 (tag -> LINK .)
-    UL1             reduce using rule 10 (tag -> LINK .)
-    UL2             reduce using rule 10 (tag -> LINK .)
-    UL3             reduce using rule 10 (tag -> LINK .)
-    ITALIC          reduce using rule 10 (tag -> LINK .)
-    OL1             reduce using rule 10 (tag -> LINK .)
-    OL2             reduce using rule 10 (tag -> LINK .)
-    OL3             reduce using rule 10 (tag -> LINK .)
-    TITLE1          reduce using rule 10 (tag -> LINK .)
-    TITLE2          reduce using rule 10 (tag -> LINK .)
-    TITLE3          reduce using rule 10 (tag -> LINK .)
-    $end            reduce using rule 10 (tag -> LINK .)
+    $end            reduce using rule 8 (paragraph -> PARAGRAPHE .)
 
 
 state 19
 
-    (21) tag -> TITLE1 .
+    (14) tag -> SEPARATION_LINE .
 
-    WORD            reduce using rule 21 (tag -> TITLE1 .)
-    BOLD            reduce using rule 21 (tag -> TITLE1 .)
-    FLUO            reduce using rule 21 (tag -> TITLE1 .)
-    LINK            reduce using rule 21 (tag -> TITLE1 .)
-    REFERENCE       reduce using rule 21 (tag -> TITLE1 .)
-    IMAGE           reduce using rule 21 (tag -> TITLE1 .)
-    SEPARATION_LINE reduce using rule 21 (tag -> TITLE1 .)
-    UL1             reduce using rule 21 (tag -> TITLE1 .)
-    UL2             reduce using rule 21 (tag -> TITLE1 .)
-    UL3             reduce using rule 21 (tag -> TITLE1 .)
-    ITALIC          reduce using rule 21 (tag -> TITLE1 .)
-    OL1             reduce using rule 21 (tag -> TITLE1 .)
-    OL2             reduce using rule 21 (tag -> TITLE1 .)
-    OL3             reduce using rule 21 (tag -> TITLE1 .)
-    TITLE1          reduce using rule 21 (tag -> TITLE1 .)
-    TITLE2          reduce using rule 21 (tag -> TITLE1 .)
-    TITLE3          reduce using rule 21 (tag -> TITLE1 .)
-    $end            reduce using rule 21 (tag -> TITLE1 .)
+    WORD            reduce using rule 14 (tag -> SEPARATION_LINE .)
+    BOLD            reduce using rule 14 (tag -> SEPARATION_LINE .)
+    FLUO            reduce using rule 14 (tag -> SEPARATION_LINE .)
+    LINK            reduce using rule 14 (tag -> SEPARATION_LINE .)
+    REFERENCE       reduce using rule 14 (tag -> SEPARATION_LINE .)
+    IMAGE           reduce using rule 14 (tag -> SEPARATION_LINE .)
+    SEPARATION_LINE reduce using rule 14 (tag -> SEPARATION_LINE .)
+    UL1             reduce using rule 14 (tag -> SEPARATION_LINE .)
+    UL2             reduce using rule 14 (tag -> SEPARATION_LINE .)
+    UL3             reduce using rule 14 (tag -> SEPARATION_LINE .)
+    ITALIC          reduce using rule 14 (tag -> SEPARATION_LINE .)
+    OL1             reduce using rule 14 (tag -> SEPARATION_LINE .)
+    OL2             reduce using rule 14 (tag -> SEPARATION_LINE .)
+    OL3             reduce using rule 14 (tag -> SEPARATION_LINE .)
+    TITLE1          reduce using rule 14 (tag -> SEPARATION_LINE .)
+    TITLE2          reduce using rule 14 (tag -> SEPARATION_LINE .)
+    TITLE3          reduce using rule 14 (tag -> SEPARATION_LINE .)
+    $end            reduce using rule 14 (tag -> SEPARATION_LINE .)
 
 
 state 20
 
-    (2) sentence -> WORD . sentence
-    (4) sentence -> WORD . sentence tag sentence
-    (5) sentence -> WORD .
-    (2) sentence -> . WORD sentence
-    (3) sentence -> . tag sentence
-    (4) sentence -> . WORD sentence tag sentence
-    (5) sentence -> . WORD
-    (6) sentence -> . tag
-    (8) tag -> . BOLD
-    (9) tag -> . FLUO
-    (10) tag -> . LINK
-    (11) tag -> . REFERENCE
-    (12) tag -> . IMAGE
-    (13) tag -> . SEPARATION_LINE
-    (14) tag -> . UL1
-    (15) tag -> . UL2
-    (16) tag -> . UL3
-    (17) tag -> . ITALIC
-    (18) tag -> . OL1
-    (19) tag -> . OL2
-    (20) tag -> . OL3
-    (21) tag -> . TITLE1
-    (22) tag -> . TITLE2
-    (23) tag -> . TITLE3
+    (13) tag -> IMAGE .
+
+    WORD            reduce using rule 13 (tag -> IMAGE .)
+    BOLD            reduce using rule 13 (tag -> IMAGE .)
+    FLUO            reduce using rule 13 (tag -> IMAGE .)
+    LINK            reduce using rule 13 (tag -> IMAGE .)
+    REFERENCE       reduce using rule 13 (tag -> IMAGE .)
+    IMAGE           reduce using rule 13 (tag -> IMAGE .)
+    SEPARATION_LINE reduce using rule 13 (tag -> IMAGE .)
+    UL1             reduce using rule 13 (tag -> IMAGE .)
+    UL2             reduce using rule 13 (tag -> IMAGE .)
+    UL3             reduce using rule 13 (tag -> IMAGE .)
+    ITALIC          reduce using rule 13 (tag -> IMAGE .)
+    OL1             reduce using rule 13 (tag -> IMAGE .)
+    OL2             reduce using rule 13 (tag -> IMAGE .)
+    OL3             reduce using rule 13 (tag -> IMAGE .)
+    TITLE1          reduce using rule 13 (tag -> IMAGE .)
+    TITLE2          reduce using rule 13 (tag -> IMAGE .)
+    TITLE3          reduce using rule 13 (tag -> IMAGE .)
+    $end            reduce using rule 13 (tag -> IMAGE .)
+
+
+state 21
+
+    (4) sentence -> tag . sentence
+    (7) sentence -> tag .
+    (3) sentence -> . WORD sentence
+    (4) sentence -> . tag sentence
+    (5) sentence -> . WORD sentence tag sentence
+    (6) sentence -> . WORD
+    (7) sentence -> . tag
+    (9) tag -> . BOLD
+    (10) tag -> . FLUO
+    (11) tag -> . LINK
+    (12) tag -> . REFERENCE
+    (13) tag -> . IMAGE
+    (14) tag -> . SEPARATION_LINE
+    (15) tag -> . UL1
+    (16) tag -> . UL2
+    (17) tag -> . UL3
+    (18) tag -> . ITALIC
+    (19) tag -> . OL1
+    (20) tag -> . OL2
+    (21) tag -> . OL3
+    (22) tag -> . TITLE1
+    (23) tag -> . TITLE2
+    (24) tag -> . TITLE3
 
   ! shift/reduce conflict for BOLD resolved as shift
   ! shift/reduce conflict for FLUO resolved as shift
@@ -620,136 +631,89 @@ state 20
   ! shift/reduce conflict for TITLE1 resolved as shift
   ! shift/reduce conflict for TITLE2 resolved as shift
   ! shift/reduce conflict for TITLE3 resolved as shift
-    $end            reduce using rule 5 (sentence -> WORD .)
-    WORD            shift and go to state 20
-    BOLD            shift and go to state 17
-    FLUO            shift and go to state 21
-    LINK            shift and go to state 18
-    REFERENCE       shift and go to state 11
-    IMAGE           shift and go to state 12
-    SEPARATION_LINE shift and go to state 22
-    UL1             shift and go to state 7
-    UL2             shift and go to state 10
-    UL3             shift and go to state 13
-    ITALIC          shift and go to state 4
-    OL1             shift and go to state 15
-    OL2             shift and go to state 16
-    OL3             shift and go to state 9
-    TITLE1          shift and go to state 19
-    TITLE2          shift and go to state 8
-    TITLE3          shift and go to state 14
+    $end            reduce using rule 7 (sentence -> tag .)
+    WORD            shift and go to state 12
+    BOLD            shift and go to state 11
+    FLUO            shift and go to state 14
+    LINK            shift and go to state 5
+    REFERENCE       shift and go to state 6
+    IMAGE           shift and go to state 20
+    SEPARATION_LINE shift and go to state 19
+    UL1             shift and go to state 8
+    UL2             shift and go to state 4
+    UL3             shift and go to state 7
+    ITALIC          shift and go to state 15
+    OL1             shift and go to state 3
+    OL2             shift and go to state 10
+    OL3             shift and go to state 1
+    TITLE1          shift and go to state 9
+    TITLE2          shift and go to state 22
+    TITLE3          shift and go to state 16
 
-  ! BOLD            [ reduce using rule 5 (sentence -> WORD .) ]
-  ! FLUO            [ reduce using rule 5 (sentence -> WORD .) ]
-  ! LINK            [ reduce using rule 5 (sentence -> WORD .) ]
-  ! REFERENCE       [ reduce using rule 5 (sentence -> WORD .) ]
-  ! IMAGE           [ reduce using rule 5 (sentence -> WORD .) ]
-  ! SEPARATION_LINE [ reduce using rule 5 (sentence -> WORD .) ]
-  ! UL1             [ reduce using rule 5 (sentence -> WORD .) ]
-  ! UL2             [ reduce using rule 5 (sentence -> WORD .) ]
-  ! UL3             [ reduce using rule 5 (sentence -> WORD .) ]
-  ! ITALIC          [ reduce using rule 5 (sentence -> WORD .) ]
-  ! OL1             [ reduce using rule 5 (sentence -> WORD .) ]
-  ! OL2             [ reduce using rule 5 (sentence -> WORD .) ]
-  ! OL3             [ reduce using rule 5 (sentence -> WORD .) ]
-  ! TITLE1          [ reduce using rule 5 (sentence -> WORD .) ]
-  ! TITLE2          [ reduce using rule 5 (sentence -> WORD .) ]
-  ! TITLE3          [ reduce using rule 5 (sentence -> WORD .) ]
+  ! BOLD            [ reduce using rule 7 (sentence -> tag .) ]
+  ! FLUO            [ reduce using rule 7 (sentence -> tag .) ]
+  ! LINK            [ reduce using rule 7 (sentence -> tag .) ]
+  ! REFERENCE       [ reduce using rule 7 (sentence -> tag .) ]
+  ! IMAGE           [ reduce using rule 7 (sentence -> tag .) ]
+  ! SEPARATION_LINE [ reduce using rule 7 (sentence -> tag .) ]
+  ! UL1             [ reduce using rule 7 (sentence -> tag .) ]
+  ! UL2             [ reduce using rule 7 (sentence -> tag .) ]
+  ! UL3             [ reduce using rule 7 (sentence -> tag .) ]
+  ! ITALIC          [ reduce using rule 7 (sentence -> tag .) ]
+  ! OL1             [ reduce using rule 7 (sentence -> tag .) ]
+  ! OL2             [ reduce using rule 7 (sentence -> tag .) ]
+  ! OL3             [ reduce using rule 7 (sentence -> tag .) ]
+  ! TITLE1          [ reduce using rule 7 (sentence -> tag .) ]
+  ! TITLE2          [ reduce using rule 7 (sentence -> tag .) ]
+  ! TITLE3          [ reduce using rule 7 (sentence -> tag .) ]
 
+    tag                            shift and go to state 21
     sentence                       shift and go to state 24
-    tag                            shift and go to state 6
-
-state 21
-
-    (9) tag -> FLUO .
-
-    WORD            reduce using rule 9 (tag -> FLUO .)
-    BOLD            reduce using rule 9 (tag -> FLUO .)
-    FLUO            reduce using rule 9 (tag -> FLUO .)
-    LINK            reduce using rule 9 (tag -> FLUO .)
-    REFERENCE       reduce using rule 9 (tag -> FLUO .)
-    IMAGE           reduce using rule 9 (tag -> FLUO .)
-    SEPARATION_LINE reduce using rule 9 (tag -> FLUO .)
-    UL1             reduce using rule 9 (tag -> FLUO .)
-    UL2             reduce using rule 9 (tag -> FLUO .)
-    UL3             reduce using rule 9 (tag -> FLUO .)
-    ITALIC          reduce using rule 9 (tag -> FLUO .)
-    OL1             reduce using rule 9 (tag -> FLUO .)
-    OL2             reduce using rule 9 (tag -> FLUO .)
-    OL3             reduce using rule 9 (tag -> FLUO .)
-    TITLE1          reduce using rule 9 (tag -> FLUO .)
-    TITLE2          reduce using rule 9 (tag -> FLUO .)
-    TITLE3          reduce using rule 9 (tag -> FLUO .)
-    $end            reduce using rule 9 (tag -> FLUO .)
-
 
 state 22
 
-    (13) tag -> SEPARATION_LINE .
+    (23) tag -> TITLE2 .
 
-    WORD            reduce using rule 13 (tag -> SEPARATION_LINE .)
-    BOLD            reduce using rule 13 (tag -> SEPARATION_LINE .)
-    FLUO            reduce using rule 13 (tag -> SEPARATION_LINE .)
-    LINK            reduce using rule 13 (tag -> SEPARATION_LINE .)
-    REFERENCE       reduce using rule 13 (tag -> SEPARATION_LINE .)
-    IMAGE           reduce using rule 13 (tag -> SEPARATION_LINE .)
-    SEPARATION_LINE reduce using rule 13 (tag -> SEPARATION_LINE .)
-    UL1             reduce using rule 13 (tag -> SEPARATION_LINE .)
-    UL2             reduce using rule 13 (tag -> SEPARATION_LINE .)
-    UL3             reduce using rule 13 (tag -> SEPARATION_LINE .)
-    ITALIC          reduce using rule 13 (tag -> SEPARATION_LINE .)
-    OL1             reduce using rule 13 (tag -> SEPARATION_LINE .)
-    OL2             reduce using rule 13 (tag -> SEPARATION_LINE .)
-    OL3             reduce using rule 13 (tag -> SEPARATION_LINE .)
-    TITLE1          reduce using rule 13 (tag -> SEPARATION_LINE .)
-    TITLE2          reduce using rule 13 (tag -> SEPARATION_LINE .)
-    TITLE3          reduce using rule 13 (tag -> SEPARATION_LINE .)
-    $end            reduce using rule 13 (tag -> SEPARATION_LINE .)
+    WORD            reduce using rule 23 (tag -> TITLE2 .)
+    BOLD            reduce using rule 23 (tag -> TITLE2 .)
+    FLUO            reduce using rule 23 (tag -> TITLE2 .)
+    LINK            reduce using rule 23 (tag -> TITLE2 .)
+    REFERENCE       reduce using rule 23 (tag -> TITLE2 .)
+    IMAGE           reduce using rule 23 (tag -> TITLE2 .)
+    SEPARATION_LINE reduce using rule 23 (tag -> TITLE2 .)
+    UL1             reduce using rule 23 (tag -> TITLE2 .)
+    UL2             reduce using rule 23 (tag -> TITLE2 .)
+    UL3             reduce using rule 23 (tag -> TITLE2 .)
+    ITALIC          reduce using rule 23 (tag -> TITLE2 .)
+    OL1             reduce using rule 23 (tag -> TITLE2 .)
+    OL2             reduce using rule 23 (tag -> TITLE2 .)
+    OL3             reduce using rule 23 (tag -> TITLE2 .)
+    TITLE1          reduce using rule 23 (tag -> TITLE2 .)
+    TITLE2          reduce using rule 23 (tag -> TITLE2 .)
+    TITLE3          reduce using rule 23 (tag -> TITLE2 .)
+    $end            reduce using rule 23 (tag -> TITLE2 .)
 
 
 state 23
 
-    (3) sentence -> tag sentence .
-
-    $end            reduce using rule 3 (sentence -> tag sentence .)
-    BOLD            reduce using rule 3 (sentence -> tag sentence .)
-    FLUO            reduce using rule 3 (sentence -> tag sentence .)
-    LINK            reduce using rule 3 (sentence -> tag sentence .)
-    REFERENCE       reduce using rule 3 (sentence -> tag sentence .)
-    IMAGE           reduce using rule 3 (sentence -> tag sentence .)
-    SEPARATION_LINE reduce using rule 3 (sentence -> tag sentence .)
-    UL1             reduce using rule 3 (sentence -> tag sentence .)
-    UL2             reduce using rule 3 (sentence -> tag sentence .)
-    UL3             reduce using rule 3 (sentence -> tag sentence .)
-    ITALIC          reduce using rule 3 (sentence -> tag sentence .)
-    OL1             reduce using rule 3 (sentence -> tag sentence .)
-    OL2             reduce using rule 3 (sentence -> tag sentence .)
-    OL3             reduce using rule 3 (sentence -> tag sentence .)
-    TITLE1          reduce using rule 3 (sentence -> tag sentence .)
-    TITLE2          reduce using rule 3 (sentence -> tag sentence .)
-    TITLE3          reduce using rule 3 (sentence -> tag sentence .)
-
-
-state 24
-
-    (2) sentence -> WORD sentence .
-    (4) sentence -> WORD sentence . tag sentence
-    (8) tag -> . BOLD
-    (9) tag -> . FLUO
-    (10) tag -> . LINK
-    (11) tag -> . REFERENCE
-    (12) tag -> . IMAGE
-    (13) tag -> . SEPARATION_LINE
-    (14) tag -> . UL1
-    (15) tag -> . UL2
-    (16) tag -> . UL3
-    (17) tag -> . ITALIC
-    (18) tag -> . OL1
-    (19) tag -> . OL2
-    (20) tag -> . OL3
-    (21) tag -> . TITLE1
-    (22) tag -> . TITLE2
-    (23) tag -> . TITLE3
+    (3) sentence -> WORD sentence .
+    (5) sentence -> WORD sentence . tag sentence
+    (9) tag -> . BOLD
+    (10) tag -> . FLUO
+    (11) tag -> . LINK
+    (12) tag -> . REFERENCE
+    (13) tag -> . IMAGE
+    (14) tag -> . SEPARATION_LINE
+    (15) tag -> . UL1
+    (16) tag -> . UL2
+    (17) tag -> . UL3
+    (18) tag -> . ITALIC
+    (19) tag -> . OL1
+    (20) tag -> . OL2
+    (21) tag -> . OL3
+    (22) tag -> . TITLE1
+    (23) tag -> . TITLE2
+    (24) tag -> . TITLE3
 
   ! shift/reduce conflict for BOLD resolved as shift
   ! shift/reduce conflict for FLUO resolved as shift
@@ -767,159 +731,182 @@ state 24
   ! shift/reduce conflict for TITLE1 resolved as shift
   ! shift/reduce conflict for TITLE2 resolved as shift
   ! shift/reduce conflict for TITLE3 resolved as shift
-    $end            reduce using rule 2 (sentence -> WORD sentence .)
-    BOLD            shift and go to state 17
-    FLUO            shift and go to state 21
-    LINK            shift and go to state 18
-    REFERENCE       shift and go to state 11
-    IMAGE           shift and go to state 12
-    SEPARATION_LINE shift and go to state 22
-    UL1             shift and go to state 7
-    UL2             shift and go to state 10
-    UL3             shift and go to state 13
-    ITALIC          shift and go to state 4
-    OL1             shift and go to state 15
-    OL2             shift and go to state 16
-    OL3             shift and go to state 9
-    TITLE1          shift and go to state 19
-    TITLE2          shift and go to state 8
-    TITLE3          shift and go to state 14
+    $end            reduce using rule 3 (sentence -> WORD sentence .)
+    BOLD            shift and go to state 11
+    FLUO            shift and go to state 14
+    LINK            shift and go to state 5
+    REFERENCE       shift and go to state 6
+    IMAGE           shift and go to state 20
+    SEPARATION_LINE shift and go to state 19
+    UL1             shift and go to state 8
+    UL2             shift and go to state 4
+    UL3             shift and go to state 7
+    ITALIC          shift and go to state 15
+    OL1             shift and go to state 3
+    OL2             shift and go to state 10
+    OL3             shift and go to state 1
+    TITLE1          shift and go to state 9
+    TITLE2          shift and go to state 22
+    TITLE3          shift and go to state 16
 
-  ! BOLD            [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! FLUO            [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! LINK            [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! REFERENCE       [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! IMAGE           [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! SEPARATION_LINE [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! UL1             [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! UL2             [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! UL3             [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! ITALIC          [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! OL1             [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! OL2             [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! OL3             [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! TITLE1          [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! TITLE2          [ reduce using rule 2 (sentence -> WORD sentence .) ]
-  ! TITLE3          [ reduce using rule 2 (sentence -> WORD sentence .) ]
+  ! BOLD            [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! FLUO            [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! LINK            [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! REFERENCE       [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! IMAGE           [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! SEPARATION_LINE [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! UL1             [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! UL2             [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! UL3             [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! ITALIC          [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! OL1             [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! OL2             [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! OL3             [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! TITLE1          [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! TITLE2          [ reduce using rule 3 (sentence -> WORD sentence .) ]
+  ! TITLE3          [ reduce using rule 3 (sentence -> WORD sentence .) ]
 
     tag                            shift and go to state 25
 
+state 24
+
+    (4) sentence -> tag sentence .
+
+    $end            reduce using rule 4 (sentence -> tag sentence .)
+    BOLD            reduce using rule 4 (sentence -> tag sentence .)
+    FLUO            reduce using rule 4 (sentence -> tag sentence .)
+    LINK            reduce using rule 4 (sentence -> tag sentence .)
+    REFERENCE       reduce using rule 4 (sentence -> tag sentence .)
+    IMAGE           reduce using rule 4 (sentence -> tag sentence .)
+    SEPARATION_LINE reduce using rule 4 (sentence -> tag sentence .)
+    UL1             reduce using rule 4 (sentence -> tag sentence .)
+    UL2             reduce using rule 4 (sentence -> tag sentence .)
+    UL3             reduce using rule 4 (sentence -> tag sentence .)
+    ITALIC          reduce using rule 4 (sentence -> tag sentence .)
+    OL1             reduce using rule 4 (sentence -> tag sentence .)
+    OL2             reduce using rule 4 (sentence -> tag sentence .)
+    OL3             reduce using rule 4 (sentence -> tag sentence .)
+    TITLE1          reduce using rule 4 (sentence -> tag sentence .)
+    TITLE2          reduce using rule 4 (sentence -> tag sentence .)
+    TITLE3          reduce using rule 4 (sentence -> tag sentence .)
+
+
 state 25
 
-    (4) sentence -> WORD sentence tag . sentence
-    (2) sentence -> . WORD sentence
-    (3) sentence -> . tag sentence
-    (4) sentence -> . WORD sentence tag sentence
-    (5) sentence -> . WORD
-    (6) sentence -> . tag
-    (8) tag -> . BOLD
-    (9) tag -> . FLUO
-    (10) tag -> . LINK
-    (11) tag -> . REFERENCE
-    (12) tag -> . IMAGE
-    (13) tag -> . SEPARATION_LINE
-    (14) tag -> . UL1
-    (15) tag -> . UL2
-    (16) tag -> . UL3
-    (17) tag -> . ITALIC
-    (18) tag -> . OL1
-    (19) tag -> . OL2
-    (20) tag -> . OL3
-    (21) tag -> . TITLE1
-    (22) tag -> . TITLE2
-    (23) tag -> . TITLE3
+    (5) sentence -> WORD sentence tag . sentence
+    (3) sentence -> . WORD sentence
+    (4) sentence -> . tag sentence
+    (5) sentence -> . WORD sentence tag sentence
+    (6) sentence -> . WORD
+    (7) sentence -> . tag
+    (9) tag -> . BOLD
+    (10) tag -> . FLUO
+    (11) tag -> . LINK
+    (12) tag -> . REFERENCE
+    (13) tag -> . IMAGE
+    (14) tag -> . SEPARATION_LINE
+    (15) tag -> . UL1
+    (16) tag -> . UL2
+    (17) tag -> . UL3
+    (18) tag -> . ITALIC
+    (19) tag -> . OL1
+    (20) tag -> . OL2
+    (21) tag -> . OL3
+    (22) tag -> . TITLE1
+    (23) tag -> . TITLE2
+    (24) tag -> . TITLE3
 
-    WORD            shift and go to state 20
-    BOLD            shift and go to state 17
-    FLUO            shift and go to state 21
-    LINK            shift and go to state 18
-    REFERENCE       shift and go to state 11
-    IMAGE           shift and go to state 12
-    SEPARATION_LINE shift and go to state 22
-    UL1             shift and go to state 7
-    UL2             shift and go to state 10
-    UL3             shift and go to state 13
-    ITALIC          shift and go to state 4
-    OL1             shift and go to state 15
-    OL2             shift and go to state 16
-    OL3             shift and go to state 9
-    TITLE1          shift and go to state 19
-    TITLE2          shift and go to state 8
-    TITLE3          shift and go to state 14
+    WORD            shift and go to state 12
+    BOLD            shift and go to state 11
+    FLUO            shift and go to state 14
+    LINK            shift and go to state 5
+    REFERENCE       shift and go to state 6
+    IMAGE           shift and go to state 20
+    SEPARATION_LINE shift and go to state 19
+    UL1             shift and go to state 8
+    UL2             shift and go to state 4
+    UL3             shift and go to state 7
+    ITALIC          shift and go to state 15
+    OL1             shift and go to state 3
+    OL2             shift and go to state 10
+    OL3             shift and go to state 1
+    TITLE1          shift and go to state 9
+    TITLE2          shift and go to state 22
+    TITLE3          shift and go to state 16
 
+    tag                            shift and go to state 21
     sentence                       shift and go to state 26
-    tag                            shift and go to state 6
 
 state 26
 
-    (4) sentence -> WORD sentence tag sentence .
+    (5) sentence -> WORD sentence tag sentence .
 
-    $end            reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    BOLD            reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    FLUO            reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    LINK            reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    REFERENCE       reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    IMAGE           reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    SEPARATION_LINE reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    UL1             reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    UL2             reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    UL3             reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    ITALIC          reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    OL1             reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    OL2             reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    OL3             reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    TITLE1          reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    TITLE2          reduce using rule 4 (sentence -> WORD sentence tag sentence .)
-    TITLE3          reduce using rule 4 (sentence -> WORD sentence tag sentence .)
+    $end            reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    BOLD            reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    FLUO            reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    LINK            reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    REFERENCE       reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    IMAGE           reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    SEPARATION_LINE reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    UL1             reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    UL2             reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    UL3             reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    ITALIC          reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    OL1             reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    OL2             reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    OL3             reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    TITLE1          reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    TITLE2          reduce using rule 5 (sentence -> WORD sentence tag sentence .)
+    TITLE3          reduce using rule 5 (sentence -> WORD sentence tag sentence .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for BOLD in state 6 resolved as shift
-WARNING: shift/reduce conflict for FLUO in state 6 resolved as shift
-WARNING: shift/reduce conflict for LINK in state 6 resolved as shift
-WARNING: shift/reduce conflict for REFERENCE in state 6 resolved as shift
-WARNING: shift/reduce conflict for IMAGE in state 6 resolved as shift
-WARNING: shift/reduce conflict for SEPARATION_LINE in state 6 resolved as shift
-WARNING: shift/reduce conflict for UL1 in state 6 resolved as shift
-WARNING: shift/reduce conflict for UL2 in state 6 resolved as shift
-WARNING: shift/reduce conflict for UL3 in state 6 resolved as shift
-WARNING: shift/reduce conflict for ITALIC in state 6 resolved as shift
-WARNING: shift/reduce conflict for OL1 in state 6 resolved as shift
-WARNING: shift/reduce conflict for OL2 in state 6 resolved as shift
-WARNING: shift/reduce conflict for OL3 in state 6 resolved as shift
-WARNING: shift/reduce conflict for TITLE1 in state 6 resolved as shift
-WARNING: shift/reduce conflict for TITLE2 in state 6 resolved as shift
-WARNING: shift/reduce conflict for TITLE3 in state 6 resolved as shift
-WARNING: shift/reduce conflict for BOLD in state 20 resolved as shift
-WARNING: shift/reduce conflict for FLUO in state 20 resolved as shift
-WARNING: shift/reduce conflict for LINK in state 20 resolved as shift
-WARNING: shift/reduce conflict for REFERENCE in state 20 resolved as shift
-WARNING: shift/reduce conflict for IMAGE in state 20 resolved as shift
-WARNING: shift/reduce conflict for SEPARATION_LINE in state 20 resolved as shift
-WARNING: shift/reduce conflict for UL1 in state 20 resolved as shift
-WARNING: shift/reduce conflict for UL2 in state 20 resolved as shift
-WARNING: shift/reduce conflict for UL3 in state 20 resolved as shift
-WARNING: shift/reduce conflict for ITALIC in state 20 resolved as shift
-WARNING: shift/reduce conflict for OL1 in state 20 resolved as shift
-WARNING: shift/reduce conflict for OL2 in state 20 resolved as shift
-WARNING: shift/reduce conflict for OL3 in state 20 resolved as shift
-WARNING: shift/reduce conflict for TITLE1 in state 20 resolved as shift
-WARNING: shift/reduce conflict for TITLE2 in state 20 resolved as shift
-WARNING: shift/reduce conflict for TITLE3 in state 20 resolved as shift
-WARNING: shift/reduce conflict for BOLD in state 24 resolved as shift
-WARNING: shift/reduce conflict for FLUO in state 24 resolved as shift
-WARNING: shift/reduce conflict for LINK in state 24 resolved as shift
-WARNING: shift/reduce conflict for REFERENCE in state 24 resolved as shift
-WARNING: shift/reduce conflict for IMAGE in state 24 resolved as shift
-WARNING: shift/reduce conflict for SEPARATION_LINE in state 24 resolved as shift
-WARNING: shift/reduce conflict for UL1 in state 24 resolved as shift
-WARNING: shift/reduce conflict for UL2 in state 24 resolved as shift
-WARNING: shift/reduce conflict for UL3 in state 24 resolved as shift
-WARNING: shift/reduce conflict for ITALIC in state 24 resolved as shift
-WARNING: shift/reduce conflict for OL1 in state 24 resolved as shift
-WARNING: shift/reduce conflict for OL2 in state 24 resolved as shift
-WARNING: shift/reduce conflict for OL3 in state 24 resolved as shift
-WARNING: shift/reduce conflict for TITLE1 in state 24 resolved as shift
-WARNING: shift/reduce conflict for TITLE2 in state 24 resolved as shift
-WARNING: shift/reduce conflict for TITLE3 in state 24 resolved as shift
+WARNING: shift/reduce conflict for BOLD in state 12 resolved as shift
+WARNING: shift/reduce conflict for FLUO in state 12 resolved as shift
+WARNING: shift/reduce conflict for LINK in state 12 resolved as shift
+WARNING: shift/reduce conflict for REFERENCE in state 12 resolved as shift
+WARNING: shift/reduce conflict for IMAGE in state 12 resolved as shift
+WARNING: shift/reduce conflict for SEPARATION_LINE in state 12 resolved as shift
+WARNING: shift/reduce conflict for UL1 in state 12 resolved as shift
+WARNING: shift/reduce conflict for UL2 in state 12 resolved as shift
+WARNING: shift/reduce conflict for UL3 in state 12 resolved as shift
+WARNING: shift/reduce conflict for ITALIC in state 12 resolved as shift
+WARNING: shift/reduce conflict for OL1 in state 12 resolved as shift
+WARNING: shift/reduce conflict for OL2 in state 12 resolved as shift
+WARNING: shift/reduce conflict for OL3 in state 12 resolved as shift
+WARNING: shift/reduce conflict for TITLE1 in state 12 resolved as shift
+WARNING: shift/reduce conflict for TITLE2 in state 12 resolved as shift
+WARNING: shift/reduce conflict for TITLE3 in state 12 resolved as shift
+WARNING: shift/reduce conflict for BOLD in state 21 resolved as shift
+WARNING: shift/reduce conflict for FLUO in state 21 resolved as shift
+WARNING: shift/reduce conflict for LINK in state 21 resolved as shift
+WARNING: shift/reduce conflict for REFERENCE in state 21 resolved as shift
+WARNING: shift/reduce conflict for IMAGE in state 21 resolved as shift
+WARNING: shift/reduce conflict for SEPARATION_LINE in state 21 resolved as shift
+WARNING: shift/reduce conflict for UL1 in state 21 resolved as shift
+WARNING: shift/reduce conflict for UL2 in state 21 resolved as shift
+WARNING: shift/reduce conflict for UL3 in state 21 resolved as shift
+WARNING: shift/reduce conflict for ITALIC in state 21 resolved as shift
+WARNING: shift/reduce conflict for OL1 in state 21 resolved as shift
+WARNING: shift/reduce conflict for OL2 in state 21 resolved as shift
+WARNING: shift/reduce conflict for OL3 in state 21 resolved as shift
+WARNING: shift/reduce conflict for TITLE1 in state 21 resolved as shift
+WARNING: shift/reduce conflict for TITLE2 in state 21 resolved as shift
+WARNING: shift/reduce conflict for TITLE3 in state 21 resolved as shift
+WARNING: shift/reduce conflict for BOLD in state 23 resolved as shift
+WARNING: shift/reduce conflict for FLUO in state 23 resolved as shift
+WARNING: shift/reduce conflict for LINK in state 23 resolved as shift
+WARNING: shift/reduce conflict for REFERENCE in state 23 resolved as shift
+WARNING: shift/reduce conflict for IMAGE in state 23 resolved as shift
+WARNING: shift/reduce conflict for SEPARATION_LINE in state 23 resolved as shift
+WARNING: shift/reduce conflict for UL1 in state 23 resolved as shift
+WARNING: shift/reduce conflict for UL2 in state 23 resolved as shift
+WARNING: shift/reduce conflict for UL3 in state 23 resolved as shift
+WARNING: shift/reduce conflict for ITALIC in state 23 resolved as shift
+WARNING: shift/reduce conflict for OL1 in state 23 resolved as shift
+WARNING: shift/reduce conflict for OL2 in state 23 resolved as shift
+WARNING: shift/reduce conflict for OL3 in state 23 resolved as shift
+WARNING: shift/reduce conflict for TITLE1 in state 23 resolved as shift
+WARNING: shift/reduce conflict for TITLE2 in state 23 resolved as shift
+WARNING: shift/reduce conflict for TITLE3 in state 23 resolved as shift

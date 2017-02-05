@@ -7,9 +7,10 @@ import AST
 from lexemes import tokens
 
 def p_document(p):
-    ''' document : paragraph sentence
+    ''' document : sentence
+        | paragraph
     '''
-    p[0] = AST.DocumentNode([p[1]]+p[2].children)
+    p[0] = AST.DocumentNode([p[1]])
 
 def p_sentence(p):
     ''' sentence : WORD sentence
@@ -54,12 +55,21 @@ def p_error(p):
 def parse(program):
     return yacc.parse(program)
 
-
-
 parser = yacc.yacc(outputdir='generated')
 
 if __name__ == "__main__":
-	import sys
-	prog = open(sys.argv[1]).read()
-	result = yacc.parse(prog, debug=1)
-	print (result)
+	# import sys
+	# prog = open(sys.argv[1]).read()
+	# result = yacc.parse(prog, debug=0)
+	# print (result)
+
+    import sys
+    prog = open(sys.argv[1]).read()
+    ast = yacc.parse(prog)
+    print (ast)
+
+    import os
+    graph = ast.makegraphicaltree()
+    name = os.path.splitext(sys.argv[1])[0]+'-ast.pdf'
+    graph.write_pdf(name)
+    print ("wrote ast to", name)
