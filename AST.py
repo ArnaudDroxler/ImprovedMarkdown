@@ -124,7 +124,7 @@ class DocumentNode(Node):
             self.nbargs = 1
 
     def __repr__(self):
-        return "%s (%s)" % (self.op, self.nbargs)
+        return "%s (%s) hello hello" % (self.op, self.children)
 
 class AssignNode(Node):
     type = '='
@@ -150,6 +150,16 @@ class ParagraphNode(Node):
 
 class SentenceNode(Node):
     type = 'Sentence'
+    def __init__(self, op, children = None):
+        Node.__init__(self,children)
+        self.op = op
+        try:
+            self.nbargs = len(children)
+        except TypeError:
+            self.nbargs = 1
+
+    def __repr__(self):
+        return "%s (%s)" % (self.op, self.nbargs)
 
 
 
