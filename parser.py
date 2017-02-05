@@ -8,7 +8,6 @@ from lexemes import tokens
 
 def p_document(p):
     ''' document : sentence
-        | paragraph
     '''
     p[0] = AST.DocumentNode([p[1]])
 
@@ -19,10 +18,6 @@ def p_sentence(p):
         | WORD
         | tag'''
     p[0] = AST.SentenceNode(p[1])
-
-def p_paragraph(p):
-    '''paragraph : PARAGRAPHE '''
-    p[0] = AST.ParagraphNode(p[1])
 
 def p_tag(p):
     ''' tag : BOLD
@@ -41,6 +36,7 @@ def p_tag(p):
         | TITLE1
         | TITLE2
         | TITLE3
+        | PARAGRAPHE
     '''
     p[0] = AST.TagNode(p[1])
 
@@ -65,7 +61,7 @@ if __name__ == "__main__":
 
     import sys
     prog = open(sys.argv[1]).read()
-    ast = yacc.parse(prog)
+    ast = yacc.parse(prog, debug=0)
     print (ast)
 
     import os
