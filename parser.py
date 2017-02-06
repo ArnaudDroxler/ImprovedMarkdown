@@ -10,8 +10,6 @@ from lexemes import tokens
 def p_document(p):
     ''' document : sentence
     '''
-    print("DOCUMENT")
-    print(p[1])
     p[0] = AST.DocumentNode("DOCUMENT",p[1])
 
 def p_sentence(p):

@@ -85,8 +85,9 @@ def t_IMAGE(t):
     r'!{1}\[{1}.*\]{1}\({1}.*\){1}'
     return t
 
+# Avec le point, on prend tous le texte depuis la dernière balise comme texte de la référence
 def t_REFERENCE(t):
-    r'[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]*\{{1}.*\}{1}'
+    '.*\{{1}.*\}{1}'
     return t
 
 def t_NUMBER(t):
