@@ -1,6 +1,7 @@
 # Avec les parentheses
 
 import ply.lex as lex
+import re
 
 tokens = (
 	'BOLD',
@@ -27,8 +28,8 @@ tokens = (
 )
 
 def t_BOLD(t):
-	r'\*{2}.+\*{2}'
-	return t
+    r'\*{2}.+\*{2}'
+    return t
 
 def t_ITALIC(t):
 	r'\*{1}[^\*\n]+\*{1}'
@@ -85,7 +86,7 @@ def t_IMAGE(t):
     return t
 
 def t_REFERENCE(t):
-    r'\w*\{{1}.*\}{1}'
+    r'[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]*\{{1}.*\}{1}'
     return t
 
 def t_NUMBER(t):

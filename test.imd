@@ -1,14 +1,16 @@
 # ImprovedMarkdown
 
-**moawod a awd** awd awde awd, awd *awd er* awdrg nkjq 456  jw o jajd ajwndj bnawd
+**Ce texte en gras** awd awde awd, awd *awd er* awdrg nkjq 456  jw o jajd ajwndj bnawd
 
-* list ajwndkjanwdkj
-* awndoanwdojanowd
-** nawodnoa woawndo
-** awd lkawd ajwdl k
-** aiowmndo naowkdn wd
-*** awd awd awd awd
-*** awd asd qawda wd awd
+* UL1
+* UL1
+** UL2
+** UL2
+** UL2
+*** UL3
+*** UL3
+
+!Le texte fluo!
 
 * Italique *
 
@@ -32,9 +34,10 @@ ___
 
 asd
 
+ceci est une réference{Le texte de la référence}
+
 [Lien vers le wiki](https://github.com/ArnaudDroxler/ImprovedMarkdown/wiki)
 
-![Lien vers le wiki](https://github.com/ArnaudDroxler/ImprovedMarkdown/wiki)
+![Lien vers l'image](https://github.com/ArnaudDroxler/ImprovedMarkdown/wiki)
 
-asd 
-
+asd

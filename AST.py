@@ -92,27 +92,6 @@ class Node:
             return graph
 
 
-class TokenNode(Node):
-    type = 'token'
-    def __init__(self, tok):
-        Node.__init__(self)
-        self.tok = tok
-
-    def __repr__(self):
-        return repr(self.tok)
-
-class OpNode(Node):
-    def __init__(self, op, children):
-        Node.__init__(self,children)
-        self.op = op
-        try:
-            self.nbargs = len(children)
-        except AttributeError:
-            self.nbargs = 1
-
-    def __repr__(self):
-        return "%s (%s)" % (self.op, self.nbargs)
-
 class DocumentNode(Node):
     type = 'Document'
     def __init__(self, op,  children = None):
@@ -126,45 +105,63 @@ class DocumentNode(Node):
     def __repr__(self):
         return "%s (%s)" % (self.op, self.children)
 
-class AssignNode(Node):
-    type = '='
-
-class PrintNode(Node):
-    type = 'print'
-
 class TagNode(Node):
     type = 'Tag'
-    def __init__(self, op, children = None):
+    def __init__(self, type, op, children = None):
         Node.__init__(self,children)
+        self.type = type
         self.op = op
         try:
             self.nbargs = len(children)
         except TypeError:
             self.nbargs = 1
 
-    def __str__(self):
-        return Node.__str__(self)
+    def __repr__(self):
+        return "%s (%s)" % (self.type, self.op)
+
+
+class LinkNode(Node):
+    type = 'Link'
+    def __init__(self, text, link, children = None):
+        Node.__init__(self,children)
+        self.text = text
+        self.link = link
 
     def __repr__(self):
-        return "%s (%s)" % (self.op, self.nbargs)
+        return "LIEN : %s (%s)" % (self.text, self.link)
 
-class ParagraphNode(Node):
-    type = 'Paragraph'
+class ImageNode(Node):
+    type = 'Image'
+    def __init__(self, text, link, children = None):
+        Node.__init__(self,children)
+        self.text = text
+        self.link = link
+
+    def __repr__(self):
+        return "IMAGE : %s (%s)" % (self.text, self.link)
+
+class ReferenceNode(Node):
+    type = 'Image'
+    def __init__(self, text, reference, children = None):
+        Node.__init__(self,children)
+        self.text = text
+        self.reference = reference
+
+    def __repr__(self):
+        return "REFERENCE : %s (%s)" % (self.text, self.reference)
 
 class SentenceNode(Node):
-    type = 'Sentence'
-    def __init__(self, op, children = None):
+    type = 'Word'
+    def __init__(self, text, children = None):
         Node.__init__(self,children)
-        self.op = op
+        self.text = text
         try:
             self.nbargs = len(children)
         except TypeError:
             self.nbargs = 1
 
     def __repr__(self):
-        return "%s (%s)" % (self.op, self.nbargs)
-
-
+        return "%s (%s)" % (self.type, self.text)
 
 
 def addToClass(cls):
