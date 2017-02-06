@@ -1,7 +1,6 @@
 # Avec les parentheses
 
 import ply.lex as lex
-import re
 
 tokens = (
 	'BOLD',

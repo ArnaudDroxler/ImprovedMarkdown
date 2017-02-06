@@ -2,10 +2,10 @@
 
 import ply.yacc as yacc
 import re
-
 import AST
 
 from lexemes import tokens
+
 
 def p_document(p):
     ''' document : sentence
@@ -152,14 +152,14 @@ def p_reference(p):
 def p_error(p):
     if p:
         print ("Syntax error in line %d" % p.lineno)
-        parser.errok()
+        yacc.errok()
     else:
         print ("Sytax error: unexpected end of file!")
 
 def parse(program):
     return yacc.parse(program)
 
-parser = yacc.yacc(outputdir='generated')
+yacc.yacc(outputdir='generated')
 
 if __name__ == "__main__":
 	# import sys
