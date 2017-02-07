@@ -2,6 +2,8 @@ import AST
 from AST import addToClass
 from functools import reduce
 
+countPara = 0
+
 @addToClass(AST.DocumentNode)
 def execute(self,html):
     for c in self.children:
@@ -22,7 +24,7 @@ def execute(self,html):
     if self.type == "FLUO":
         html.write("<em>" + self.text + "</em>")
     if self.type == "PARAGRAPHE":
-        html.write("</p><p>")
+            html.write("</p><p>")
 
 @addToClass(AST.ImageNode)
 def execute(self,html):
@@ -50,7 +52,7 @@ if __name__ == "__main__":
     name = os.path.splitext(sys.argv[1])[0]+'.html'
 
     html = open(name,'w')
-    html.write("<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title></title></head><body>")
+    html.write("<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title></title></head><body><p>")
     ast.execute(html)
-    html.write("</body></html>")
+    html.write("</p></body></html>")
     html.close()
