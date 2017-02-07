@@ -2,24 +2,6 @@ import AST
 from AST import addToClass
 from functools import reduce
 
-def execute(node,html):
-    while node:
-        if node.__class__ == AST.DocumentNode:
-            print("Document")
-        elif node.__class__ == AST.WordNode:
-            print("Word")
-            html.write(node.text)
-        elif node.__class__ == AST.TagNode:
-            print("Tag")
-            #html.write(node.text)
-        if node.children:
-            print("Next")
-            node = node.children[0]
-        else:
-            print("None")
-            node = None
-
-
 @addToClass(AST.DocumentNode)
 def execute(self,html):
     print("DocumentNode")
