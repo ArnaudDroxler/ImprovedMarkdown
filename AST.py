@@ -94,16 +94,9 @@ class Node:
 
 class DocumentNode(Node):
     type = 'Document'
-    def __init__(self, op,  children = None):
-        Node.__init__(self,children)
-        self.op = op
-        try:
-            self.nbargs = len(children)
-        except TypeError:
-            self.nbargs = 1
-
     def __repr__(self):
-        return "%s (%s)" % (self.op, self.children)
+        return "%s" % (self.type)
+
 
 class TagNode(Node):
     type = 'Tag'
@@ -150,16 +143,11 @@ class ReferenceNode(Node):
     def __repr__(self):
         return "REFERENCE : %s (%s)" % (self.text, self.reference)
 
-class SentenceNode(Node):
+class WordNode(Node):
     type = 'Word'
-    def __init__(self, text, children = None):
-        Node.__init__(self,children)
+    def __init__(self, text):
+        Node.__init__(self)
         self.text = text
-        try:
-            self.nbargs = len(children)
-        except TypeError:
-            self.nbargs = 1
-
     def __repr__(self):
         return "%s (%s)" % (self.type, self.text)
 

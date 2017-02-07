@@ -6,29 +6,27 @@ import AST
 
 from lexemes import tokens
 
-
 def p_document(p):
-    ''' document : sentence
+    ''' document : tag
+    | word
     '''
-    p[0] = AST.DocumentNode("DOCUMENT",p[1])
+    p[0] = AST.DocumentNode(p[1])
 
-def p_sentence(p):
-    ''' sentence : WORD
-        | tag
-        | WORD sentence
-        | tag sentence'''
-    try:
-        p[0] = AST.SentenceNode(p[1], p[2])
-    except:
-        print("UN SEUL TERME")
-        print(p[1])
-        p[0] = AST.SentenceNode(p[1])
+def p_document_recuvence(p):
+    ''' document : document tag
+    | document word
+    '''
+    p[0] = AST.DocumentNode(p[1].children+[p[2]])
 
 def p_italic(p):
     ''' tag : ITALIC '''
     text = p[1]
     text = re.sub('[\*]', '', text)
     p[0] = AST.TagNode("ITALIC",text)
+
+def p_word(p):
+    '''word : WORD '''
+    p[0] = AST.WordNode(p[1])
 
 def p_ol1(p):
     ''' tag : OL1
@@ -152,14 +150,14 @@ def p_reference(p):
 def p_error(p):
     if p:
         print ("Syntax error in line %d" % p.lineno)
-        yacc.errok()
+        parser.errok()
     else:
         print ("Sytax error: unexpected end of file!")
 
 def parse(program):
     return yacc.parse(program)
 
-yacc.yacc(outputdir='generated')
+parser = yacc.yacc(outputdir='generated')
 
 if __name__ == "__main__":
 	# import sys
