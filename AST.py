@@ -99,18 +99,17 @@ class DocumentNode(Node):
 
 
 class TagNode(Node):
-    type = 'Tag'
-    def __init__(self, type, op, children = None):
+    def __init__(self, type, text, children = None):
         Node.__init__(self,children)
         self.type = type
-        self.op = op
+        self.text = text
         try:
             self.nbargs = len(children)
         except TypeError:
             self.nbargs = 1
 
     def __repr__(self):
-        return "%s (%s)" % (self.type, self.op)
+        return "%s (%s)" % (self.type, self.text)
 
 
 class LinkNode(Node):

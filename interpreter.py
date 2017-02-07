@@ -4,30 +4,38 @@ from functools import reduce
 
 @addToClass(AST.DocumentNode)
 def execute(self,html):
-    print("DocumentNode")
     for c in self.children:
         c.execute(html)
 
 @addToClass(AST.WordNode)
 def execute(self,html):
-    print("WordNode")
     html.write(self.text)
 
 @addToClass(AST.TagNode)
 def execute(self,html):
-    print("TagNode")
+    if self.type == "ITALIC":
+        html.write("<i>" + self.text + "</i>")
+    if self.type == "BOLD":
+        html.write("<b>" + self.text + "</b>")
+    if self.type == "SEPARATION_LINE":
+        html.write("<hr>")
+    if self.type == "FLUO":
+        html.write("<em>" + self.text + "</em>")
+    if self.type == "PARAGRAPHE":
+        html.write("</p><p>")
 
 @addToClass(AST.ImageNode)
 def execute(self,html):
-    print("ImageNode")
+    html.write("<img src=" + self.link + " alt=" + self.text + ">")
 
 @addToClass(AST.LinkNode)
 def execute(self,html):
-    print("LinkNode")
+    html.write("<a href="+self.link+">"+ self.text +"</a>")
 
 @addToClass(AST.ReferenceNode)
 def execute(self,html):
     print("ReferenceNode")
+
 
 
 if __name__ == "__main__":
