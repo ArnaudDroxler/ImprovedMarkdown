@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Created by PLY version 3.9 (http://www.dabeaz.com/ply)
 
 Grammar
@@ -1166,3 +1167,5 @@ WARNING: Conflicts:
 WARNING: 
 WARNING: shift/reduce conflict for UL1 in state 25 resolved as shift
 WARNING: shift/reduce conflict for UL1 in state 35 resolved as shift
+=======
+>>>>>>> 29f0feb4eb90d413e43e3037f370cb767d198325

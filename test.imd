@@ -1,9 +1,8 @@
 # ImprovedMarkdown
 
-**Ce texte en gras** awd awde awd, awd *awd er* awdrg nkjq 456  jw o jajd
-ajwndj bnawd asd as da sd a sd
-as da sd asd as da sdowmkawnfpk a wkldn
-a kwnd kanwpdk nawkdn
+**Ce texte en gras** est plus intéressant que la suite de la phrase.
+Mais il n'en demeure pas moins qu'il est *intéressant* de !tester! les
+possibilités d'ImprovedMarkdpown{Compilateur de génie}
 
 * UL1a
 * UL1b
@@ -30,7 +29,7 @@ $maVariable = coucou
 
 print($maVariable)
 
-   asdasdas d# titre 1 *italique*
+d# titre 1 *italique*
 
 ** Gras **
 
@@ -42,6 +41,6 @@ ceci est une réference{Le texte de la référence}
 
 [Lien vers le wiki](https://github.com/ArnaudDroxler/ImprovedMarkdown/wiki)
 
-![Lien vers l'image](https://github.com/ArnaudDroxler/ImprovedMarkdown/wiki)
+![Lien vers l'image](./image.png)
 
 asd
