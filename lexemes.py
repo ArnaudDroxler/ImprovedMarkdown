@@ -97,7 +97,7 @@ def t_SEPARATION_LINE(t):
     return t
 
 def t_WORD(t):
-    r'[\wéàèê]+'
+    r'.'
     return t
 
 def t_VARIABLE(t):
