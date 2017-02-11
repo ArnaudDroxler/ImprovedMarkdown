@@ -24,30 +24,69 @@ def p_italic(p):
     text = re.sub('[\*]', '', text)
     p[0] = AST.TagNode("ITALIC",text)
 
+def p_bold(p):
+    ''' tag : BOLD
+    '''
+    text = p[1]
+    text = re.sub('[\*\*]', '', text)
+    p[0] = AST.TagNode("BOLD",text)
+
+def p_fluo(p):
+    ''' tag : FLUO
+    '''
+    text = p[1]
+    text = re.sub('[!]', '', text)
+    p[0] = AST.TagNode("FLUO",text)
+
+def p_paragraph(p):
+    ''' tag : PARAGRAPHE
+    '''
+    p[0] = AST.TagNode("PARAGRAPHE", "")
+
+def p_separation_line(p):
+    ''' tag : SEPARATION_LINE
+    '''
+    p[0] = AST.TagNode("SEPARATION_LINE", "")
+
 def p_word(p):
     '''word : WORD '''
     p[0] = AST.WordNode(p[1])
 
-def p_ol1(p):
-    ''' tag : OL1
+
+def p_ol_tag(p):
+    ''' tag : ol
+    | olSubList
+    '''
+    p[0] = p[1]
+
+def p_ol(p):
+    ''' ol : OL1
     '''
     text = p[1]
     text = re.sub('[[0-9]+\.{1}\s{1}.]', '', text)
-    p[0] = AST.TagNode("OL1",text)
+    p[0] = AST.OlNode(text)
 
-def p_ol2(p):
-    ''' tag : OL2
+def p_subolList(p):
+    '''olSubList : OL1 oList
     '''
     text = p[1]
-    text = re.sub('[[0-9]+\.{1}[0-9]+\s{1}.]', '', text)
-    p[0] = AST.TagNode("OL2",text)
+    text = re.sub('[[0-9]+\.{1}\s{1}.]', '', text)
+    p[0] = AST.OlListNode(AST.OlNode(text),p[2])
 
-def p_ol3(p):
-    ''' tag : OL3
+def p_olList_rec(p):
+    '''oList : OL2 oList
     '''
     text = p[1]
-    text = re.sub('[[0-9]+\.{1}[0-9]+\.{1}[0-9]+\s{1}.]', '', text)
-    p[0] = AST.TagNode("OL3",text)
+    text = re.sub('[[0-9]+\.{2}\s{1}.]', '', text)
+    p[0] = [AST.OlNode(text)]+p[2]
+
+def p_olList(p):
+    '''oList : OL2
+    '''
+    text = p[1]
+    text = re.sub('[[0-9]+\.{2}\s{1}.]', '', text)
+    p[0] = [AST.OlNode(text)]
+
 
 def p_title3(p):
     ''' tag : TITLE3
@@ -71,50 +110,39 @@ def p_title1(p):
     p[0] = AST.TagNode("TITLE1",text)
 
 
-def p_paragraph(p):
-    ''' tag : PARAGRAPHE
+def p_ul_tag(p):
+    '''tag : ul
+    | ulSubList
     '''
-    p[0] = AST.TagNode("PARAGRAPHE", "")
+    p[0] = p[1]
 
-def p_separation_line(p):
-    ''' tag : SEPARATION_LINE
-    '''
-    p[0] = AST.TagNode("SEPARATION_LINE", "")
-
-def p_ul1(p):
-    ''' tag : UL1
+def p_ul(p):
+    '''ul : UL1
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)
-    p[0] = AST.TagNode("UL1",text)
+    p[0] =  AST.UlNode(text)
 
-def p_ul2(p):
-    ''' tag : UL2
+def p_subulList(p):
+    '''ulSubList : UL1 uList
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)
-    p[0] = AST.TagNode("UL2",text)
+    p[0] = AST.UlListNode(AST.UlNode(text),p[2])
 
-def p_ul3(p):
-    ''' tag : UL3
+def p_ulList_rec(p):
+    '''uList : UL2 uList
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)
-    p[0] = AST.TagNode("UL3",text)
+    p[0] = [AST.UlNode(text)]+p[2]
 
-def p_bold(p):
-    ''' tag : BOLD
+def p_ulList(p):
+    '''uList : UL2
     '''
     text = p[1]
-    text = re.sub('[\*\*]', '', text)
-    p[0] = AST.TagNode("BOLD",text)
-
-def p_fluo(p):
-    ''' tag : FLUO
-    '''
-    text = p[1]
-    text = re.sub('[!]', '', text)
-    p[0] = AST.TagNode("FLUO",text)
+    text = re.sub('[\*]', '', text)
+    p[0] = [AST.UlNode(text)]
 
 def p_link(p):
     ''' tag : LINK

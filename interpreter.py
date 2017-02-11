@@ -2,8 +2,6 @@ import AST
 from AST import addToClass
 from functools import reduce
 
-countPara = 0
-
 @addToClass(AST.DocumentNode)
 def execute(self,html):
     for c in self.children:
@@ -12,6 +10,35 @@ def execute(self,html):
 @addToClass(AST.WordNode)
 def execute(self,html):
     html.write(self.text)
+
+@addToClass(AST.OlNode)
+def execute(self,html):
+    print("OlNode")
+    #print(self)
+    #for c in self.children:
+        #c.execute(html)
+
+@addToClass(AST.OlListNode)
+def execute(self,html):
+    print("OlListNode")
+    #print(self)
+    # for c in self.children:
+    #     print(c)
+    #     c.execute(html)
+
+@addToClass(AST.UlNode)
+def execute(self,html):
+    print("UlNode")
+    # for c in self.children:
+    #     print(c)
+    #     c.execute(html)
+
+@addToClass(AST.UlListNode)
+def execute(self,html):
+    print("UlListNode")
+    # for c in self.children:
+    #     print(c)
+    #     c.execute(html)
 
 @addToClass(AST.TagNode)
 def execute(self,html):
@@ -25,6 +52,12 @@ def execute(self,html):
         html.write("<em>" + self.text + "</em>")
     if self.type == "PARAGRAPHE":
             html.write("</p><p>")
+    if self.type == "TITLE1":
+            html.write("<h1>" +self.text+"</h1>")
+    if self.type == "TITLE2":
+            html.write("<h2>"+self.text+ "</h2>")
+    if self.type == "TITLE3":
+            html.write("<h3>"+self.text+ "</h3>")
 
 @addToClass(AST.ImageNode)
 def execute(self,html):
@@ -41,7 +74,6 @@ def execute(self,html):
 
 
 if __name__ == "__main__":
-
     import sys
     import os
 
@@ -52,7 +84,7 @@ if __name__ == "__main__":
     name = os.path.splitext(sys.argv[1])[0]+'.html'
 
     html = open(name,'w')
-    html.write("<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title></title></head><body><p>")
+    html.write("<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>" "</title></head><body><p>")
     ast.execute(html)
     html.write("</p></body></html>")
     html.close()

@@ -3,15 +3,14 @@
 **Ce texte en gras** awd awde awd, awd *awd er* awdrg nkjq 456  jw o jajd
 ajwndj bnawd asd as da sd a sd
 as da sd asd as da sdowmkawnfpk a wkldn
-a kwnd kanwpdk nawkdn 
+a kwnd kanwpdk nawkdn
 
-* UL1
-* UL1
-** UL2
-** UL2
-** UL2
-*** UL3
-*** UL3
+* UL1a
+* UL1b
+** UL2bb
+** UL2cc
+** UL2dd
+* UL1c
 
 !Le texte fluo!
 
@@ -20,8 +19,8 @@ a kwnd kanwpdk nawkdn
 1. OL 1
 2. OL 1
 2.1 OL 2
-2.1.1 OL 3
 2.2 OL 2
+3. OL 3
 
 # Titre 1
 ## Titre 2

@@ -111,6 +111,58 @@ class TagNode(Node):
     def __repr__(self):
         return "%s (%s)" % (self.type, self.text)
 
+class OlNode(Node):
+    def __init__(self, text, children = None):
+        Node.__init__(self,children)
+        self.type = 'UlNode'
+        self.text = text
+        try:
+            self.nbargs = len(children)
+        except TypeError:
+            self.nbargs = 1
+
+    def __repr__(self):
+        return "%s (%s)" % (self.type, self.text)
+
+class OlListNode(Node):
+    def __init__(self, parent, children):
+        Node.__init__(self,children)
+        self.type = 'UlListNode'
+        self.parent = parent
+        try:
+            self.nbargs = len(children)
+        except AttributeError:
+            self.nbargs = 1
+
+    def __repr__(self):
+        return "%s" % (self.parent)
+
+
+class UlNode(Node):
+    def __init__(self, text, children = None):
+        Node.__init__(self,children)
+        self.type = 'OlNode'
+        self.text = text
+        try:
+            self.nbargs = len(children)
+        except TypeError:
+            self.nbargs = 1
+
+    def __repr__(self):
+        return "%s (%s)" % (self.type, self.text)
+
+class UlListNode(Node):
+    def __init__(self, parent, children):
+        Node.__init__(self,children)
+        self.type = 'OlListNode'
+        self.parent = parent
+        try:
+            self.nbargs = len(children)
+        except AttributeError:
+            self.nbargs = 1
+
+    def __repr__(self):
+        return "%s" % (self.parent)
 
 class LinkNode(Node):
     type = 'Link'
