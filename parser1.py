@@ -6,17 +6,36 @@ import AST
 
 from lexemes import tokens
 
+vars = {}
+
 def p_document(p):
     ''' document : tag
     | word
+    | assignation
+    | printStament
     '''
     p[0] = AST.DocumentNode(p[1])
 
 def p_document_recuvence(p):
     ''' document : document tag
     | document word
+    | document assignation
+    | document printStament
     '''
     p[0] = AST.DocumentNode(p[1].children+[p[2]])
+
+def p_word(p):
+    '''word : WORD '''
+    p[0] = AST.WordNode(p[1])
+
+def p_assign(p):
+    ''' assignation : VARIABLE ASSIGNATION NUMBER
+    | VARIABLE ASSIGNATION WORD '''
+    p[0] = AST.AssignNode([AST.TokenNode(p[1]),AST.TokenNode(p[3])])
+
+def p_print(p):
+    ''' printStament :  PRINT '(' VARIABLE ')'  '''
+    p[0] = AST.PrintNode(AST.TokenNode(p[3]))
 
 def p_italic(p):
     ''' tag : ITALIC '''
@@ -47,10 +66,6 @@ def p_separation_line(p):
     ''' tag : SEPARATION_LINE
     '''
     p[0] = AST.TagNode("SEPARATION_LINE", "")
-
-def p_word(p):
-    '''word : WORD '''
-    p[0] = AST.WordNode(p[1])
 
 
 def p_ol_tag(p):

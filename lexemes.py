@@ -2,6 +2,7 @@
 
 import ply.lex as lex
 
+
 tokens = (
 	'BOLD',
 	'FLUO',
@@ -22,8 +23,16 @@ tokens = (
     'TITLE3',
     'VARIABLE',
     'ASSIGNATION',
+    'PRINT',
 )
 
+literals = '()'
+
+
+def t_PRINT(t):
+    r'print'
+    return t
+    
 def t_BOLD(t):
     r'\*{2}.+\*{2}'
     return t
@@ -111,6 +120,7 @@ def t_ASSIGNATION(t):
 def t_PARAGRAPHE(t):
     r'(\n){2}'
     return t
+
 
 def t_newline(t):
 	r'\n+'
