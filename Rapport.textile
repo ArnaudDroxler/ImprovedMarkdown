@@ -1,0 +1,78 @@
+# Projet Compilateur - Arnaud Droxler & Axel Roy
+
+## but
+
+Le but de ce projet est d'implémenter un compilateur basé sur l'outil de génération syntaxique
+Yacc, via PLY. Nous avons choisi d'implémenter un compilateur markdown => html, en y ajoutant des mises en page.
+
+## Fonctionnalités implémentées
+
+Ce chapitre liste les différentes fonctionnalités implémentées :
+* Gras
+* Italique
+* Fond fluo
+* Changement de paragraphe
+* Liste à puce non ordonnée
+* Liste à puce ordonnée
+* Titre
+* Liens
+* Référence (note de bas de page)
+* Image
+* Ligne de séparation
+
+## Utilisation
+
+Pour convertir votre fichier Improved Mark Down (.imd) en html, il suffit de lancer la commande suivante :
+python interpreter.py nomDuFichier.imd
+
+Ceci génère un fichier nomDuFichier.html dans le même répertoire, qui est une transcription du fichier markdown amélioré.
+
+Il y a dans ce répertoire un exemple de fichier nommé test.imd
+
+Les balises proposées sont les suivantes :
+
+| Fonctionnalité |     Balise      | Regex |
+| -------------             |  -------------  | --------- |
+| Gras                      |     **mot**     |     \*\*.*\*\* |
+| Italique                  |      *mot*      |\*.*\*|
+| Changement de paragraphe  |  deux lignes vides consécutives dans le fichier      |
+| Liste à puce non ordonnée |  * niveau 1 - ** Niveau 2 - *** niveau 3             |
+| Liste à puce ordonnée     |  1. (niveau 1) - 1.1. (Niveau 2) - 1.1.1 (niveau 3)  |
+| Titre                     |  # (titre 1)  ## (titre2)  ###(titre3) ####(titre4)  |
+| Référence (note de bas de page) |  le_mot_a_referencer{le texte de la référence} |
+| Ligne de séparation       | ___   (deux sous-tirets au moins sur une ligne sans autre texte) |
+
+
+## Implémentation
+
+Malgré le fait que nous soyons plus face à un transcripteur plutôt qu'un compilateur, notre implémentation se base sur les principes vu en cours soit :
+* Analyse des lexèmes via des regexs.
+* Analyse grammaticale via une grammaire, ce qui crée un AST.
+* Parcours de l'AST sans couture, de manière récursive, pour générer le fichier de sortie.
+
+### Analyse lexicale
+
+Sans décrire en détail les regexs, il y en a un certain nombre dont certaines ont été assez délicates à implémenter, notamment
+la différenciation entre une expression en italique traitée comme :
+
+*italique*
+
+et un titre de niveau 1
+délimité ainsi :
+
+* mon titre \n
+
+Les deux sont délimités par une étoile en début, et ils peuvent contenir n'importe quel caractère y compris un retour à la ligne, ce qui les rend ambigü.
+Pour régler ce problème, la solution vient de la regex pour l'italique qui se présente ainsi :
+
+*{1}[^\*\n]+\*{1}
+
+On force ici qu'elle commence par une *, puis qu'elle contient au moins un caractère différent d'un retour à la ligne et une étoile, puis qu'il y a exactement
+une étoile qui la ferme plus loin.
+
+Les retours à la ligne sont eux aussi assez délicats pour la délimitation d'un paragraphe,
+
+Nous avons choisi de délimiter les niveaux de manière indépendante afin d'avoir directement des token avec le niveau de titre pour la partie syntaxique.
+Globalement, il y a une vingtaine de token issus de l'analyse lexicale.
+
+###
