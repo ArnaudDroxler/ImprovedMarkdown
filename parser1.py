@@ -111,34 +111,56 @@ def p_title1(p):
 
 
 def p_ul_tag(p):
-    '''tag : ul
-    | ulSubList
+    '''tag : ul1SubList
     '''
     p[0] = p[1]
 
-def p_ul(p):
-    '''ul : UL1
-    '''
-    text = p[1]
-    text = re.sub('[\*]', '', text)
-    p[0] =  AST.UlNode(text)
 
-def p_subulList(p):
-    '''ulSubList : UL1 uList
+def p_subul1List(p):
+    '''ul1SubList : UL1 ul1List
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)
     p[0] = AST.UlListNode(AST.UlNode(text),p[2])
 
-def p_ulList_rec(p):
-    '''uList : UL2 uList
+
+def p_ul1List_rec(p):
+    '''ul1List : UL1 ul1List
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)
     p[0] = [AST.UlNode(text)]+p[2]
 
-def p_ulList(p):
-    '''uList : UL2
+def p_ul1List_rec_sub(p):
+    '''ul1List : UL1 ul2SubList
+    '''
+    text = p[1]
+    text = re.sub('[\*]', '', text)
+    p[0] = [AST.UlNode(text)]+p[2]
+
+def p_ul1List(p):
+    '''ul1List : UL1
+    '''
+    text = p[1]
+    text = re.sub('[\*]', '', text)
+    p[0] =  [AST.UlNode(text)]
+
+def p_subul2List(p):
+    '''ul2SubList : UL1 ul2List
+    '''
+    text = p[1]
+    text = re.sub('[\*]', '', text)
+    p[0] = AST.UlListNode(AST.UlNode(text),p[2])
+
+def p_ul2List_rec(p):
+    '''ul2List : UL2 ul2List
+    '''
+    text = p[1]
+    text = re.sub('[\*]', '', text)
+    p[0] = [AST.UlNode(text)]+p[2]
+
+def p_ul2List(p):
+    '''ul2List : UL2
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)

@@ -114,7 +114,7 @@ class TagNode(Node):
 class OlNode(Node):
     def __init__(self, text, children = None):
         Node.__init__(self,children)
-        self.type = 'UlNode'
+        self.type = 'OlNode'
         self.text = text
         try:
             self.nbargs = len(children)
@@ -127,7 +127,7 @@ class OlNode(Node):
 class OlListNode(Node):
     def __init__(self, parent, children):
         Node.__init__(self,children)
-        self.type = 'UlListNode'
+        self.type = 'OlListNode'
         self.parent = parent
         try:
             self.nbargs = len(children)
@@ -141,7 +141,7 @@ class OlListNode(Node):
 class UlNode(Node):
     def __init__(self, text, children = None):
         Node.__init__(self,children)
-        self.type = 'OlNode'
+        self.type = 'UlNode'
         self.text = text
         try:
             self.nbargs = len(children)
@@ -154,7 +154,7 @@ class UlNode(Node):
 class UlListNode(Node):
     def __init__(self, parent, children):
         Node.__init__(self,children)
-        self.type = 'OlListNode'
+        self.type = 'UlListNode'
         self.parent = parent
         try:
             self.nbargs = len(children)
