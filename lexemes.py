@@ -84,7 +84,7 @@ def t_IMAGE(t):
 
 # Avec le point, on prend tous le texte depuis la dernière balise comme texte de la référence
 def t_REFERENCE(t):
-    '.*\{{1}.*\}{1}'
+    r'.[^\s]*\{{1}.*\}{1}'
     return t
 
 def t_NUMBER(t):
@@ -97,7 +97,7 @@ def t_SEPARATION_LINE(t):
     return t
 
 def t_WORD(t):
-    r'\w+[,.?:;&\-!?]?'
+    r'[\wéàèê]+'
     return t
 
 def t_VARIABLE(t):

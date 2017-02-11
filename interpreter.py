@@ -1,6 +1,7 @@
 import AST
 from AST import addToClass
 from functools import reduce
+import re
 
 @addToClass(AST.DocumentNode)
 def execute(self,html):
@@ -9,7 +10,9 @@ def execute(self,html):
 
 @addToClass(AST.WordNode)
 def execute(self,html):
-    html.write(self.text)
+    text = self.text
+    text = re.sub('é', '&eacute;', text)
+    html.write(text + " ")
 
 @addToClass(AST.OlNode)
 def execute(self,html):
@@ -43,21 +46,22 @@ def execute(self,html):
 @addToClass(AST.TagNode)
 def execute(self,html):
     if self.type == "ITALIC":
-        html.write("<i>" + self.text + "</i>")
+        html.write("<i>" + self.text + "</i> ")
     if self.type == "BOLD":
-        html.write("<b>" + self.text + "</b>")
+        html.write("<b>" + self.text + "</b> ")
     if self.type == "SEPARATION_LINE":
         html.write("<hr>")
     if self.type == "FLUO":
-        html.write("<em>" + self.text + "</em>")
+        html.write("<em>" + self.text + "</em> ")
     if self.type == "PARAGRAPHE":
             html.write("</p><p>")
     if self.type == "TITLE1":
-            html.write("<h1>" +self.text+"</h1>")
+            html.write("<h1>" +self.text+"</h1> ")
     if self.type == "TITLE2":
-            html.write("<h2>"+self.text+ "</h2>")
+            html.write("<h2>"+self.text+ "</h2>  ")
     if self.type == "TITLE3":
             html.write("<h3>"+self.text+ "</h3>")
+
 
 @addToClass(AST.ImageNode)
 def execute(self,html):
@@ -65,13 +69,11 @@ def execute(self,html):
 
 @addToClass(AST.LinkNode)
 def execute(self,html):
-    html.write("<a href="+self.link+">"+ self.text +"</a>")
+    html.write("<a href="+self.link+">"+ self.text +"</a> ")
 
 @addToClass(AST.ReferenceNode)
 def execute(self,html):
     print("ReferenceNode")
-
-
 
 if __name__ == "__main__":
     import sys
