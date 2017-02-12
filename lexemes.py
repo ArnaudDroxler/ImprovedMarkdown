@@ -1,7 +1,8 @@
 # Avec les parentheses
 
 import ply.lex as lex
-
+import sys
+import os
 
 tokens = (
 	'BOLD',
@@ -14,10 +15,8 @@ tokens = (
     'SEPARATION_LINE',
     'PARAGRAPHE',
     'UL1',
-    'UL2',
     'ITALIC',
     'OL1',
-    'OL2',
     'TITLE1',
     'TITLE2',
     'TITLE3',
@@ -28,11 +27,10 @@ tokens = (
 
 literals = '()'
 
-
 def t_PRINT(t):
     r'print'
     return t
-    
+
 def t_BOLD(t):
     r'\*{2}.+\*{2}'
     return t
@@ -45,24 +43,8 @@ def t_UL1(t):
     r'\*{1}\s{1}[^\r\n\*]*'
     return t
 
-def t_UL2(t):
-    r'\*{2}\s{1}[^\r\n\*]*'
-    return t
-
-def t_UL3(t):
-    r'\*{3}\s{1}[^\r\n\*]*'
-    return t
-
 def t_OL1(t):
     r'[0-9]+\.{1}\s{1}.+'
-    return t
-
-def t_OL2(t):
-    r'[0-9]+\.{1}[0-9]+\s{1}.+'
-    return t
-
-def t_OL3(t):
-    r'[0-9]+\.{1}[0-9]+\.{1}[0-9]+\s{1}.+'
     return t
 
 def t_TITLE1(t):
@@ -93,7 +75,7 @@ def t_IMAGE(t):
 
 # Avec le point, on prend tous le texte depuis la dernière balise comme texte de la référence
 def t_REFERENCE(t):
-    '.*\{{1}.*\}{1}'
+    r'.[^\s]*\{{1}.*\}{1}'
     return t
 
 def t_NUMBER(t):
@@ -106,7 +88,7 @@ def t_SEPARATION_LINE(t):
     return t
 
 def t_WORD(t):
-    r'\w+[,.?:;&\-!?]?'
+    r"[\w\.'éàëàü]+"
     return t
 
 def t_VARIABLE(t):
@@ -126,9 +108,10 @@ def t_newline(t):
 	r'\n+'
 	t.lexer.lineno += len(t.value)
 
+
 def t_error(t):
-	print ("Illegal character '%s'" % t.value[0])
-	t.lexer.skip(1)
+    print ("Illegal character '%s'" % t.value[0])
+    t.lexer.skip(1)
 
 t_ignore  = ' \t'
 

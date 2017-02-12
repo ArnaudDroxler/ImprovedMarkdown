@@ -69,17 +69,9 @@ def p_separation_line(p):
 
 
 def p_ol_tag(p):
-    ''' tag : ol
-    | olSubList
+    ''' tag : olSubList
     '''
     p[0] = p[1]
-
-def p_ol(p):
-    ''' ol : OL1
-    '''
-    text = p[1]
-    text = re.sub('[[0-9]+\.{1}\s{1}.]', '', text)
-    p[0] = AST.OlNode(text)
 
 def p_subolList(p):
     '''olSubList : OL1 oList
@@ -89,14 +81,14 @@ def p_subolList(p):
     p[0] = AST.OlListNode(AST.OlNode(text),p[2])
 
 def p_olList_rec(p):
-    '''oList : OL2 oList
+    '''oList : OL1 oList
     '''
     text = p[1]
     text = re.sub('[[0-9]+\.{2}\s{1}.]', '', text)
     p[0] = [AST.OlNode(text)]+p[2]
 
 def p_olList(p):
-    '''oList : OL2
+    '''oList : OL1
     '''
     text = p[1]
     text = re.sub('[[0-9]+\.{2}\s{1}.]', '', text)
@@ -146,13 +138,6 @@ def p_ul1List_rec(p):
     text = re.sub('[\*]', '', text)
     p[0] = [AST.UlNode(text)]+p[2]
 
-def p_ul1List_rec_sub(p):
-    '''ul1List : UL1 ul2SubList
-    '''
-    text = p[1]
-    text = re.sub('[\*]', '', text)
-    p[0] = [AST.UlNode(text)]+p[2]
-
 def p_ul1List(p):
     '''ul1List : UL1
     '''
@@ -160,33 +145,12 @@ def p_ul1List(p):
     text = re.sub('[\*]', '', text)
     p[0] =  [AST.UlNode(text)]
 
-def p_subul2List(p):
-    '''ul2SubList : UL1 ul2List
-    '''
-    text = p[1]
-    text = re.sub('[\*]', '', text)
-    p[0] = AST.UlListNode(AST.UlNode(text),p[2])
-
-def p_ul2List_rec(p):
-    '''ul2List : UL2 ul2List
-    '''
-    text = p[1]
-    text = re.sub('[\*]', '', text)
-    p[0] = [AST.UlNode(text)]+p[2]
-
-def p_ul2List(p):
-    '''ul2List : UL2
-    '''
-    text = p[1]
-    text = re.sub('[\*]', '', text)
-    p[0] = [AST.UlNode(text)]
 
 def p_link(p):
     ''' tag : LINK
     '''
     text = p[1]
     tab = text.split("(")
-    print(tab)
     text = re.sub('[\[\]]', '', tab[0])
     link = re.sub('[\(\)]', '', tab[1])
     p[0] = AST.LinkNode(text, link)
