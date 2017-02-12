@@ -27,7 +27,6 @@ def execute(self,html):
 
 @addToClass(AST.OlListNode)
 def execute(self,html):
-    print("OlListNode")
     html.write("<ol>")
     self.parent.execute(html)
     for c in self.children:
@@ -55,7 +54,7 @@ def execute(self,html):
     if self.type == "SEPARATION_LINE":
         html.write("<hr>")
     if self.type == "FLUO":
-        html.write("<em>" + self.text + "</em> ")
+        html.write("<mark>" + self.text + "</mark> ")
     if self.type == "PARAGRAPHE":
             html.write("</br>")
     if self.type == "TITLE1":
@@ -73,10 +72,6 @@ def execute(self,html):
 @addToClass(AST.LinkNode)
 def execute(self,html):
     html.write("<a href="+self.link+">"+ self.text +"</a> ")
-
-@addToClass(AST.ReferenceNode)
-def execute(self,html):
-    print("ReferenceNode")
 
 @addToClass(AST.AssignNode)
 def execute(self,html):

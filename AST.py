@@ -184,15 +184,6 @@ class ImageNode(Node):
     def __repr__(self):
         return "IMAGE : %s (%s)" % (self.text, self.link)
 
-class ReferenceNode(Node):
-    type = 'Image'
-    def __init__(self, text, reference, children = None):
-        Node.__init__(self,children)
-        self.text = text
-        self.reference = reference
-
-    def __repr__(self):
-        return "REFERENCE : %s (%s)" % (self.text, self.reference)
 
 class WordNode(Node):
     type = 'Word'
@@ -208,7 +199,7 @@ class AssignNode(Node):
 class PrintNode(Node):
     type = 'print'
 
-    
+
 class TokenNode(Node):
     type = 'token'
     def __init__(self, tok):

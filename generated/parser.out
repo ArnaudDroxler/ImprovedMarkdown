@@ -27,10 +27,10 @@ Rule 21    oList -> OL1
 Rule 22    tag -> TITLE3
 Rule 23    tag -> TITLE2
 Rule 24    tag -> TITLE1
-Rule 25    tag -> ul1SubList
-Rule 26    ul1SubList -> UL1 ul1List
-Rule 27    ul1List -> UL1 ul1List
-Rule 28    ul1List -> UL1
+Rule 25    tag -> ulSubList
+Rule 26    ulSubList -> UL1 ulList
+Rule 27    ulList -> UL1 ulList
+Rule 28    ulList -> UL1
 Rule 29    tag -> LINK
 Rule 30    tag -> IMAGE
 Rule 31    tag -> REFERENCE
@@ -67,8 +67,8 @@ oList                : 19 20
 olSubList            : 18
 printStament         : 4 8
 tag                  : 1 5
-ul1List              : 26 27
-ul1SubList           : 25
+ulList               : 26 27
+ulSubList            : 25
 word                 : 2 6
 
 Parsing method: LALR
@@ -93,7 +93,7 @@ state 0
     (22) tag -> . TITLE3
     (23) tag -> . TITLE2
     (24) tag -> . TITLE1
-    (25) tag -> . ul1SubList
+    (25) tag -> . ulSubList
     (29) tag -> . LINK
     (30) tag -> . IMAGE
     (31) tag -> . REFERENCE
@@ -102,317 +102,34 @@ state 0
     (11) assignation -> . VARIABLE ASSIGNATION WORD
     (12) printStament -> . PRINT ( VARIABLE )
     (19) olSubList -> . OL1 oList
-    (26) ul1SubList -> . UL1 ul1List
+    (26) ulSubList -> . UL1 ulList
 
-    ITALIC          shift and go to state 8
-    BOLD            shift and go to state 19
-    FLUO            shift and go to state 3
-    PARAGRAPHE      shift and go to state 14
-    SEPARATION_LINE shift and go to state 4
-    TITLE3          shift and go to state 9
-    TITLE2          shift and go to state 18
-    TITLE1          shift and go to state 10
-    LINK            shift and go to state 22
-    IMAGE           shift and go to state 20
-    REFERENCE       shift and go to state 21
-    WORD            shift and go to state 5
-    VARIABLE        shift and go to state 12
-    PRINT           shift and go to state 6
-    OL1             shift and go to state 15
-    UL1             shift and go to state 11
+    ITALIC          shift and go to state 19
+    BOLD            shift and go to state 22
+    FLUO            shift and go to state 15
+    PARAGRAPHE      shift and go to state 1
+    SEPARATION_LINE shift and go to state 8
+    TITLE3          shift and go to state 12
+    TITLE2          shift and go to state 16
+    TITLE1          shift and go to state 21
+    LINK            shift and go to state 9
+    IMAGE           shift and go to state 7
+    REFERENCE       shift and go to state 18
+    WORD            shift and go to state 20
+    VARIABLE        shift and go to state 14
+    PRINT           shift and go to state 10
+    OL1             shift and go to state 23
+    UL1             shift and go to state 2
 
-    word                           shift and go to state 1
-    tag                            shift and go to state 17
-    document                       shift and go to state 2
-    ul1SubList                     shift and go to state 7
-    assignation                    shift and go to state 13
-    printStament                   shift and go to state 16
-    olSubList                      shift and go to state 23
+    printStament                   shift and go to state 11
+    document                       shift and go to state 17
+    word                           shift and go to state 6
+    olSubList                      shift and go to state 5
+    ulSubList                      shift and go to state 13
+    assignation                    shift and go to state 3
+    tag                            shift and go to state 4
 
 state 1
-
-    (2) document -> word .
-
-    ITALIC          reduce using rule 2 (document -> word .)
-    BOLD            reduce using rule 2 (document -> word .)
-    FLUO            reduce using rule 2 (document -> word .)
-    PARAGRAPHE      reduce using rule 2 (document -> word .)
-    SEPARATION_LINE reduce using rule 2 (document -> word .)
-    TITLE3          reduce using rule 2 (document -> word .)
-    TITLE2          reduce using rule 2 (document -> word .)
-    TITLE1          reduce using rule 2 (document -> word .)
-    LINK            reduce using rule 2 (document -> word .)
-    IMAGE           reduce using rule 2 (document -> word .)
-    REFERENCE       reduce using rule 2 (document -> word .)
-    WORD            reduce using rule 2 (document -> word .)
-    VARIABLE        reduce using rule 2 (document -> word .)
-    PRINT           reduce using rule 2 (document -> word .)
-    OL1             reduce using rule 2 (document -> word .)
-    UL1             reduce using rule 2 (document -> word .)
-    $end            reduce using rule 2 (document -> word .)
-
-
-state 2
-
-    (0) S' -> document .
-    (5) document -> document . tag
-    (6) document -> document . word
-    (7) document -> document . assignation
-    (8) document -> document . printStament
-    (13) tag -> . ITALIC
-    (14) tag -> . BOLD
-    (15) tag -> . FLUO
-    (16) tag -> . PARAGRAPHE
-    (17) tag -> . SEPARATION_LINE
-    (18) tag -> . olSubList
-    (22) tag -> . TITLE3
-    (23) tag -> . TITLE2
-    (24) tag -> . TITLE1
-    (25) tag -> . ul1SubList
-    (29) tag -> . LINK
-    (30) tag -> . IMAGE
-    (31) tag -> . REFERENCE
-    (9) word -> . WORD
-    (10) assignation -> . VARIABLE ASSIGNATION NUMBER
-    (11) assignation -> . VARIABLE ASSIGNATION WORD
-    (12) printStament -> . PRINT ( VARIABLE )
-    (19) olSubList -> . OL1 oList
-    (26) ul1SubList -> . UL1 ul1List
-
-    ITALIC          shift and go to state 8
-    BOLD            shift and go to state 19
-    FLUO            shift and go to state 3
-    PARAGRAPHE      shift and go to state 14
-    SEPARATION_LINE shift and go to state 4
-    TITLE3          shift and go to state 9
-    TITLE2          shift and go to state 18
-    TITLE1          shift and go to state 10
-    LINK            shift and go to state 22
-    IMAGE           shift and go to state 20
-    REFERENCE       shift and go to state 21
-    WORD            shift and go to state 5
-    VARIABLE        shift and go to state 12
-    PRINT           shift and go to state 6
-    OL1             shift and go to state 15
-    UL1             shift and go to state 11
-
-    word                           shift and go to state 24
-    tag                            shift and go to state 27
-    ul1SubList                     shift and go to state 7
-    assignation                    shift and go to state 25
-    printStament                   shift and go to state 26
-    olSubList                      shift and go to state 23
-
-state 3
-
-    (15) tag -> FLUO .
-
-    ITALIC          reduce using rule 15 (tag -> FLUO .)
-    BOLD            reduce using rule 15 (tag -> FLUO .)
-    FLUO            reduce using rule 15 (tag -> FLUO .)
-    PARAGRAPHE      reduce using rule 15 (tag -> FLUO .)
-    SEPARATION_LINE reduce using rule 15 (tag -> FLUO .)
-    TITLE3          reduce using rule 15 (tag -> FLUO .)
-    TITLE2          reduce using rule 15 (tag -> FLUO .)
-    TITLE1          reduce using rule 15 (tag -> FLUO .)
-    LINK            reduce using rule 15 (tag -> FLUO .)
-    IMAGE           reduce using rule 15 (tag -> FLUO .)
-    REFERENCE       reduce using rule 15 (tag -> FLUO .)
-    WORD            reduce using rule 15 (tag -> FLUO .)
-    VARIABLE        reduce using rule 15 (tag -> FLUO .)
-    PRINT           reduce using rule 15 (tag -> FLUO .)
-    OL1             reduce using rule 15 (tag -> FLUO .)
-    UL1             reduce using rule 15 (tag -> FLUO .)
-    $end            reduce using rule 15 (tag -> FLUO .)
-
-
-state 4
-
-    (17) tag -> SEPARATION_LINE .
-
-    ITALIC          reduce using rule 17 (tag -> SEPARATION_LINE .)
-    BOLD            reduce using rule 17 (tag -> SEPARATION_LINE .)
-    FLUO            reduce using rule 17 (tag -> SEPARATION_LINE .)
-    PARAGRAPHE      reduce using rule 17 (tag -> SEPARATION_LINE .)
-    SEPARATION_LINE reduce using rule 17 (tag -> SEPARATION_LINE .)
-    TITLE3          reduce using rule 17 (tag -> SEPARATION_LINE .)
-    TITLE2          reduce using rule 17 (tag -> SEPARATION_LINE .)
-    TITLE1          reduce using rule 17 (tag -> SEPARATION_LINE .)
-    LINK            reduce using rule 17 (tag -> SEPARATION_LINE .)
-    IMAGE           reduce using rule 17 (tag -> SEPARATION_LINE .)
-    REFERENCE       reduce using rule 17 (tag -> SEPARATION_LINE .)
-    WORD            reduce using rule 17 (tag -> SEPARATION_LINE .)
-    VARIABLE        reduce using rule 17 (tag -> SEPARATION_LINE .)
-    PRINT           reduce using rule 17 (tag -> SEPARATION_LINE .)
-    OL1             reduce using rule 17 (tag -> SEPARATION_LINE .)
-    UL1             reduce using rule 17 (tag -> SEPARATION_LINE .)
-    $end            reduce using rule 17 (tag -> SEPARATION_LINE .)
-
-
-state 5
-
-    (9) word -> WORD .
-
-    ITALIC          reduce using rule 9 (word -> WORD .)
-    BOLD            reduce using rule 9 (word -> WORD .)
-    FLUO            reduce using rule 9 (word -> WORD .)
-    PARAGRAPHE      reduce using rule 9 (word -> WORD .)
-    SEPARATION_LINE reduce using rule 9 (word -> WORD .)
-    TITLE3          reduce using rule 9 (word -> WORD .)
-    TITLE2          reduce using rule 9 (word -> WORD .)
-    TITLE1          reduce using rule 9 (word -> WORD .)
-    LINK            reduce using rule 9 (word -> WORD .)
-    IMAGE           reduce using rule 9 (word -> WORD .)
-    REFERENCE       reduce using rule 9 (word -> WORD .)
-    WORD            reduce using rule 9 (word -> WORD .)
-    VARIABLE        reduce using rule 9 (word -> WORD .)
-    PRINT           reduce using rule 9 (word -> WORD .)
-    OL1             reduce using rule 9 (word -> WORD .)
-    UL1             reduce using rule 9 (word -> WORD .)
-    $end            reduce using rule 9 (word -> WORD .)
-
-
-state 6
-
-    (12) printStament -> PRINT . ( VARIABLE )
-
-    (               shift and go to state 28
-
-
-state 7
-
-    (25) tag -> ul1SubList .
-
-    ITALIC          reduce using rule 25 (tag -> ul1SubList .)
-    BOLD            reduce using rule 25 (tag -> ul1SubList .)
-    FLUO            reduce using rule 25 (tag -> ul1SubList .)
-    PARAGRAPHE      reduce using rule 25 (tag -> ul1SubList .)
-    SEPARATION_LINE reduce using rule 25 (tag -> ul1SubList .)
-    TITLE3          reduce using rule 25 (tag -> ul1SubList .)
-    TITLE2          reduce using rule 25 (tag -> ul1SubList .)
-    TITLE1          reduce using rule 25 (tag -> ul1SubList .)
-    LINK            reduce using rule 25 (tag -> ul1SubList .)
-    IMAGE           reduce using rule 25 (tag -> ul1SubList .)
-    REFERENCE       reduce using rule 25 (tag -> ul1SubList .)
-    WORD            reduce using rule 25 (tag -> ul1SubList .)
-    VARIABLE        reduce using rule 25 (tag -> ul1SubList .)
-    PRINT           reduce using rule 25 (tag -> ul1SubList .)
-    OL1             reduce using rule 25 (tag -> ul1SubList .)
-    UL1             reduce using rule 25 (tag -> ul1SubList .)
-    $end            reduce using rule 25 (tag -> ul1SubList .)
-
-
-state 8
-
-    (13) tag -> ITALIC .
-
-    ITALIC          reduce using rule 13 (tag -> ITALIC .)
-    BOLD            reduce using rule 13 (tag -> ITALIC .)
-    FLUO            reduce using rule 13 (tag -> ITALIC .)
-    PARAGRAPHE      reduce using rule 13 (tag -> ITALIC .)
-    SEPARATION_LINE reduce using rule 13 (tag -> ITALIC .)
-    TITLE3          reduce using rule 13 (tag -> ITALIC .)
-    TITLE2          reduce using rule 13 (tag -> ITALIC .)
-    TITLE1          reduce using rule 13 (tag -> ITALIC .)
-    LINK            reduce using rule 13 (tag -> ITALIC .)
-    IMAGE           reduce using rule 13 (tag -> ITALIC .)
-    REFERENCE       reduce using rule 13 (tag -> ITALIC .)
-    WORD            reduce using rule 13 (tag -> ITALIC .)
-    VARIABLE        reduce using rule 13 (tag -> ITALIC .)
-    PRINT           reduce using rule 13 (tag -> ITALIC .)
-    OL1             reduce using rule 13 (tag -> ITALIC .)
-    UL1             reduce using rule 13 (tag -> ITALIC .)
-    $end            reduce using rule 13 (tag -> ITALIC .)
-
-
-state 9
-
-    (22) tag -> TITLE3 .
-
-    ITALIC          reduce using rule 22 (tag -> TITLE3 .)
-    BOLD            reduce using rule 22 (tag -> TITLE3 .)
-    FLUO            reduce using rule 22 (tag -> TITLE3 .)
-    PARAGRAPHE      reduce using rule 22 (tag -> TITLE3 .)
-    SEPARATION_LINE reduce using rule 22 (tag -> TITLE3 .)
-    TITLE3          reduce using rule 22 (tag -> TITLE3 .)
-    TITLE2          reduce using rule 22 (tag -> TITLE3 .)
-    TITLE1          reduce using rule 22 (tag -> TITLE3 .)
-    LINK            reduce using rule 22 (tag -> TITLE3 .)
-    IMAGE           reduce using rule 22 (tag -> TITLE3 .)
-    REFERENCE       reduce using rule 22 (tag -> TITLE3 .)
-    WORD            reduce using rule 22 (tag -> TITLE3 .)
-    VARIABLE        reduce using rule 22 (tag -> TITLE3 .)
-    PRINT           reduce using rule 22 (tag -> TITLE3 .)
-    OL1             reduce using rule 22 (tag -> TITLE3 .)
-    UL1             reduce using rule 22 (tag -> TITLE3 .)
-    $end            reduce using rule 22 (tag -> TITLE3 .)
-
-
-state 10
-
-    (24) tag -> TITLE1 .
-
-    ITALIC          reduce using rule 24 (tag -> TITLE1 .)
-    BOLD            reduce using rule 24 (tag -> TITLE1 .)
-    FLUO            reduce using rule 24 (tag -> TITLE1 .)
-    PARAGRAPHE      reduce using rule 24 (tag -> TITLE1 .)
-    SEPARATION_LINE reduce using rule 24 (tag -> TITLE1 .)
-    TITLE3          reduce using rule 24 (tag -> TITLE1 .)
-    TITLE2          reduce using rule 24 (tag -> TITLE1 .)
-    TITLE1          reduce using rule 24 (tag -> TITLE1 .)
-    LINK            reduce using rule 24 (tag -> TITLE1 .)
-    IMAGE           reduce using rule 24 (tag -> TITLE1 .)
-    REFERENCE       reduce using rule 24 (tag -> TITLE1 .)
-    WORD            reduce using rule 24 (tag -> TITLE1 .)
-    VARIABLE        reduce using rule 24 (tag -> TITLE1 .)
-    PRINT           reduce using rule 24 (tag -> TITLE1 .)
-    OL1             reduce using rule 24 (tag -> TITLE1 .)
-    UL1             reduce using rule 24 (tag -> TITLE1 .)
-    $end            reduce using rule 24 (tag -> TITLE1 .)
-
-
-state 11
-
-    (26) ul1SubList -> UL1 . ul1List
-    (27) ul1List -> . UL1 ul1List
-    (28) ul1List -> . UL1
-
-    UL1             shift and go to state 30
-
-    ul1List                        shift and go to state 29
-
-state 12
-
-    (10) assignation -> VARIABLE . ASSIGNATION NUMBER
-    (11) assignation -> VARIABLE . ASSIGNATION WORD
-
-    ASSIGNATION     shift and go to state 31
-
-
-state 13
-
-    (3) document -> assignation .
-
-    ITALIC          reduce using rule 3 (document -> assignation .)
-    BOLD            reduce using rule 3 (document -> assignation .)
-    FLUO            reduce using rule 3 (document -> assignation .)
-    PARAGRAPHE      reduce using rule 3 (document -> assignation .)
-    SEPARATION_LINE reduce using rule 3 (document -> assignation .)
-    TITLE3          reduce using rule 3 (document -> assignation .)
-    TITLE2          reduce using rule 3 (document -> assignation .)
-    TITLE1          reduce using rule 3 (document -> assignation .)
-    LINK            reduce using rule 3 (document -> assignation .)
-    IMAGE           reduce using rule 3 (document -> assignation .)
-    REFERENCE       reduce using rule 3 (document -> assignation .)
-    WORD            reduce using rule 3 (document -> assignation .)
-    VARIABLE        reduce using rule 3 (document -> assignation .)
-    PRINT           reduce using rule 3 (document -> assignation .)
-    OL1             reduce using rule 3 (document -> assignation .)
-    UL1             reduce using rule 3 (document -> assignation .)
-    $end            reduce using rule 3 (document -> assignation .)
-
-
-state 14
 
     (16) tag -> PARAGRAPHE .
 
@@ -435,40 +152,40 @@ state 14
     $end            reduce using rule 16 (tag -> PARAGRAPHE .)
 
 
-state 15
+state 2
 
-    (19) olSubList -> OL1 . oList
-    (20) oList -> . OL1 oList
-    (21) oList -> . OL1
+    (26) ulSubList -> UL1 . ulList
+    (27) ulList -> . UL1 ulList
+    (28) ulList -> . UL1
 
-    OL1             shift and go to state 33
+    UL1             shift and go to state 25
 
-    oList                          shift and go to state 32
+    ulList                         shift and go to state 24
 
-state 16
+state 3
 
-    (4) document -> printStament .
+    (3) document -> assignation .
 
-    ITALIC          reduce using rule 4 (document -> printStament .)
-    BOLD            reduce using rule 4 (document -> printStament .)
-    FLUO            reduce using rule 4 (document -> printStament .)
-    PARAGRAPHE      reduce using rule 4 (document -> printStament .)
-    SEPARATION_LINE reduce using rule 4 (document -> printStament .)
-    TITLE3          reduce using rule 4 (document -> printStament .)
-    TITLE2          reduce using rule 4 (document -> printStament .)
-    TITLE1          reduce using rule 4 (document -> printStament .)
-    LINK            reduce using rule 4 (document -> printStament .)
-    IMAGE           reduce using rule 4 (document -> printStament .)
-    REFERENCE       reduce using rule 4 (document -> printStament .)
-    WORD            reduce using rule 4 (document -> printStament .)
-    VARIABLE        reduce using rule 4 (document -> printStament .)
-    PRINT           reduce using rule 4 (document -> printStament .)
-    OL1             reduce using rule 4 (document -> printStament .)
-    UL1             reduce using rule 4 (document -> printStament .)
-    $end            reduce using rule 4 (document -> printStament .)
+    ITALIC          reduce using rule 3 (document -> assignation .)
+    BOLD            reduce using rule 3 (document -> assignation .)
+    FLUO            reduce using rule 3 (document -> assignation .)
+    PARAGRAPHE      reduce using rule 3 (document -> assignation .)
+    SEPARATION_LINE reduce using rule 3 (document -> assignation .)
+    TITLE3          reduce using rule 3 (document -> assignation .)
+    TITLE2          reduce using rule 3 (document -> assignation .)
+    TITLE1          reduce using rule 3 (document -> assignation .)
+    LINK            reduce using rule 3 (document -> assignation .)
+    IMAGE           reduce using rule 3 (document -> assignation .)
+    REFERENCE       reduce using rule 3 (document -> assignation .)
+    WORD            reduce using rule 3 (document -> assignation .)
+    VARIABLE        reduce using rule 3 (document -> assignation .)
+    PRINT           reduce using rule 3 (document -> assignation .)
+    OL1             reduce using rule 3 (document -> assignation .)
+    UL1             reduce using rule 3 (document -> assignation .)
+    $end            reduce using rule 3 (document -> assignation .)
 
 
-state 17
+state 4
 
     (1) document -> tag .
 
@@ -491,122 +208,7 @@ state 17
     $end            reduce using rule 1 (document -> tag .)
 
 
-state 18
-
-    (23) tag -> TITLE2 .
-
-    ITALIC          reduce using rule 23 (tag -> TITLE2 .)
-    BOLD            reduce using rule 23 (tag -> TITLE2 .)
-    FLUO            reduce using rule 23 (tag -> TITLE2 .)
-    PARAGRAPHE      reduce using rule 23 (tag -> TITLE2 .)
-    SEPARATION_LINE reduce using rule 23 (tag -> TITLE2 .)
-    TITLE3          reduce using rule 23 (tag -> TITLE2 .)
-    TITLE2          reduce using rule 23 (tag -> TITLE2 .)
-    TITLE1          reduce using rule 23 (tag -> TITLE2 .)
-    LINK            reduce using rule 23 (tag -> TITLE2 .)
-    IMAGE           reduce using rule 23 (tag -> TITLE2 .)
-    REFERENCE       reduce using rule 23 (tag -> TITLE2 .)
-    WORD            reduce using rule 23 (tag -> TITLE2 .)
-    VARIABLE        reduce using rule 23 (tag -> TITLE2 .)
-    PRINT           reduce using rule 23 (tag -> TITLE2 .)
-    OL1             reduce using rule 23 (tag -> TITLE2 .)
-    UL1             reduce using rule 23 (tag -> TITLE2 .)
-    $end            reduce using rule 23 (tag -> TITLE2 .)
-
-
-state 19
-
-    (14) tag -> BOLD .
-
-    ITALIC          reduce using rule 14 (tag -> BOLD .)
-    BOLD            reduce using rule 14 (tag -> BOLD .)
-    FLUO            reduce using rule 14 (tag -> BOLD .)
-    PARAGRAPHE      reduce using rule 14 (tag -> BOLD .)
-    SEPARATION_LINE reduce using rule 14 (tag -> BOLD .)
-    TITLE3          reduce using rule 14 (tag -> BOLD .)
-    TITLE2          reduce using rule 14 (tag -> BOLD .)
-    TITLE1          reduce using rule 14 (tag -> BOLD .)
-    LINK            reduce using rule 14 (tag -> BOLD .)
-    IMAGE           reduce using rule 14 (tag -> BOLD .)
-    REFERENCE       reduce using rule 14 (tag -> BOLD .)
-    WORD            reduce using rule 14 (tag -> BOLD .)
-    VARIABLE        reduce using rule 14 (tag -> BOLD .)
-    PRINT           reduce using rule 14 (tag -> BOLD .)
-    OL1             reduce using rule 14 (tag -> BOLD .)
-    UL1             reduce using rule 14 (tag -> BOLD .)
-    $end            reduce using rule 14 (tag -> BOLD .)
-
-
-state 20
-
-    (30) tag -> IMAGE .
-
-    ITALIC          reduce using rule 30 (tag -> IMAGE .)
-    BOLD            reduce using rule 30 (tag -> IMAGE .)
-    FLUO            reduce using rule 30 (tag -> IMAGE .)
-    PARAGRAPHE      reduce using rule 30 (tag -> IMAGE .)
-    SEPARATION_LINE reduce using rule 30 (tag -> IMAGE .)
-    TITLE3          reduce using rule 30 (tag -> IMAGE .)
-    TITLE2          reduce using rule 30 (tag -> IMAGE .)
-    TITLE1          reduce using rule 30 (tag -> IMAGE .)
-    LINK            reduce using rule 30 (tag -> IMAGE .)
-    IMAGE           reduce using rule 30 (tag -> IMAGE .)
-    REFERENCE       reduce using rule 30 (tag -> IMAGE .)
-    WORD            reduce using rule 30 (tag -> IMAGE .)
-    VARIABLE        reduce using rule 30 (tag -> IMAGE .)
-    PRINT           reduce using rule 30 (tag -> IMAGE .)
-    OL1             reduce using rule 30 (tag -> IMAGE .)
-    UL1             reduce using rule 30 (tag -> IMAGE .)
-    $end            reduce using rule 30 (tag -> IMAGE .)
-
-
-state 21
-
-    (31) tag -> REFERENCE .
-
-    ITALIC          reduce using rule 31 (tag -> REFERENCE .)
-    BOLD            reduce using rule 31 (tag -> REFERENCE .)
-    FLUO            reduce using rule 31 (tag -> REFERENCE .)
-    PARAGRAPHE      reduce using rule 31 (tag -> REFERENCE .)
-    SEPARATION_LINE reduce using rule 31 (tag -> REFERENCE .)
-    TITLE3          reduce using rule 31 (tag -> REFERENCE .)
-    TITLE2          reduce using rule 31 (tag -> REFERENCE .)
-    TITLE1          reduce using rule 31 (tag -> REFERENCE .)
-    LINK            reduce using rule 31 (tag -> REFERENCE .)
-    IMAGE           reduce using rule 31 (tag -> REFERENCE .)
-    REFERENCE       reduce using rule 31 (tag -> REFERENCE .)
-    WORD            reduce using rule 31 (tag -> REFERENCE .)
-    VARIABLE        reduce using rule 31 (tag -> REFERENCE .)
-    PRINT           reduce using rule 31 (tag -> REFERENCE .)
-    OL1             reduce using rule 31 (tag -> REFERENCE .)
-    UL1             reduce using rule 31 (tag -> REFERENCE .)
-    $end            reduce using rule 31 (tag -> REFERENCE .)
-
-
-state 22
-
-    (29) tag -> LINK .
-
-    ITALIC          reduce using rule 29 (tag -> LINK .)
-    BOLD            reduce using rule 29 (tag -> LINK .)
-    FLUO            reduce using rule 29 (tag -> LINK .)
-    PARAGRAPHE      reduce using rule 29 (tag -> LINK .)
-    SEPARATION_LINE reduce using rule 29 (tag -> LINK .)
-    TITLE3          reduce using rule 29 (tag -> LINK .)
-    TITLE2          reduce using rule 29 (tag -> LINK .)
-    TITLE1          reduce using rule 29 (tag -> LINK .)
-    LINK            reduce using rule 29 (tag -> LINK .)
-    IMAGE           reduce using rule 29 (tag -> LINK .)
-    REFERENCE       reduce using rule 29 (tag -> LINK .)
-    WORD            reduce using rule 29 (tag -> LINK .)
-    VARIABLE        reduce using rule 29 (tag -> LINK .)
-    PRINT           reduce using rule 29 (tag -> LINK .)
-    OL1             reduce using rule 29 (tag -> LINK .)
-    UL1             reduce using rule 29 (tag -> LINK .)
-    $end            reduce using rule 29 (tag -> LINK .)
-
-
-state 23
+state 5
 
     (18) tag -> olSubList .
 
@@ -629,30 +231,474 @@ state 23
     $end            reduce using rule 18 (tag -> olSubList .)
 
 
+state 6
+
+    (2) document -> word .
+
+    ITALIC          reduce using rule 2 (document -> word .)
+    BOLD            reduce using rule 2 (document -> word .)
+    FLUO            reduce using rule 2 (document -> word .)
+    PARAGRAPHE      reduce using rule 2 (document -> word .)
+    SEPARATION_LINE reduce using rule 2 (document -> word .)
+    TITLE3          reduce using rule 2 (document -> word .)
+    TITLE2          reduce using rule 2 (document -> word .)
+    TITLE1          reduce using rule 2 (document -> word .)
+    LINK            reduce using rule 2 (document -> word .)
+    IMAGE           reduce using rule 2 (document -> word .)
+    REFERENCE       reduce using rule 2 (document -> word .)
+    WORD            reduce using rule 2 (document -> word .)
+    VARIABLE        reduce using rule 2 (document -> word .)
+    PRINT           reduce using rule 2 (document -> word .)
+    OL1             reduce using rule 2 (document -> word .)
+    UL1             reduce using rule 2 (document -> word .)
+    $end            reduce using rule 2 (document -> word .)
+
+
+state 7
+
+    (30) tag -> IMAGE .
+
+    ITALIC          reduce using rule 30 (tag -> IMAGE .)
+    BOLD            reduce using rule 30 (tag -> IMAGE .)
+    FLUO            reduce using rule 30 (tag -> IMAGE .)
+    PARAGRAPHE      reduce using rule 30 (tag -> IMAGE .)
+    SEPARATION_LINE reduce using rule 30 (tag -> IMAGE .)
+    TITLE3          reduce using rule 30 (tag -> IMAGE .)
+    TITLE2          reduce using rule 30 (tag -> IMAGE .)
+    TITLE1          reduce using rule 30 (tag -> IMAGE .)
+    LINK            reduce using rule 30 (tag -> IMAGE .)
+    IMAGE           reduce using rule 30 (tag -> IMAGE .)
+    REFERENCE       reduce using rule 30 (tag -> IMAGE .)
+    WORD            reduce using rule 30 (tag -> IMAGE .)
+    VARIABLE        reduce using rule 30 (tag -> IMAGE .)
+    PRINT           reduce using rule 30 (tag -> IMAGE .)
+    OL1             reduce using rule 30 (tag -> IMAGE .)
+    UL1             reduce using rule 30 (tag -> IMAGE .)
+    $end            reduce using rule 30 (tag -> IMAGE .)
+
+
+state 8
+
+    (17) tag -> SEPARATION_LINE .
+
+    ITALIC          reduce using rule 17 (tag -> SEPARATION_LINE .)
+    BOLD            reduce using rule 17 (tag -> SEPARATION_LINE .)
+    FLUO            reduce using rule 17 (tag -> SEPARATION_LINE .)
+    PARAGRAPHE      reduce using rule 17 (tag -> SEPARATION_LINE .)
+    SEPARATION_LINE reduce using rule 17 (tag -> SEPARATION_LINE .)
+    TITLE3          reduce using rule 17 (tag -> SEPARATION_LINE .)
+    TITLE2          reduce using rule 17 (tag -> SEPARATION_LINE .)
+    TITLE1          reduce using rule 17 (tag -> SEPARATION_LINE .)
+    LINK            reduce using rule 17 (tag -> SEPARATION_LINE .)
+    IMAGE           reduce using rule 17 (tag -> SEPARATION_LINE .)
+    REFERENCE       reduce using rule 17 (tag -> SEPARATION_LINE .)
+    WORD            reduce using rule 17 (tag -> SEPARATION_LINE .)
+    VARIABLE        reduce using rule 17 (tag -> SEPARATION_LINE .)
+    PRINT           reduce using rule 17 (tag -> SEPARATION_LINE .)
+    OL1             reduce using rule 17 (tag -> SEPARATION_LINE .)
+    UL1             reduce using rule 17 (tag -> SEPARATION_LINE .)
+    $end            reduce using rule 17 (tag -> SEPARATION_LINE .)
+
+
+state 9
+
+    (29) tag -> LINK .
+
+    ITALIC          reduce using rule 29 (tag -> LINK .)
+    BOLD            reduce using rule 29 (tag -> LINK .)
+    FLUO            reduce using rule 29 (tag -> LINK .)
+    PARAGRAPHE      reduce using rule 29 (tag -> LINK .)
+    SEPARATION_LINE reduce using rule 29 (tag -> LINK .)
+    TITLE3          reduce using rule 29 (tag -> LINK .)
+    TITLE2          reduce using rule 29 (tag -> LINK .)
+    TITLE1          reduce using rule 29 (tag -> LINK .)
+    LINK            reduce using rule 29 (tag -> LINK .)
+    IMAGE           reduce using rule 29 (tag -> LINK .)
+    REFERENCE       reduce using rule 29 (tag -> LINK .)
+    WORD            reduce using rule 29 (tag -> LINK .)
+    VARIABLE        reduce using rule 29 (tag -> LINK .)
+    PRINT           reduce using rule 29 (tag -> LINK .)
+    OL1             reduce using rule 29 (tag -> LINK .)
+    UL1             reduce using rule 29 (tag -> LINK .)
+    $end            reduce using rule 29 (tag -> LINK .)
+
+
+state 10
+
+    (12) printStament -> PRINT . ( VARIABLE )
+
+    (               shift and go to state 26
+
+
+state 11
+
+    (4) document -> printStament .
+
+    ITALIC          reduce using rule 4 (document -> printStament .)
+    BOLD            reduce using rule 4 (document -> printStament .)
+    FLUO            reduce using rule 4 (document -> printStament .)
+    PARAGRAPHE      reduce using rule 4 (document -> printStament .)
+    SEPARATION_LINE reduce using rule 4 (document -> printStament .)
+    TITLE3          reduce using rule 4 (document -> printStament .)
+    TITLE2          reduce using rule 4 (document -> printStament .)
+    TITLE1          reduce using rule 4 (document -> printStament .)
+    LINK            reduce using rule 4 (document -> printStament .)
+    IMAGE           reduce using rule 4 (document -> printStament .)
+    REFERENCE       reduce using rule 4 (document -> printStament .)
+    WORD            reduce using rule 4 (document -> printStament .)
+    VARIABLE        reduce using rule 4 (document -> printStament .)
+    PRINT           reduce using rule 4 (document -> printStament .)
+    OL1             reduce using rule 4 (document -> printStament .)
+    UL1             reduce using rule 4 (document -> printStament .)
+    $end            reduce using rule 4 (document -> printStament .)
+
+
+state 12
+
+    (22) tag -> TITLE3 .
+
+    ITALIC          reduce using rule 22 (tag -> TITLE3 .)
+    BOLD            reduce using rule 22 (tag -> TITLE3 .)
+    FLUO            reduce using rule 22 (tag -> TITLE3 .)
+    PARAGRAPHE      reduce using rule 22 (tag -> TITLE3 .)
+    SEPARATION_LINE reduce using rule 22 (tag -> TITLE3 .)
+    TITLE3          reduce using rule 22 (tag -> TITLE3 .)
+    TITLE2          reduce using rule 22 (tag -> TITLE3 .)
+    TITLE1          reduce using rule 22 (tag -> TITLE3 .)
+    LINK            reduce using rule 22 (tag -> TITLE3 .)
+    IMAGE           reduce using rule 22 (tag -> TITLE3 .)
+    REFERENCE       reduce using rule 22 (tag -> TITLE3 .)
+    WORD            reduce using rule 22 (tag -> TITLE3 .)
+    VARIABLE        reduce using rule 22 (tag -> TITLE3 .)
+    PRINT           reduce using rule 22 (tag -> TITLE3 .)
+    OL1             reduce using rule 22 (tag -> TITLE3 .)
+    UL1             reduce using rule 22 (tag -> TITLE3 .)
+    $end            reduce using rule 22 (tag -> TITLE3 .)
+
+
+state 13
+
+    (25) tag -> ulSubList .
+
+    ITALIC          reduce using rule 25 (tag -> ulSubList .)
+    BOLD            reduce using rule 25 (tag -> ulSubList .)
+    FLUO            reduce using rule 25 (tag -> ulSubList .)
+    PARAGRAPHE      reduce using rule 25 (tag -> ulSubList .)
+    SEPARATION_LINE reduce using rule 25 (tag -> ulSubList .)
+    TITLE3          reduce using rule 25 (tag -> ulSubList .)
+    TITLE2          reduce using rule 25 (tag -> ulSubList .)
+    TITLE1          reduce using rule 25 (tag -> ulSubList .)
+    LINK            reduce using rule 25 (tag -> ulSubList .)
+    IMAGE           reduce using rule 25 (tag -> ulSubList .)
+    REFERENCE       reduce using rule 25 (tag -> ulSubList .)
+    WORD            reduce using rule 25 (tag -> ulSubList .)
+    VARIABLE        reduce using rule 25 (tag -> ulSubList .)
+    PRINT           reduce using rule 25 (tag -> ulSubList .)
+    OL1             reduce using rule 25 (tag -> ulSubList .)
+    UL1             reduce using rule 25 (tag -> ulSubList .)
+    $end            reduce using rule 25 (tag -> ulSubList .)
+
+
+state 14
+
+    (10) assignation -> VARIABLE . ASSIGNATION NUMBER
+    (11) assignation -> VARIABLE . ASSIGNATION WORD
+
+    ASSIGNATION     shift and go to state 27
+
+
+state 15
+
+    (15) tag -> FLUO .
+
+    ITALIC          reduce using rule 15 (tag -> FLUO .)
+    BOLD            reduce using rule 15 (tag -> FLUO .)
+    FLUO            reduce using rule 15 (tag -> FLUO .)
+    PARAGRAPHE      reduce using rule 15 (tag -> FLUO .)
+    SEPARATION_LINE reduce using rule 15 (tag -> FLUO .)
+    TITLE3          reduce using rule 15 (tag -> FLUO .)
+    TITLE2          reduce using rule 15 (tag -> FLUO .)
+    TITLE1          reduce using rule 15 (tag -> FLUO .)
+    LINK            reduce using rule 15 (tag -> FLUO .)
+    IMAGE           reduce using rule 15 (tag -> FLUO .)
+    REFERENCE       reduce using rule 15 (tag -> FLUO .)
+    WORD            reduce using rule 15 (tag -> FLUO .)
+    VARIABLE        reduce using rule 15 (tag -> FLUO .)
+    PRINT           reduce using rule 15 (tag -> FLUO .)
+    OL1             reduce using rule 15 (tag -> FLUO .)
+    UL1             reduce using rule 15 (tag -> FLUO .)
+    $end            reduce using rule 15 (tag -> FLUO .)
+
+
+state 16
+
+    (23) tag -> TITLE2 .
+
+    ITALIC          reduce using rule 23 (tag -> TITLE2 .)
+    BOLD            reduce using rule 23 (tag -> TITLE2 .)
+    FLUO            reduce using rule 23 (tag -> TITLE2 .)
+    PARAGRAPHE      reduce using rule 23 (tag -> TITLE2 .)
+    SEPARATION_LINE reduce using rule 23 (tag -> TITLE2 .)
+    TITLE3          reduce using rule 23 (tag -> TITLE2 .)
+    TITLE2          reduce using rule 23 (tag -> TITLE2 .)
+    TITLE1          reduce using rule 23 (tag -> TITLE2 .)
+    LINK            reduce using rule 23 (tag -> TITLE2 .)
+    IMAGE           reduce using rule 23 (tag -> TITLE2 .)
+    REFERENCE       reduce using rule 23 (tag -> TITLE2 .)
+    WORD            reduce using rule 23 (tag -> TITLE2 .)
+    VARIABLE        reduce using rule 23 (tag -> TITLE2 .)
+    PRINT           reduce using rule 23 (tag -> TITLE2 .)
+    OL1             reduce using rule 23 (tag -> TITLE2 .)
+    UL1             reduce using rule 23 (tag -> TITLE2 .)
+    $end            reduce using rule 23 (tag -> TITLE2 .)
+
+
+state 17
+
+    (0) S' -> document .
+    (5) document -> document . tag
+    (6) document -> document . word
+    (7) document -> document . assignation
+    (8) document -> document . printStament
+    (13) tag -> . ITALIC
+    (14) tag -> . BOLD
+    (15) tag -> . FLUO
+    (16) tag -> . PARAGRAPHE
+    (17) tag -> . SEPARATION_LINE
+    (18) tag -> . olSubList
+    (22) tag -> . TITLE3
+    (23) tag -> . TITLE2
+    (24) tag -> . TITLE1
+    (25) tag -> . ulSubList
+    (29) tag -> . LINK
+    (30) tag -> . IMAGE
+    (31) tag -> . REFERENCE
+    (9) word -> . WORD
+    (10) assignation -> . VARIABLE ASSIGNATION NUMBER
+    (11) assignation -> . VARIABLE ASSIGNATION WORD
+    (12) printStament -> . PRINT ( VARIABLE )
+    (19) olSubList -> . OL1 oList
+    (26) ulSubList -> . UL1 ulList
+
+    ITALIC          shift and go to state 19
+    BOLD            shift and go to state 22
+    FLUO            shift and go to state 15
+    PARAGRAPHE      shift and go to state 1
+    SEPARATION_LINE shift and go to state 8
+    TITLE3          shift and go to state 12
+    TITLE2          shift and go to state 16
+    TITLE1          shift and go to state 21
+    LINK            shift and go to state 9
+    IMAGE           shift and go to state 7
+    REFERENCE       shift and go to state 18
+    WORD            shift and go to state 20
+    VARIABLE        shift and go to state 14
+    PRINT           shift and go to state 10
+    OL1             shift and go to state 23
+    UL1             shift and go to state 2
+
+    printStament                   shift and go to state 31
+    word                           shift and go to state 30
+    olSubList                      shift and go to state 5
+    ulSubList                      shift and go to state 13
+    assignation                    shift and go to state 28
+    tag                            shift and go to state 29
+
+state 18
+
+    (31) tag -> REFERENCE .
+
+    ITALIC          reduce using rule 31 (tag -> REFERENCE .)
+    BOLD            reduce using rule 31 (tag -> REFERENCE .)
+    FLUO            reduce using rule 31 (tag -> REFERENCE .)
+    PARAGRAPHE      reduce using rule 31 (tag -> REFERENCE .)
+    SEPARATION_LINE reduce using rule 31 (tag -> REFERENCE .)
+    TITLE3          reduce using rule 31 (tag -> REFERENCE .)
+    TITLE2          reduce using rule 31 (tag -> REFERENCE .)
+    TITLE1          reduce using rule 31 (tag -> REFERENCE .)
+    LINK            reduce using rule 31 (tag -> REFERENCE .)
+    IMAGE           reduce using rule 31 (tag -> REFERENCE .)
+    REFERENCE       reduce using rule 31 (tag -> REFERENCE .)
+    WORD            reduce using rule 31 (tag -> REFERENCE .)
+    VARIABLE        reduce using rule 31 (tag -> REFERENCE .)
+    PRINT           reduce using rule 31 (tag -> REFERENCE .)
+    OL1             reduce using rule 31 (tag -> REFERENCE .)
+    UL1             reduce using rule 31 (tag -> REFERENCE .)
+    $end            reduce using rule 31 (tag -> REFERENCE .)
+
+
+state 19
+
+    (13) tag -> ITALIC .
+
+    ITALIC          reduce using rule 13 (tag -> ITALIC .)
+    BOLD            reduce using rule 13 (tag -> ITALIC .)
+    FLUO            reduce using rule 13 (tag -> ITALIC .)
+    PARAGRAPHE      reduce using rule 13 (tag -> ITALIC .)
+    SEPARATION_LINE reduce using rule 13 (tag -> ITALIC .)
+    TITLE3          reduce using rule 13 (tag -> ITALIC .)
+    TITLE2          reduce using rule 13 (tag -> ITALIC .)
+    TITLE1          reduce using rule 13 (tag -> ITALIC .)
+    LINK            reduce using rule 13 (tag -> ITALIC .)
+    IMAGE           reduce using rule 13 (tag -> ITALIC .)
+    REFERENCE       reduce using rule 13 (tag -> ITALIC .)
+    WORD            reduce using rule 13 (tag -> ITALIC .)
+    VARIABLE        reduce using rule 13 (tag -> ITALIC .)
+    PRINT           reduce using rule 13 (tag -> ITALIC .)
+    OL1             reduce using rule 13 (tag -> ITALIC .)
+    UL1             reduce using rule 13 (tag -> ITALIC .)
+    $end            reduce using rule 13 (tag -> ITALIC .)
+
+
+state 20
+
+    (9) word -> WORD .
+
+    ITALIC          reduce using rule 9 (word -> WORD .)
+    BOLD            reduce using rule 9 (word -> WORD .)
+    FLUO            reduce using rule 9 (word -> WORD .)
+    PARAGRAPHE      reduce using rule 9 (word -> WORD .)
+    SEPARATION_LINE reduce using rule 9 (word -> WORD .)
+    TITLE3          reduce using rule 9 (word -> WORD .)
+    TITLE2          reduce using rule 9 (word -> WORD .)
+    TITLE1          reduce using rule 9 (word -> WORD .)
+    LINK            reduce using rule 9 (word -> WORD .)
+    IMAGE           reduce using rule 9 (word -> WORD .)
+    REFERENCE       reduce using rule 9 (word -> WORD .)
+    WORD            reduce using rule 9 (word -> WORD .)
+    VARIABLE        reduce using rule 9 (word -> WORD .)
+    PRINT           reduce using rule 9 (word -> WORD .)
+    OL1             reduce using rule 9 (word -> WORD .)
+    UL1             reduce using rule 9 (word -> WORD .)
+    $end            reduce using rule 9 (word -> WORD .)
+
+
+state 21
+
+    (24) tag -> TITLE1 .
+
+    ITALIC          reduce using rule 24 (tag -> TITLE1 .)
+    BOLD            reduce using rule 24 (tag -> TITLE1 .)
+    FLUO            reduce using rule 24 (tag -> TITLE1 .)
+    PARAGRAPHE      reduce using rule 24 (tag -> TITLE1 .)
+    SEPARATION_LINE reduce using rule 24 (tag -> TITLE1 .)
+    TITLE3          reduce using rule 24 (tag -> TITLE1 .)
+    TITLE2          reduce using rule 24 (tag -> TITLE1 .)
+    TITLE1          reduce using rule 24 (tag -> TITLE1 .)
+    LINK            reduce using rule 24 (tag -> TITLE1 .)
+    IMAGE           reduce using rule 24 (tag -> TITLE1 .)
+    REFERENCE       reduce using rule 24 (tag -> TITLE1 .)
+    WORD            reduce using rule 24 (tag -> TITLE1 .)
+    VARIABLE        reduce using rule 24 (tag -> TITLE1 .)
+    PRINT           reduce using rule 24 (tag -> TITLE1 .)
+    OL1             reduce using rule 24 (tag -> TITLE1 .)
+    UL1             reduce using rule 24 (tag -> TITLE1 .)
+    $end            reduce using rule 24 (tag -> TITLE1 .)
+
+
+state 22
+
+    (14) tag -> BOLD .
+
+    ITALIC          reduce using rule 14 (tag -> BOLD .)
+    BOLD            reduce using rule 14 (tag -> BOLD .)
+    FLUO            reduce using rule 14 (tag -> BOLD .)
+    PARAGRAPHE      reduce using rule 14 (tag -> BOLD .)
+    SEPARATION_LINE reduce using rule 14 (tag -> BOLD .)
+    TITLE3          reduce using rule 14 (tag -> BOLD .)
+    TITLE2          reduce using rule 14 (tag -> BOLD .)
+    TITLE1          reduce using rule 14 (tag -> BOLD .)
+    LINK            reduce using rule 14 (tag -> BOLD .)
+    IMAGE           reduce using rule 14 (tag -> BOLD .)
+    REFERENCE       reduce using rule 14 (tag -> BOLD .)
+    WORD            reduce using rule 14 (tag -> BOLD .)
+    VARIABLE        reduce using rule 14 (tag -> BOLD .)
+    PRINT           reduce using rule 14 (tag -> BOLD .)
+    OL1             reduce using rule 14 (tag -> BOLD .)
+    UL1             reduce using rule 14 (tag -> BOLD .)
+    $end            reduce using rule 14 (tag -> BOLD .)
+
+
+state 23
+
+    (19) olSubList -> OL1 . oList
+    (20) oList -> . OL1 oList
+    (21) oList -> . OL1
+
+    OL1             shift and go to state 33
+
+    oList                          shift and go to state 32
+
 state 24
 
-    (6) document -> document word .
+    (26) ulSubList -> UL1 ulList .
 
-    ITALIC          reduce using rule 6 (document -> document word .)
-    BOLD            reduce using rule 6 (document -> document word .)
-    FLUO            reduce using rule 6 (document -> document word .)
-    PARAGRAPHE      reduce using rule 6 (document -> document word .)
-    SEPARATION_LINE reduce using rule 6 (document -> document word .)
-    TITLE3          reduce using rule 6 (document -> document word .)
-    TITLE2          reduce using rule 6 (document -> document word .)
-    TITLE1          reduce using rule 6 (document -> document word .)
-    LINK            reduce using rule 6 (document -> document word .)
-    IMAGE           reduce using rule 6 (document -> document word .)
-    REFERENCE       reduce using rule 6 (document -> document word .)
-    WORD            reduce using rule 6 (document -> document word .)
-    VARIABLE        reduce using rule 6 (document -> document word .)
-    PRINT           reduce using rule 6 (document -> document word .)
-    OL1             reduce using rule 6 (document -> document word .)
-    UL1             reduce using rule 6 (document -> document word .)
-    $end            reduce using rule 6 (document -> document word .)
+    ITALIC          reduce using rule 26 (ulSubList -> UL1 ulList .)
+    BOLD            reduce using rule 26 (ulSubList -> UL1 ulList .)
+    FLUO            reduce using rule 26 (ulSubList -> UL1 ulList .)
+    PARAGRAPHE      reduce using rule 26 (ulSubList -> UL1 ulList .)
+    SEPARATION_LINE reduce using rule 26 (ulSubList -> UL1 ulList .)
+    TITLE3          reduce using rule 26 (ulSubList -> UL1 ulList .)
+    TITLE2          reduce using rule 26 (ulSubList -> UL1 ulList .)
+    TITLE1          reduce using rule 26 (ulSubList -> UL1 ulList .)
+    LINK            reduce using rule 26 (ulSubList -> UL1 ulList .)
+    IMAGE           reduce using rule 26 (ulSubList -> UL1 ulList .)
+    REFERENCE       reduce using rule 26 (ulSubList -> UL1 ulList .)
+    WORD            reduce using rule 26 (ulSubList -> UL1 ulList .)
+    VARIABLE        reduce using rule 26 (ulSubList -> UL1 ulList .)
+    PRINT           reduce using rule 26 (ulSubList -> UL1 ulList .)
+    OL1             reduce using rule 26 (ulSubList -> UL1 ulList .)
+    UL1             reduce using rule 26 (ulSubList -> UL1 ulList .)
+    $end            reduce using rule 26 (ulSubList -> UL1 ulList .)
 
 
 state 25
+
+    (27) ulList -> UL1 . ulList
+    (28) ulList -> UL1 .
+    (27) ulList -> . UL1 ulList
+    (28) ulList -> . UL1
+
+  ! shift/reduce conflict for UL1 resolved as shift
+    ITALIC          reduce using rule 28 (ulList -> UL1 .)
+    BOLD            reduce using rule 28 (ulList -> UL1 .)
+    FLUO            reduce using rule 28 (ulList -> UL1 .)
+    PARAGRAPHE      reduce using rule 28 (ulList -> UL1 .)
+    SEPARATION_LINE reduce using rule 28 (ulList -> UL1 .)
+    TITLE3          reduce using rule 28 (ulList -> UL1 .)
+    TITLE2          reduce using rule 28 (ulList -> UL1 .)
+    TITLE1          reduce using rule 28 (ulList -> UL1 .)
+    LINK            reduce using rule 28 (ulList -> UL1 .)
+    IMAGE           reduce using rule 28 (ulList -> UL1 .)
+    REFERENCE       reduce using rule 28 (ulList -> UL1 .)
+    WORD            reduce using rule 28 (ulList -> UL1 .)
+    VARIABLE        reduce using rule 28 (ulList -> UL1 .)
+    PRINT           reduce using rule 28 (ulList -> UL1 .)
+    OL1             reduce using rule 28 (ulList -> UL1 .)
+    $end            reduce using rule 28 (ulList -> UL1 .)
+    UL1             shift and go to state 25
+
+  ! UL1             [ reduce using rule 28 (ulList -> UL1 .) ]
+
+    ulList                         shift and go to state 34
+
+state 26
+
+    (12) printStament -> PRINT ( . VARIABLE )
+
+    VARIABLE        shift and go to state 35
+
+
+state 27
+
+    (10) assignation -> VARIABLE ASSIGNATION . NUMBER
+    (11) assignation -> VARIABLE ASSIGNATION . WORD
+
+    NUMBER          shift and go to state 37
+    WORD            shift and go to state 36
+
+
+state 28
 
     (7) document -> document assignation .
 
@@ -675,30 +721,7 @@ state 25
     $end            reduce using rule 7 (document -> document assignation .)
 
 
-state 26
-
-    (8) document -> document printStament .
-
-    ITALIC          reduce using rule 8 (document -> document printStament .)
-    BOLD            reduce using rule 8 (document -> document printStament .)
-    FLUO            reduce using rule 8 (document -> document printStament .)
-    PARAGRAPHE      reduce using rule 8 (document -> document printStament .)
-    SEPARATION_LINE reduce using rule 8 (document -> document printStament .)
-    TITLE3          reduce using rule 8 (document -> document printStament .)
-    TITLE2          reduce using rule 8 (document -> document printStament .)
-    TITLE1          reduce using rule 8 (document -> document printStament .)
-    LINK            reduce using rule 8 (document -> document printStament .)
-    IMAGE           reduce using rule 8 (document -> document printStament .)
-    REFERENCE       reduce using rule 8 (document -> document printStament .)
-    WORD            reduce using rule 8 (document -> document printStament .)
-    VARIABLE        reduce using rule 8 (document -> document printStament .)
-    PRINT           reduce using rule 8 (document -> document printStament .)
-    OL1             reduce using rule 8 (document -> document printStament .)
-    UL1             reduce using rule 8 (document -> document printStament .)
-    $end            reduce using rule 8 (document -> document printStament .)
-
-
-state 27
+state 29
 
     (5) document -> document tag .
 
@@ -721,73 +744,50 @@ state 27
     $end            reduce using rule 5 (document -> document tag .)
 
 
-state 28
-
-    (12) printStament -> PRINT ( . VARIABLE )
-
-    VARIABLE        shift and go to state 34
-
-
-state 29
-
-    (26) ul1SubList -> UL1 ul1List .
-
-    ITALIC          reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    BOLD            reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    FLUO            reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    PARAGRAPHE      reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    SEPARATION_LINE reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    TITLE3          reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    TITLE2          reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    TITLE1          reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    LINK            reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    IMAGE           reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    REFERENCE       reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    WORD            reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    VARIABLE        reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    PRINT           reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    OL1             reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    UL1             reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-    $end            reduce using rule 26 (ul1SubList -> UL1 ul1List .)
-
-
 state 30
 
-    (27) ul1List -> UL1 . ul1List
-    (28) ul1List -> UL1 .
-    (27) ul1List -> . UL1 ul1List
-    (28) ul1List -> . UL1
+    (6) document -> document word .
 
-  ! shift/reduce conflict for UL1 resolved as shift
-    ITALIC          reduce using rule 28 (ul1List -> UL1 .)
-    BOLD            reduce using rule 28 (ul1List -> UL1 .)
-    FLUO            reduce using rule 28 (ul1List -> UL1 .)
-    PARAGRAPHE      reduce using rule 28 (ul1List -> UL1 .)
-    SEPARATION_LINE reduce using rule 28 (ul1List -> UL1 .)
-    TITLE3          reduce using rule 28 (ul1List -> UL1 .)
-    TITLE2          reduce using rule 28 (ul1List -> UL1 .)
-    TITLE1          reduce using rule 28 (ul1List -> UL1 .)
-    LINK            reduce using rule 28 (ul1List -> UL1 .)
-    IMAGE           reduce using rule 28 (ul1List -> UL1 .)
-    REFERENCE       reduce using rule 28 (ul1List -> UL1 .)
-    WORD            reduce using rule 28 (ul1List -> UL1 .)
-    VARIABLE        reduce using rule 28 (ul1List -> UL1 .)
-    PRINT           reduce using rule 28 (ul1List -> UL1 .)
-    OL1             reduce using rule 28 (ul1List -> UL1 .)
-    $end            reduce using rule 28 (ul1List -> UL1 .)
-    UL1             shift and go to state 30
+    ITALIC          reduce using rule 6 (document -> document word .)
+    BOLD            reduce using rule 6 (document -> document word .)
+    FLUO            reduce using rule 6 (document -> document word .)
+    PARAGRAPHE      reduce using rule 6 (document -> document word .)
+    SEPARATION_LINE reduce using rule 6 (document -> document word .)
+    TITLE3          reduce using rule 6 (document -> document word .)
+    TITLE2          reduce using rule 6 (document -> document word .)
+    TITLE1          reduce using rule 6 (document -> document word .)
+    LINK            reduce using rule 6 (document -> document word .)
+    IMAGE           reduce using rule 6 (document -> document word .)
+    REFERENCE       reduce using rule 6 (document -> document word .)
+    WORD            reduce using rule 6 (document -> document word .)
+    VARIABLE        reduce using rule 6 (document -> document word .)
+    PRINT           reduce using rule 6 (document -> document word .)
+    OL1             reduce using rule 6 (document -> document word .)
+    UL1             reduce using rule 6 (document -> document word .)
+    $end            reduce using rule 6 (document -> document word .)
 
-  ! UL1             [ reduce using rule 28 (ul1List -> UL1 .) ]
-
-    ul1List                        shift and go to state 35
 
 state 31
 
-    (10) assignation -> VARIABLE ASSIGNATION . NUMBER
-    (11) assignation -> VARIABLE ASSIGNATION . WORD
+    (8) document -> document printStament .
 
-    NUMBER          shift and go to state 36
-    WORD            shift and go to state 37
+    ITALIC          reduce using rule 8 (document -> document printStament .)
+    BOLD            reduce using rule 8 (document -> document printStament .)
+    FLUO            reduce using rule 8 (document -> document printStament .)
+    PARAGRAPHE      reduce using rule 8 (document -> document printStament .)
+    SEPARATION_LINE reduce using rule 8 (document -> document printStament .)
+    TITLE3          reduce using rule 8 (document -> document printStament .)
+    TITLE2          reduce using rule 8 (document -> document printStament .)
+    TITLE1          reduce using rule 8 (document -> document printStament .)
+    LINK            reduce using rule 8 (document -> document printStament .)
+    IMAGE           reduce using rule 8 (document -> document printStament .)
+    REFERENCE       reduce using rule 8 (document -> document printStament .)
+    WORD            reduce using rule 8 (document -> document printStament .)
+    VARIABLE        reduce using rule 8 (document -> document printStament .)
+    PRINT           reduce using rule 8 (document -> document printStament .)
+    OL1             reduce using rule 8 (document -> document printStament .)
+    UL1             reduce using rule 8 (document -> document printStament .)
+    $end            reduce using rule 8 (document -> document printStament .)
 
 
 state 32
@@ -845,58 +845,35 @@ state 33
 
 state 34
 
+    (27) ulList -> UL1 ulList .
+
+    ITALIC          reduce using rule 27 (ulList -> UL1 ulList .)
+    BOLD            reduce using rule 27 (ulList -> UL1 ulList .)
+    FLUO            reduce using rule 27 (ulList -> UL1 ulList .)
+    PARAGRAPHE      reduce using rule 27 (ulList -> UL1 ulList .)
+    SEPARATION_LINE reduce using rule 27 (ulList -> UL1 ulList .)
+    TITLE3          reduce using rule 27 (ulList -> UL1 ulList .)
+    TITLE2          reduce using rule 27 (ulList -> UL1 ulList .)
+    TITLE1          reduce using rule 27 (ulList -> UL1 ulList .)
+    LINK            reduce using rule 27 (ulList -> UL1 ulList .)
+    IMAGE           reduce using rule 27 (ulList -> UL1 ulList .)
+    REFERENCE       reduce using rule 27 (ulList -> UL1 ulList .)
+    WORD            reduce using rule 27 (ulList -> UL1 ulList .)
+    VARIABLE        reduce using rule 27 (ulList -> UL1 ulList .)
+    PRINT           reduce using rule 27 (ulList -> UL1 ulList .)
+    OL1             reduce using rule 27 (ulList -> UL1 ulList .)
+    UL1             reduce using rule 27 (ulList -> UL1 ulList .)
+    $end            reduce using rule 27 (ulList -> UL1 ulList .)
+
+
+state 35
+
     (12) printStament -> PRINT ( VARIABLE . )
 
     )               shift and go to state 39
 
 
-state 35
-
-    (27) ul1List -> UL1 ul1List .
-
-    ITALIC          reduce using rule 27 (ul1List -> UL1 ul1List .)
-    BOLD            reduce using rule 27 (ul1List -> UL1 ul1List .)
-    FLUO            reduce using rule 27 (ul1List -> UL1 ul1List .)
-    PARAGRAPHE      reduce using rule 27 (ul1List -> UL1 ul1List .)
-    SEPARATION_LINE reduce using rule 27 (ul1List -> UL1 ul1List .)
-    TITLE3          reduce using rule 27 (ul1List -> UL1 ul1List .)
-    TITLE2          reduce using rule 27 (ul1List -> UL1 ul1List .)
-    TITLE1          reduce using rule 27 (ul1List -> UL1 ul1List .)
-    LINK            reduce using rule 27 (ul1List -> UL1 ul1List .)
-    IMAGE           reduce using rule 27 (ul1List -> UL1 ul1List .)
-    REFERENCE       reduce using rule 27 (ul1List -> UL1 ul1List .)
-    WORD            reduce using rule 27 (ul1List -> UL1 ul1List .)
-    VARIABLE        reduce using rule 27 (ul1List -> UL1 ul1List .)
-    PRINT           reduce using rule 27 (ul1List -> UL1 ul1List .)
-    OL1             reduce using rule 27 (ul1List -> UL1 ul1List .)
-    UL1             reduce using rule 27 (ul1List -> UL1 ul1List .)
-    $end            reduce using rule 27 (ul1List -> UL1 ul1List .)
-
-
 state 36
-
-    (10) assignation -> VARIABLE ASSIGNATION NUMBER .
-
-    ITALIC          reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    BOLD            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    FLUO            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    PARAGRAPHE      reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    SEPARATION_LINE reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    TITLE3          reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    TITLE2          reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    TITLE1          reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    LINK            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    IMAGE           reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    REFERENCE       reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    WORD            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    VARIABLE        reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    PRINT           reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    OL1             reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    UL1             reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-    $end            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
-
-
-state 37
 
     (11) assignation -> VARIABLE ASSIGNATION WORD .
 
@@ -917,6 +894,29 @@ state 37
     OL1             reduce using rule 11 (assignation -> VARIABLE ASSIGNATION WORD .)
     UL1             reduce using rule 11 (assignation -> VARIABLE ASSIGNATION WORD .)
     $end            reduce using rule 11 (assignation -> VARIABLE ASSIGNATION WORD .)
+
+
+state 37
+
+    (10) assignation -> VARIABLE ASSIGNATION NUMBER .
+
+    ITALIC          reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    BOLD            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    FLUO            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    PARAGRAPHE      reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    SEPARATION_LINE reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    TITLE3          reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    TITLE2          reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    TITLE1          reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    LINK            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    IMAGE           reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    REFERENCE       reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    WORD            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    VARIABLE        reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    PRINT           reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    OL1             reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    UL1             reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
+    $end            reduce using rule 10 (assignation -> VARIABLE ASSIGNATION NUMBER .)
 
 
 state 38
@@ -967,5 +967,5 @@ state 39
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for UL1 in state 30 resolved as shift
+WARNING: shift/reduce conflict for UL1 in state 25 resolved as shift
 WARNING: shift/reduce conflict for OL1 in state 33 resolved as shift

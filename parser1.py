@@ -6,8 +6,6 @@ import AST
 
 from lexemes import tokens
 
-vars = {}
-
 def p_document(p):
     ''' document : tag
     | word
@@ -16,7 +14,7 @@ def p_document(p):
     '''
     p[0] = AST.DocumentNode(p[1])
 
-def p_document_recuvence(p):
+def p_document_recurence(p):
     ''' document : document tag
     | document word
     | document assignation
@@ -28,7 +26,7 @@ def p_word(p):
     '''word : WORD '''
     p[0] = AST.WordNode(p[1])
 
-def p_assign(p):
+def p_assignation(p):
     ''' assignation : VARIABLE ASSIGNATION NUMBER
     | VARIABLE ASSIGNATION WORD '''
     p[0] = AST.AssignNode([AST.TokenNode(p[1]),AST.TokenNode(p[3])])
@@ -68,12 +66,12 @@ def p_separation_line(p):
     p[0] = AST.TagNode("SEPARATION_LINE", "")
 
 
-def p_ol_tag(p):
+def p_olSubList_tag(p):
     ''' tag : olSubList
     '''
     p[0] = p[1]
 
-def p_subolList(p):
+def p_olSubList(p):
     '''olSubList : OL1 oList
     '''
     text = p[1]
@@ -117,29 +115,29 @@ def p_title1(p):
     p[0] = AST.TagNode("TITLE1",text)
 
 
-def p_ul_tag(p):
-    '''tag : ul1SubList
+def p_ulSubList_tag(p):
+    '''tag : ulSubList
     '''
     p[0] = p[1]
 
 
-def p_subul1List(p):
-    '''ul1SubList : UL1 ul1List
+def p_ulSubList(p):
+    '''ulSubList : UL1 ulList
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)
     p[0] = AST.UlListNode(AST.UlNode(text),p[2])
 
 
-def p_ul1List_rec(p):
-    '''ul1List : UL1 ul1List
+def p_ulList_rec(p):
+    '''ulList : UL1 ulList
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)
     p[0] = [AST.UlNode(text)]+p[2]
 
-def p_ul1List(p):
-    '''ul1List : UL1
+def p_ulList(p):
+    '''ulList : UL1
     '''
     text = p[1]
     text = re.sub('[\*]', '', text)
@@ -189,10 +187,6 @@ def parse(program):
 parser = yacc.yacc(outputdir='generated')
 
 if __name__ == "__main__":
-	# import sys
-	# prog = open(sys.argv[1]).read()
-	# result = yacc.parse(prog, debug=0)
-	# print (result)
 
     import sys
     prog = open(sys.argv[1]).read()
