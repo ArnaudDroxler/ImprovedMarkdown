@@ -26,7 +26,9 @@ Mais il n'en demeure pas moins qu'il est *intéressant* de !tester! les possibil
 ## Titre 2
 ### Titre 3
 
-$maVariable = 12
+$maVariable = coucou
+
+print($maVariable)
 
 d# titre 1 *italique*
 

@@ -3,6 +3,8 @@ from AST import addToClass
 from functools import reduce
 import re
 
+vars ={}
+
 @addToClass(AST.DocumentNode)
 def execute(self,html):
     for c in self.children:
@@ -75,6 +77,27 @@ def execute(self,html):
 def execute(self,html):
     print("ReferenceNode")
 
+<<<<<<< HEAD
+=======
+@addToClass(AST.AssignNode)
+def execute(self,html):
+    vars[self.children[0].tok] = self.children[1].execute(html)
+
+@addToClass(AST.TokenNode)
+def execute(self,html):
+    if isinstance(self.tok, str):
+        try:
+            return vars[self.tok]
+        except KeyError:
+            pass
+    return self.tok
+
+
+@addToClass(AST.PrintNode)
+def execute(self,html):
+    html.write(str(self.children[0].execute(html)))
+
+>>>>>>> 3ea83a8aef78e90695a5e60470adbe7f16a6a27e
 if __name__ == "__main__":
     import sys
     import os

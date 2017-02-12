@@ -202,6 +202,21 @@ class WordNode(Node):
     def __repr__(self):
         return "%s (%s)" % (self.type, self.text)
 
+class AssignNode(Node):
+    type = '='
+
+class PrintNode(Node):
+    type = 'print'
+
+    
+class TokenNode(Node):
+    type = 'token'
+    def __init__(self, tok):
+        Node.__init__(self)
+        self.tok = tok
+
+    def __repr__(self):
+        return repr(self.tok)
 
 def addToClass(cls):
     ''' D�corateur permettant d'ajouter la fonction d�cor�e en tant que m�thode
