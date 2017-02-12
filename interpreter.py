@@ -53,7 +53,7 @@ def execute(self,html):
     if self.type == "FLUO":
         html.write("<em>" + self.text + "</em>")
     if self.type == "PARAGRAPHE":
-            html.write("</p><p>")
+            html.write("</br>")
     if self.type == "TITLE1":
             html.write("<h1>" +self.text+"</h1>")
     if self.type == "TITLE2":
