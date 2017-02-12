@@ -1,7 +1,8 @@
 # Avec les parentheses
 
 import ply.lex as lex
-
+import sys
+import os
 
 tokens = (
 	'BOLD',
@@ -27,7 +28,6 @@ tokens = (
 )
 
 literals = '()'
-
 
 def t_PRINT(t):
     r'print'
@@ -106,7 +106,8 @@ def t_SEPARATION_LINE(t):
     return t
 
 def t_WORD(t):
-    r'[\wéè]+'
+    r"[\w\.'éàëàü]+"
+    print(t.value)
     return t
 
 def t_VARIABLE(t):
@@ -126,9 +127,10 @@ def t_newline(t):
 	r'\n+'
 	t.lexer.lineno += len(t.value)
 
+
 def t_error(t):
-	print ("Illegal character '%s'" % t.value[0])
-	t.lexer.skip(1)
+    print ("Illegal character '%s'" % t.value[0])
+    t.lexer.skip(1)
 
 t_ignore  = ' \t'
 
@@ -144,77 +146,3 @@ if __name__ == "__main__":
 		tok = lex.token()
 		if not tok: break
 		print ("line %d: %s(%s)" % (tok.lineno, tok.type, tok.value))
-
-
-
-T = {WORD, FLUO, PARAGRAPHE, PRINT, VARIABLE, SEPARATION_LINE,
-OL1, OL2, Ol3, UL1, UL2, UL3, TITLE1, TITLE2, TITLE3, LINK, IMAGE, REFERENCE}
-N = {document, assignation, printStament, tag, word, olSubList, ulSubList,
-oList}
-S = {document}
-R = {document -> tag,
-     document -> word,
-     document -> assignation,
-     document -> printStament,
-     document -> document tag,
-     document -> document word,
-     document -> document assignation,
-     document -> document printStament,
-     word -> WORD
-     assignation -> VARIABLE ASSIGNATION NUMBER,
-     assignation -> VARIABLE ASSIGNATION WORD,
-     printStament -> PRINT '(' VARIABLE ')',
-     tag -> ITALIC
-     tag -> BOLD
-     tag -> FLUO
-     tag -> PARAGRAPHE
-     tag -> SEPARATION_LINE
-     tag -> ol
-     tag -> olSubList
-     tag -> TITLE3
-     tag -> TITLE2
-     tag -> TITLE1
-     tag -> ul1SubList
-     tag -> LINK
-     tag -> IMAGE
-     tag -> REFERENCE
-     ol -> OL1
-     olSubList : OL1 oList
-     oList : OL2 oList
-     oList : OL2
-     }
-
-
-'''tag : ul1SubList
-'''
-
-'''ul1SubList : UL1 ul1List
-'''
-
-'''ul1List : UL1 ul1List
-'''
-
-'''ul1List : UL1 ul2SubList
-'''
-
-'''ul1List : UL1
-'''
-
-'''ul2SubList : UL1 ul2List
-'''
-
-'''ul2List : UL2 ul2List
-'''
-
-'''ul2List : UL2
-'''
-
-''' tag : LINK
-'''
-
-''' tag : IMAGE
-'''
-
-
-''' tag : REFERENCE
-'''
